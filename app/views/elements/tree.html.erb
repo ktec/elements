@@ -1,11 +1,39 @@
+<style type="text/css">
+html, body { margin:0; padding:0; }
+body, td, th, pre, code, select, option, input, textarea { font-family:verdana,arial,sans-serif; font-size:10px; }
+.demo, .demo input, .jstree-dnd-helper, #vakata-contextmenu { font-size:10px; font-family:Verdana; }
+#container { width:780px; margin:10px auto; overflow:hidden; position:relative; }
+#demo { width:auto; height:400px; overflow:auto; border:1px solid gray; }
+
+#menu { height:30px; overflow:auto; }
+#text { margin-top:1px; }
+
+#alog { font-size:9px !important; margin:5px; border:1px solid silver; }
+</style>
+
+<div id="container">
+
+<div id="menu">
+<input type="button" id="add_folder" value="add folder" style="display:block; float:left;"/>
+<input type="button" id="add_default" value="add file" style="display:block; float:left;"/>
+<input type="button" id="rename" value="rename" style="display:block; float:left;"/>
+<input type="button" id="remove" value="remove" style="display:block; float:left;"/>
+<input type="button" id="cut" value="cut" style="display:block; float:left;"/>
+<input type="button" id="copy" value="copy" style="display:block; float:left;"/>
+<input type="button" id="paste" value="paste" style="display:block; float:left;"/>
+<input type="button" id="clear_search" value="clear" style="display:block; float:right;"/>
+<input type="button" id="search" value="search" style="display:block; float:right;"/>
+<input type="text" id="text" value="" style="display:block; float:right;" />
+</div>
+
 <!-- the tree container (notice NOT an UL node) -->
-<div id="tree" class="tree"></div>
+<div id="demo" class="demo"></div>
 <!-- JavaScript neccessary for the tree -->
 <script type="text/javascript">
 $(function () {
 	// Settings up the tree - using $(selector).jstree(options);
 	// All those configuration options are documented in the _docs folder
-	$("#tree")
+	$("#demo")
 		.jstree({
 			// the list of plugins to include
 			"plugins" : [ "themes", "json_data", "ui", "crrm", "cookies", "dnd", "search", "types", "hotkeys", "contextmenu" ],
@@ -111,12 +139,12 @@ $(function () {
 		})
 		.bind("create.jstree", function (e, data) {
 			$.post(
-				"new",
+				"",
 				{
 					"operation" : "create_node",
 					"id" : data.rslt.parent.attr("id").replace("node_",""),
 					"position" : data.rslt.position,
-					"title" : data.rslt.name,
+					"name" : data.rslt.name,
 					"type" : data.rslt.obj.attr("rel")
 				},
 				function (r) {
@@ -185,4 +213,32 @@ $(function () {
 		});
 });
 </script>
+<script type="text/javascript">
+$(function () {
+	$("#menu input").click(function () {
+		switch(this.id) {
+			case "add_default":
+			case "add_folder":
+				$("#demo").jstree("create", null, "last", { "attr" : { "rel" : this.id.toString().replace("add_", "") } });
+				break;
+			case "search":
+				$("#demo").jstree("search", document.getElementById("text").value);
+				break;
+			case "text": break;
+			default:
+				$("#demo").jstree(this.id);
+				break;
+		}
+	});
+});
+</script>
+
+<div style="position:absolute; right:10px; top:40px; width:220px; border:1px solid silver; min-height:160px;">
+	<input type="button" style='display:block; width:170px; height:24px; margin:5px auto;' value="reconstruct" onclick="$.get('./server.php?reconstruct', function () { $('#demo').jstree('refresh',-1); });" />
+	<input type="button" style='display:block; width:170px; height:24px; margin:5px auto;' id="analyze" value="analyze" onclick="$('#alog').load('./server.php?analyze');" />
+	<input type="button" style='display:block; width:170px; height:24px; margin:5px auto;' value="refresh" onclick="$('#demo').jstree('refresh',-1);" />
+	<div id='alog'></div>
+</div>
+
+</div>
 

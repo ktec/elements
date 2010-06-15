@@ -13,7 +13,6 @@ class ElementsController < ApplicationController
 
   # GET /elements/tree
   def tree
-
     respond_to do |format|
       case (params[:operation])
       when "get_children":
@@ -28,9 +27,24 @@ class ElementsController < ApplicationController
         format.js { render :template => "elements/tree.json.erb", :content_type => 'text/json' }
       when "search"
       when "create_node"
+        @element = Element.new
+        @element.name = params[:name]
+        @element.type = params[:type]
+        @element.parent = Element.find(params[:id])
+				@element.position = params[:position]
+        if @element.save
+          format.json { render :nothing => true }
+        else
+          format.json { render :json => @element.errors }
+        end
       when "remove_node"
+        @element = Element.find(params[:id])
+        @element.destroy
+        format.json { render :nothing => true }
       when "rename_node"
+        format.json { render :nothing => true }
       when "move_node"
+        format.json { render :nothing => true }
       else
         format.html # index.html.erb
       end
