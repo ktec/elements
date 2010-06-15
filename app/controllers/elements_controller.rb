@@ -29,7 +29,8 @@ class ElementsController < ApplicationController
       when "create_node"
         @element = Element.new
         @element.name = params[:name]
-        @element.type = params[:type]
+        # here we can implement some STI stuff
+        # @element.type = params[:type]
         @element.parent = Element.find(params[:id])
 				@element.position = params[:position]
         if @element.save
@@ -42,7 +43,12 @@ class ElementsController < ApplicationController
         @element.destroy
         format.json { render :nothing => true }
       when "rename_node"
-        format.json { render :nothing => true }
+        @element = Element.find(params[:id])
+        if @element.save
+          format.json { render :nothing => true }
+        else
+          format.json { render :json => @element.errors }
+        end
       when "move_node"
         format.json { render :nothing => true }
       else
