@@ -6,31 +6,35 @@ $(function () {
 	// Settings up the tree - using $(selector).jstree(options);
 	// All those configuration options are documented in the _docs folder
 	$("#tree")
-		.jstree({ 
+		.jstree({
 			// the list of plugins to include
 			"plugins" : [ "themes", "json_data", "ui", "crrm", "cookies", "dnd", "search", "types", "hotkeys", "contextmenu" ],
 			// Plugin configuration
 
 			// I usually configure the plugin that handles the data first - in this case JSON as it is most common
-			"json_data" : { 
+			"json_data" : {
 				// I chose an ajax enabled tree - again - as this is most common, and maybe a bit more complex
 				// All the options are the same as jQuery's except for `data` which CAN (not should) be a function
 				"ajax" : {
 					// the URL to fetch the data
-					"url" : "tree",
+					url : "tree",
 					// this function is executed in the instance's scope (this refers to the tree instance)
 					// the parameter is the node being loaded (may be -1, 0, or undefined when loading the root nodes)
-					"data" : function (n) { 
+					data : function (n) {
 						// the result is fed to the AJAX request `data` option
-						return { 
-							"operation" : "get_children", 
-							"id" : n.attr ? n.attr("id").replace("node_","") : 1 
+						return {
+							"operation" : "get_children",
+							"id" : n.attr ? n.attr("id").replace("node_","") : ""
 						};
-					},
-          "error" : function (xhr) { alert("something went wrong dude!");console.log(xhr)},
-          "success" : function () { alert("something went RIGHT dude!")}
-				}
-			},
+					}
+                }
+			},/*
+			"xml_data" : {
+                "ajax" : {
+					url : "tree.xml"
+                },
+                "xsl" : "nest"
+			},*/
 			// Configuring the search plugin
 			"search" : {
 				// As this has been a common question - async search
@@ -39,10 +43,10 @@ $(function () {
 					"url" : "./server.php",
 					// You get the search string as a parameter
 					"data" : function (str) {
-						return { 
-							"operation" : "search", 
-							"search_str" : str 
-						}; 
+						return {
+							"operation" : "search",
+							"search_str" : str
+						};
 					}
 				}
 			},
@@ -53,7 +57,7 @@ $(function () {
 				// Those two checks may slow jstree a lot, so use only when needed
 				"max_depth" : -2,
 				"max_children" : -2,
-				// I want only `drive` nodes to be root nodes 
+				// I want only `drive` nodes to be root nodes
 				// This will prevent moving or creating any other type as a root node
 				"valid_children" : [ "drive" ],
 				"types" : {
@@ -75,7 +79,7 @@ $(function () {
 							"image" : "/images/folder.png"
 						}
 					},
-					// The `drive` nodes 
+					// The `drive` nodes
 					"drive" : {
 						// can have files and folders inside, but NOT other `drive` nodes
 						"valid_children" : [ "default", "folder" ],
@@ -99,22 +103,22 @@ $(function () {
 				"initially_select" : [ "node_4" ]
 			},
 			// the core plugin - not many options here
-			"core" : { 
+			"core" : {
 				// just open those two nodes up
 				// as this is an AJAX enabled tree, both will be downloaded from the server
-				"initially_open" : [ "node_2" , "node_3" ] 
+				"initially_open" : [ "node_2" , "node_3" ]
 			}
 		})
 		.bind("create.jstree", function (e, data) {
 			$.post(
-				"new", 
-				{ 
-					"operation" : "create_node", 
-					"id" : data.rslt.parent.attr("id").replace("node_",""), 
+				"new",
+				{
+					"operation" : "create_node",
+					"id" : data.rslt.parent.attr("id").replace("node_",""),
 					"position" : data.rslt.position,
 					"title" : data.rslt.name,
 					"type" : data.rslt.obj.attr("rel")
-				}, 
+				},
 				function (r) {
 					if(r.status) {
 						$(data.rslt.obj).attr("id", "node_" + r.id);
@@ -127,11 +131,11 @@ $(function () {
 		})
 		.bind("remove.jstree", function (e, data) {
 			$.post(
-				"", 
-				{ 
-					"operation" : "remove_node", 
+				"",
+				{
+					"operation" : "remove_node",
 					"id" : data.rslt.obj.attr("id").replace("node_","")
-				}, 
+				},
 				function (r) {
 					if(!r.status) {
 						$.jstree.rollback(data.rlbk);
@@ -141,12 +145,12 @@ $(function () {
 		})
 		.bind("rename.jstree", function (e, data) {
 			$.post(
-				"", 
-				{ 
-					"operation" : "rename_node", 
+				"",
+				{
+					"operation" : "rename_node",
 					"id" : data.rslt.obj.attr("id").replace("node_",""),
 					"title" : data.rslt.new_name,
-				}, 
+				},
 				function (r) {
 					if(!r.status) {
 						$.jstree.rollback(data.rlbk);
@@ -156,15 +160,15 @@ $(function () {
 		})
 		.bind("move_node.jstree", function (e, data) {
 			$.post(
-				"", 
-				{ 
-					"operation" : "move_node", 
-					"id" : data.rslt.o.attr("id").replace("node_",""), 
-					"ref" : data.rslt.np.attr("id").replace("node_",""), 
+				"",
+				{
+					"operation" : "move_node",
+					"id" : data.rslt.o.attr("id").replace("node_",""),
+					"ref" : data.rslt.np.attr("id").replace("node_",""),
 					"position" : data.rslt.cp,
 					"title" : data.rslt.name,
 					"copy" : data.rslt.cy ? 1 : 0
-				}, 
+				},
 				function (r) {
 					if(!r.status) {
 						$.jstree.rollback(data.rlbk);

@@ -13,15 +13,31 @@ class ElementsController < ApplicationController
 
   # GET /elements/tree
   def tree
-    @elements = Element.roots
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.js
+      case (params[:operation])
+      when "get_children":
+        id = params[:id]
+        if id == ""
+          @elements = Element.roots
+        else
+          @elements = (Element.exists?(id)) ? Element.find(id).children : nil
+        end
+        format.json { render :template => "elements/tree.json.erb" }
+        format.xml
+        format.js { render :template => "elements/tree.json.erb", :content_type => 'text/json' }
+      when "search"
+      when "create_node"
+      when "remove_node"
+      when "rename_node"
+      when "move_node"
+      else
+        format.html # index.html.erb
+      end
     end
   end
-  
-  
+
+
   # GET /elements/1
   # GET /elements/1.xml
   def show
@@ -94,3 +110,4 @@ class ElementsController < ApplicationController
     end
   end
 end
+
