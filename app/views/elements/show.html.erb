@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @element.name %>
+</p>
+
+<p>
+  <b>Ancestry:</b>
+  <%=h @element.ancestry %>
+</p>
+
+<p>
+  <b>Ancestry depth:</b>
+  <%=h @element.ancestry_depth %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%=h @element.position %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @element.type %>
+</p>
+
+
+<%= link_to 'Edit', edit_element_path(@element) %> |
+<%= link_to 'Back', elements_path %>

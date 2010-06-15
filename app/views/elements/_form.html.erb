@@ -1,0 +1,16 @@
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :parent %><br />
+    <%= f.select :parent_id, nested_set_options(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.name}" } %>
+  </p>
+  <p>
+    <%= f.label :position %><br />
+    <%= f.text_field :position %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </p>
