@@ -1,0 +1,11 @@
+[<% @elements.each_with_index do |element,i| %>
+{
+  "attr":
+    {
+      "id":"node_<%= i %>",
+      "rel":"drive"
+    },
+  "data":"<%=h element.name %>",
+  "state":"closed"
+},
+<% end %>]

@@ -7,9 +7,21 @@ class ElementsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @elements }
+      format.json   { render :json => @elements.to_json }
     end
   end
 
+  # GET /elements/tree
+  def tree
+    @elements = Element.roots
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js
+    end
+  end
+  
+  
   # GET /elements/1
   # GET /elements/1.xml
   def show
@@ -18,6 +30,7 @@ class ElementsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @element }
+      format.json { render :json => @element.to_json }
     end
   end
 
