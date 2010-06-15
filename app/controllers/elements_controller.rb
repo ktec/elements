@@ -34,7 +34,7 @@ class ElementsController < ApplicationController
         @element.parent = Element.find(params[:id])
 				@element.position = params[:position]
         if @element.save
-          format.json { render :nothing => true }
+          format.json { render :json => {:status => "200", :id => @element.id} }
         else
           format.json { render :status => @element.errors }
         end
