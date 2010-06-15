@@ -36,7 +36,7 @@ class ElementsController < ApplicationController
         if @element.save
           format.json { render :nothing => true }
         else
-          format.json { render :json => @element.errors }
+          format.json { render :status => @element.errors }
         end
       when "remove_node"
         @element = Element.find(params[:id])
@@ -47,7 +47,7 @@ class ElementsController < ApplicationController
         if @element.save
           format.json { render :nothing => true }
         else
-          format.json { render :json => @element.errors }
+          format.json { render :status => @element.errors }
         end
       when "move_node"
         format.json { render :nothing => true }
