@@ -51,7 +51,14 @@ class ElementsController < ApplicationController
           format.json { render :status => @element.errors }
         end
       when "move_node"
-        format.json { render :nothing => true }
+        @element = Element.find(params[:id])
+        @ref = Element.find(params[:ref])
+        @copy = params[:copy]
+        if @ref.add_child(@element,params[:position])
+          format.json { render :nothing => true }
+        else
+          format.json { render :json => {:status => "50", :error => "we have a problem" } }
+        end
       else
         format.html # index.html.erb
       end
