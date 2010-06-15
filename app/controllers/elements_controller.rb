@@ -28,7 +28,7 @@ class ElementsController < ApplicationController
       when "search"
       when "create_node"
         @element = Element.new
-        @element.name = params[:name]
+        @element.name = params[:title]
         # here we can implement some STI stuff
         # @element.type = params[:type]
         @element.parent = Element.find(params[:id])
@@ -44,6 +44,7 @@ class ElementsController < ApplicationController
         format.json { render :nothing => true }
       when "rename_node"
         @element = Element.find(params[:id])
+        @element.name = params[:title]
         if @element.save
           format.json { render :nothing => true }
         else
