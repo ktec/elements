@@ -1,4 +1,6 @@
 .bundle
+tags
 db/*.sqlite3
 log/*.log
 tmp/**/*
+
