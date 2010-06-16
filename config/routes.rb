@@ -1,10 +1,8 @@
 Elements::Application.routes.draw do |map|
   resources :elements do
-    member do
-      get :tree
-    end
     collection do
       get :tree
+      post :tree
     end
   end
 

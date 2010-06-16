@@ -5,7 +5,7 @@
       "id":"node_<%= element.id %>",
       "rel":"<%= element.is_root? ? "drive" : element.has_children? ? "folder" : "file" %>"
     },
-  "data":"<%=h element.name %>",
+  "data":"<%=h element.title %>",
   "state":"closed"
 }<%= "," if i < @elements.count-1 %>
 <% end %>]

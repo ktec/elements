@@ -100,12 +100,10 @@ class ElementsController < ApplicationController
           @elements = (Element.exists?(id)) ? Element.find(id).children : nil
         end
         format.json { render :template => "elements/tree.json.erb" }
-        format.xml
-        format.js { render :template => "elements/tree.json.erb", :content_type => 'text/json' }
       when "search"
       when "create_node"
         @element = Element.new
-        @element.name = params[:title]
+        @element.title = params[:title]
         # here we can implement some STI stuff
         # @element.type = params[:type]
         @element.parent = Element.find(params[:id])
@@ -121,7 +119,7 @@ class ElementsController < ApplicationController
         format.json { render :nothing => true }
       when "rename_node"
         @element = Element.find(params[:id])
-        @element.name = params[:title]
+        @element.title = params[:title]
         if @element.save
           format.json { render :nothing => true }
         else
