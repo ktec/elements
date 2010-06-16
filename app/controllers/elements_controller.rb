@@ -15,7 +15,7 @@ class ElementsController < ApplicationController
   def tree
     respond_to do |format|
       case (params[:operation])
-      when "get_children":
+      when "get_children"
         id = params[:id]
         if id == ""
           @elements = Element.roots
