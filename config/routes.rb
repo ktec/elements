@@ -1,4 +1,6 @@
 Elements::Application.routes.draw do |map|
+  resources :elements
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

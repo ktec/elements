@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  ancestry: MyString
+  ancestry_depth: 1
+  position: 1
+  type: MyString
+
+two:
+  title: MyString
+  ancestry: MyString
+  ancestry_depth: 1
+  position: 1
+  type: MyString

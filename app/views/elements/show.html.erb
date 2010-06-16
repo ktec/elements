@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @element.title %>
+</p>
+
+<p>
+  <b>Ancestry:</b>
+  <%= @element.ancestry %>
+</p>
+
+<p>
+  <b>Ancestry depth:</b>
+  <%= @element.ancestry_depth %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @element.position %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @element.type %>
+</p>
+
+
+<%= link_to 'Edit', edit_element_path(@element) %> |
+<%= link_to 'Back', elements_path %>
