@@ -1,5 +1,12 @@
 Elements::Application.routes.draw do |map|
-  resources :elements
+  resources :elements do
+    member do
+      get :tree
+    end
+    collection do
+      get :tree
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,3 +65,4 @@ Elements::Application.routes.draw do |map|
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 end
+

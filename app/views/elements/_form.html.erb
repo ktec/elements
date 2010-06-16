@@ -16,8 +16,8 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :ancestry %><br />
-    <%= f.text_field :ancestry %>
+    <%= f.label :parent %><br />
+    <%= f.select :parent_id, nested_set_options(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.title}" } %>
   </div>
   <div class="field">
     <%= f.label :ancestry_depth %><br />
@@ -29,9 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :type %><br />
+    <%#= f.select :type, Element::SUBCLASSES %>
     <%= f.text_field :type %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :disable_with => "Please wait..." %>
   </div>
 <% end %>
+
