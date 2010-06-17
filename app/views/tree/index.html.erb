@@ -266,6 +266,7 @@ $(function () {
 		switch(this.id) {
 			case "add_default":
 			case "add_folder":
+      // need to add the other element types here
 				$("#demo").jstree("create", null, "last", { "attr" : { "rel" : this.id.toString().replace("add_", "") } });
 				break;
 			case "search":
