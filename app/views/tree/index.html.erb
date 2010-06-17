@@ -109,7 +109,7 @@ $(function () {
 					},
 					"Gallery" : {
 						"valid_children" : ["none"],
-            "icon" : { "image" : "/images/file.png"}
+            "icon" : { "image" : "/images/gallery.png"}
 					},
 					"Carousel" : {
 						"valid_children" : ["none"],
@@ -126,11 +126,11 @@ $(function () {
           // composed elements
 					"Page" : {
 						"valid_children" : ["Article","HtmlElement"],
-            "icon" : { "image" : "/images/file.png"}
+            "icon" : { "image" : "/images/page.png"}
 					},
 					"Article" : {
 						"valid_children" : ["image","text"],
-            "icon" : { "image" : "/images/file.png"}
+            "icon" : { "image" : "/images/article.png"}
 					},
 					// The `folder` type
 					"folder" : {
@@ -138,14 +138,6 @@ $(function () {
 						"valid_children" : [ "default", "folder" ],
 						"icon" : {
 							"image" : "/images/folder.png"
-						}
-					},
-					// The `folder` type
-					"Article" : {
-						// can have files and other folders inside of it, but NOT `drive` nodes
-						"valid_children" : [ "default", "folder" ],
-						"icon" : {
-							"image" : "/images/Article.png"
 						}
 					},
 					// The `drive` nodes
