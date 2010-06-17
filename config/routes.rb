@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :images
 
-  map.resources :texts
+  map.resources :paragraphs
 
   map.resources :articles, :collection => { :select_type => :post }
 

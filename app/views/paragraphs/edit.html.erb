@@ -1,6 +1,6 @@
-<h1>Editing text</h1>
+<h1>Editing paragraph</h1>
 
-<% form_for(@text) do |f| %>
+<% form_for(@paragraph) do |f| %>
   <%= f.error_messages %>
   <%= render "elements/form", :f => f %>
 
@@ -13,5 +13,6 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @text %> |
-<%= link_to 'Back', texts_path %>
+<%= link_to 'Show', @paragraph %> |
+<%= link_to 'Back', paragraphs_path %>
+

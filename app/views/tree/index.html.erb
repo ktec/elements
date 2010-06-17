@@ -17,15 +17,15 @@ body, td, th, pre, code, select, option, input, textarea { font-family:verdana,a
 <div id="menu">
 <input type="button" id="add_folder" value="add folder" style="display:block; float:left;"/>
 <input type="button" id="add_default" value="add file" style="display:block; float:left;"/>
-<input type="button" id="add_text" value="add text" style="display:block; float:left;"/>
-<input type="button" id="add_image" value="add image" style="display:block; float:left;"/>
-<input type="button" id="add_link" value="add link" style="display:block; float:left;"/>
-<input type="button" id="add_gallery" value="add gallery" style="display:block; float:left;"/>
-<input type="button" id="add_carousel" value="add carousel" style="display:block; float:left;"/>
-<input type="button" id="add_stylesheet" value="add stylesheet" style="display:block; float:left;"/>
-<input type="button" id="add_htmlelement" value="add htmlelement" style="display:block; float:left;"/>
-<input type="button" id="add_page" value="add page" style="display:block; float:left;"/>
-<input type="button" id="add_article" value="add article" style="display:block; float:left;"/>
+<input type="button" id="add_Text" value="add text" style="display:block; float:left;"/>
+<input type="button" id="add_Image" value="add image" style="display:block; float:left;"/>
+<input type="button" id="add_Link" value="add link" style="display:block; float:left;"/>
+<input type="button" id="add_Gallery" value="add gallery" style="display:block; float:left;"/>
+<input type="button" id="add_Carousel" value="add carousel" style="display:block; float:left;"/>
+<input type="button" id="add_Stylesheet" value="add stylesheet" style="display:block; float:left;"/>
+<input type="button" id="add_HtmlElement" value="add htmlelement" style="display:block; float:left;"/>
+<input type="button" id="add_Page" value="add page" style="display:block; float:left;"/>
+<input type="button" id="add_Article" value="add article" style="display:block; float:left;"/>
 </div>
 
 
@@ -135,7 +135,7 @@ $(function () {
 					},
 					"HtmlElement" : {
 						"valid_children" : ["Image","Text","Article","Gallery","Form"],
-            "icon" : { "image" : "/images/image.png"}
+            "icon" : { "image" : "/images/html_element.jpg"}
 					},
           // composed elements
 					"Page" : {
@@ -266,6 +266,15 @@ $(function () {
 		switch(this.id) {
 			case "add_default":
 			case "add_folder":
+			case "add_Text":
+			case "add_Image":
+			case "add_Link":
+			case "add_Gallery":
+			case "add_Carousel":
+			case "add_Stylesheet":
+			case "add_HtmlElement":
+			case "add_Page":
+			case "add_Article":
       // need to add the other element types here
 				$("#demo").jstree("create", null, "last", { "attr" : { "rel" : this.id.toString().replace("add_", "") } });
 				break;

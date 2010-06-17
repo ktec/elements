@@ -65,7 +65,7 @@ class TreeController < ApplicationController
       if @ref.add_child(@element,params[:position])
         format.json { render :nothing => true }
       else
-        format.json { render :json => {:status => "500", :error => "we have a problem" } }
+        format.json { render :json => { :status => :unprocessable_entity } }
       end
     end
   end

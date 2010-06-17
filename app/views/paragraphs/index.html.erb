@@ -1,0 +1,21 @@
+<h1>Listing paragraphs</h1>
+
+<table>
+  <tr>
+    <th>Body</th>
+  </tr>
+
+<% @paragraphs.each do |paragraph| %>
+  <tr>
+    <td><%=h paragraph.body %></td>
+    <td><%= link_to 'Show', paragraph %></td>
+    <td><%= link_to 'Edit', edit_paragraph_path(paragraph) %></td>
+    <td><%= link_to 'Destroy', paragraph, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New paragraph', new_paragraph_path %>
+
