@@ -107,6 +107,14 @@ $(function () {
 							"image" : "/images/folder.png"
 						}
 					},
+					// The `folder` type
+					"Article" : {
+						// can have files and other folders inside of it, but NOT `drive` nodes
+						"valid_children" : [ "default", "folder" ],
+						"icon" : {
+							"image" : "/images/Article.png"
+						}
+					},
 					// The `drive` nodes
 					"drive" : {
 						// can have files and folders inside, but NOT other `drive` nodes

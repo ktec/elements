@@ -3,7 +3,7 @@ class Element < ActiveRecord::Base
   default_scope :order => 'position'
   # Behaviours
   has_ancestry :cache_depth => true, :orphan_strategy => :rootify
-  SUBCLASSES = []
+  SUBCLASSES = %w(Element Article)
 
   def add_child(element,position=nil)
     #need to add errors to @element.errors and return something

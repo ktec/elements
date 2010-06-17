@@ -82,6 +82,7 @@ class ElementsController < ApplicationController
   # GET /elements/new.xml
   def new
     @element = Element.new
+    @element.type = "Element"
 
     respond_to do |format|
       format.html # new.html.erb

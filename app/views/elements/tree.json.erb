@@ -3,7 +3,7 @@
   "attr":
     {
       "id":"node_<%= element.id %>",
-      "rel":"<%= element.is_root? ? "drive" : element.has_children? ? "folder" : "folder" %>"
+      "rel":"<%= element.is_root? ? "drive" : !element.type.nil? ? element.type : element.has_children? ? "folder" : "folder" %>"
     },
   "data":"<%=h element.name %>",
   "state":"closed"

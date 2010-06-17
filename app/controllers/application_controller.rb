@@ -7,4 +7,16 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+  def select_type
+    case (params[:type])
+    when "Element"
+      redirect_to(new_element_url)
+    when "Article"
+      redirect_to(new_article_url)
+    else
+      redirect_to(new_element_url)
+    end
+  end
 end
+
