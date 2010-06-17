@@ -9,17 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100617214211) do
+ActiveRecord::Schema.define(:version => 20100617215243) do
 
   create_table "elements", :force => true do |t|
     t.string   "name"
     t.string   "ancestry"
-    t.integer  "ancestry_depth", :default => 0
+    t.integer  "ancestry_depth",     :default => 0
     t.integer  "position"
     t.string   "type"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "body"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
   end
 
   add_index "elements", ["ancestry"], :name => "index_elements_on_ancestry"
