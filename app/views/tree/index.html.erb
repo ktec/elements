@@ -91,13 +91,46 @@ $(function () {
 				"types" : {
 					// The default type
 					"default" : {
-						// I want this type to have no children (so only leaf nodes)
-						// In my case - those are files
 						"valid_children" : "none",
-						// If we specify an icon for the default type it WILL OVERRIDE the theme icons
-						"icon" : {
-							"image" : "/images/file.png"
-						}
+            "icon" : { "image" : "/images/file.png"}
+					},
+          // basic building blocks
+					"Text" : {
+						"valid_children" : ["none"],
+            "icon" : { "image" : "/images/text.png"}
+					},
+					"Image" : {
+						"valid_children" : ["none"],
+            "icon" : { "image" : "/images/image.png"}
+					},
+					"Link" : {
+						"valid_children" : ["none"],
+            "icon" : { "image" : "/images/link.png"}
+					},
+					"Gallery" : {
+						"valid_children" : ["none"],
+            "icon" : { "image" : "/images/file.png"}
+					},
+					"Carousel" : {
+						"valid_children" : ["none"],
+            "icon" : { "image" : "/images/carousel.png"}
+					},
+					"Stylesheet" : {
+						"valid_children" : ["none"],
+            "icon" : { "image" : "/images/stylesheet.png"}
+					},
+					"HtmlElement" : {
+						"valid_children" : ["Image","Text","Article","Gallery","Form"],
+            "icon" : { "image" : "/images/image.png"}
+					},
+          // composed elements
+					"Page" : {
+						"valid_children" : ["Article","HtmlElement"],
+            "icon" : { "image" : "/images/file.png"}
+					},
+					"Article" : {
+						"valid_children" : ["image","text"],
+            "icon" : { "image" : "/images/file.png"}
 					},
 					// The `folder` type
 					"folder" : {
