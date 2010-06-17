@@ -1,2 +1,2 @@
-class HtmlElement < ActiveRecord::Base
+class HtmlElement < Element
 end

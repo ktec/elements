@@ -1,2 +1,2 @@
-class Gallery < ActiveRecord::Base
+class Gallery < Element
 end

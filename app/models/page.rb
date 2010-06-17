@@ -1,2 +1,3 @@
-class Page < ActiveRecord::Base
+class Page < Element
+  attr_accessible :description, :keywords
 end
