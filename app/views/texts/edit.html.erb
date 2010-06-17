@@ -1,0 +1,16 @@
+<h1>Editing text</h1>
+
+<% form_for(@text) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @text %> |
+<%= link_to 'Back', texts_path %>

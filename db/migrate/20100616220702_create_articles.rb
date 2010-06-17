@@ -1,10 +1,10 @@
 class CreateArticles < ActiveRecord::Migration
   def self.up
-    add_column :elements, :body, :text
+    # tbd 
   end
 
   def self.down
-    remove_column :elements, :body
+    # tbd
   end
 end
 

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :texts
+
   map.resources :articles, :collection => { :select_type => :post }
 
   map.resources :elements,
