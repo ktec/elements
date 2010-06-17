@@ -1,0 +1,17 @@
+<h1>Editing html_element</h1>
+
+<% form_for(@html_element) do |f| %>
+  <%= f.error_messages %>
+  <%= render "elements/form", :f => f %>
+
+  <p>
+    <%= f.label :target %><br />
+    <%= f.text_field :target %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @html_element %> |
+<%= link_to 'Back', html_elements_path %>

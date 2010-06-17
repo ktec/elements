@@ -2,6 +2,7 @@
 
 <% form_for(@text) do |f| %>
   <%= f.error_messages %>
+  <%= render "elements/form", :f => f %>
 
   <p>
     <%= f.label :body %><br />

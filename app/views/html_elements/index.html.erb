@@ -1,0 +1,21 @@
+<h1>Listing html_elements</h1>
+
+<table>
+  <tr>
+    <th>Element</th>
+    <th>Element target</th>
+  </tr>
+
+<% @html_elements.each do |html_element| %>
+  <tr>
+    <td><%=h html_element.target %></td>
+    <td><%= link_to 'Show', html_element %></td>
+    <td><%= link_to 'Edit', edit_html_element_path(html_element) %></td>
+    <td><%= link_to 'Destroy', html_element, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New html_element', new_html_element_path %>

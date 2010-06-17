@@ -2,15 +2,8 @@
 
 <% form_for(@image) do |f| %>
   <%= f.error_messages %>
+  <%= render "elements/form", :f => f %>
 
-  <p>
-    <%= f.label :attachable_id %><br />
-    <%= f.text_field :attachable_id %>
-  </p>
-  <p>
-    <%= f.label :attachable_type %><br />
-    <%= f.text_field :attachable_type %>
-  </p>
   <p>
     <%= f.label :image_file_name %><br />
     <%= f.text_field :image_file_name %>

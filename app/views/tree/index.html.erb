@@ -5,7 +5,8 @@ body, td, th, pre, code, select, option, input, textarea { font-family:verdana,a
 #container { width:780px; margin:10px auto; overflow:hidden; position:relative; }
 #demo { width:auto; height:400px; overflow:auto; border:1px solid gray; }
 
-#menu { height:30px; overflow:auto; }
+#menu { height:50px; overflow:auto; }
+#menu2 { height:40px; overflow:auto; }
 #text { margin-top:1px; }
 
 #alog { font-size:9px !important; margin:5px; border:1px solid silver; }
@@ -16,6 +17,19 @@ body, td, th, pre, code, select, option, input, textarea { font-family:verdana,a
 <div id="menu">
 <input type="button" id="add_folder" value="add folder" style="display:block; float:left;"/>
 <input type="button" id="add_default" value="add file" style="display:block; float:left;"/>
+<input type="button" id="add_text" value="add text" style="display:block; float:left;"/>
+<input type="button" id="add_image" value="add image" style="display:block; float:left;"/>
+<input type="button" id="add_link" value="add link" style="display:block; float:left;"/>
+<input type="button" id="add_gallery" value="add gallery" style="display:block; float:left;"/>
+<input type="button" id="add_carousel" value="add carousel" style="display:block; float:left;"/>
+<input type="button" id="add_stylesheet" value="add stylesheet" style="display:block; float:left;"/>
+<input type="button" id="add_htmlelement" value="add htmlelement" style="display:block; float:left;"/>
+<input type="button" id="add_page" value="add page" style="display:block; float:left;"/>
+<input type="button" id="add_article" value="add article" style="display:block; float:left;"/>
+</div>
+
+
+<div id="menu2">
 <input type="button" id="rename" value="rename" style="display:block; float:left;"/>
 <input type="button" id="remove" value="remove" style="display:block; float:left;"/>
 <input type="button" id="cut" value="cut" style="display:block; float:left;"/>
@@ -266,7 +280,7 @@ $(function () {
 });
 </script>
 
-<div style="position:absolute; right:10px; top:40px; width:220px; border:1px solid silver; min-height:160px;">
+<div style="position:absolute; right:10px; top:90px; width:220px; border:1px solid silver; min-height:160px;">
 	<input type="button" style='display:block; width:170px; height:24px; margin:5px auto;' value="reconstruct" onclick="$.get('./server.php?reconstruct', function () { $('#demo').jstree('refresh',-1); });" />
 	<input type="button" style='display:block; width:170px; height:24px; margin:5px auto;' id="analyze" value="analyze" onclick="$('#alog').load('./server.php?analyze');" />
 	<input type="button" style='display:block; width:170px; height:24px; margin:5px auto;' value="refresh" onclick="$('#demo').jstree('refresh',-1);" />
