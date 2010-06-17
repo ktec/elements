@@ -11,61 +11,6 @@ class ElementsController < ApplicationController
     end
   end
 
-  # GET /elements/tree
-  def tree
-    respond_to do |format|
-      case (params[:operation])
-      when "get_children"
-        id = params[:id]
-        if id == ""
-          @elements = Element.roots
-        else
-          @elements = (Element.exists?(id)) ? Element.find(id).children : nil
-        end
-        format.json { render :template => "elements/tree.json.erb" }
-        format.xml
-        format.js { render :template => "elements/tree.json.erb", :content_type => 'text/json' }
-      when "search"
-      when "create_node"
-        @element = Element.new
-        @element.name = params[:title]
-        # here we can implement some STI stuff
-        # @element.type = params[:type]
-        @element.parent = Element.find(params[:id])
-				@element.position = params[:position]
-        if @element.save
-          format.json { render :json => {:status => "200", :id => @element.id} }
-        else
-          format.json { render :status => @element.errors }
-        end
-      when "remove_node"
-        @element = Element.find(params[:id])
-        @element.destroy
-        format.json { render :nothing => true }
-      when "rename_node"
-        @element = Element.find(params[:id])
-        @element.name = params[:title]
-        if @element.save
-          format.json { render :nothing => true }
-        else
-          format.json { render :status => @element.errors }
-        end
-      when "move_node"
-        @element = Element.find(params[:id])
-        @ref = Element.find(params[:ref])
-        @copy = params[:copy]
-        if @ref.add_child(@element,params[:position])
-          format.json { render :nothing => true }
-        else
-          format.json { render :json => {:status => "50", :error => "we have a problem" } }
-        end
-      else
-        format.html # index.html.erb
-      end
-    end
-  end
-
-
   # GET /elements/1
   # GET /elements/1.xml
   def show
