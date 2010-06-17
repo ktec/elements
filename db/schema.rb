@@ -17,10 +17,9 @@ ActiveRecord::Schema.define(:version => 20100617215243) do
     t.integer  "ancestry_depth",     :default => 0
     t.integer  "position"
     t.string   "type"
-    t.integer  "attachable_id"
-    t.string   "attachable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "body"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
