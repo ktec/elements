@@ -1,25 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :pages
-
-  map.resources :galleries
-
-  map.resources :html_elements
-
-  map.resources :images
-
-  map.resources :paragraphs
-
-  map.resources :articles, :collection => { :select_type => :post }
-
-  map.resources :elements,
-    :member => { :tree => :post },
-    :collection => {
-      :tree => :get,
-      :select_type => :post
-      }
-
-  map.tree "tree/:action", :controller => :tree
-
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -38,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-
+  
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments
@@ -62,4 +41,3 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
-

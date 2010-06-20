@@ -1,2 +1,0 @@
-class Gallery < Element
-end

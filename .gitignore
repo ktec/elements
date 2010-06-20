@@ -1,9 +1,0 @@
-**/*tags
-.bundle/*
-tags
-log/*.log
-tmp/**/*
-db/*.sqlite3
-doc/api
-doc/app
-
