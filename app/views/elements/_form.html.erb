@@ -4,20 +4,18 @@
 </p>
 <p>
   <%= f.label :parent %><br />
-  <%= f.select :parent_id, options_for_select(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.name}" } %>
+  <%= f.select :parent_id, options_for_select(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.name} #{"(#{i.attachable.class})" unless i.attachable.nil?}" }, {}, :class => "icon-menu" %>
 </p>
 <p>
   <%= f.label :position %><br />
   <%= f.text_field :position %>
 </p>
+<div>
 <% unless f.object.nil? or f.object.attachable.nil? %>
-<p>
   <% f.fields_for :attachable, f.object.attachable do |builder|  %>
     <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder %>
   <% end %>
-</p>
 <% else %>
-<p>
   <%= f.label :attachable %><br />
   <%= f.select :attachable, Element::COMPONENTS,
     { :prompt => "Select one:" },
@@ -27,6 +25,6 @@
         :update => "component")
     } %>
   <%#= f.text_field :type %>
-</p>
 <div id="component"></div>
 <% end %>
+</div>

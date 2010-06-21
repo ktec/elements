@@ -26,8 +26,7 @@ class TreeController < ApplicationController
     respond_to do |format|
       @element = Element.new
       @element.name = params[:title]
-      # here we can implement some STI stuff
-      # @element.type = params[:type]
+      @element.attachable = params[:type].constantize.new
       @element.parent = Element.find(params[:id])
 			@element.position = params[:position]
       if @element.save

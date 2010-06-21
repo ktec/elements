@@ -18,7 +18,7 @@ body, td, th, pre, code, select, option, input, textarea { font-family:verdana,a
 <input type="button" id="add_folder" value="add folder" style="display:block; float:left;"/>
 <input type="button" id="add_default" value="add file" style="display:block; float:left;"/>
 <input type="button" id="add_Text" value="add text" style="display:block; float:left;"/>
-<input type="button" id="add_Image" value="add image" style="display:block; float:left;"/>
+<input type="button" id="add_Picture" value="add picture" style="display:block; float:left;"/>
 <input type="button" id="add_Link" value="add link" style="display:block; float:left;"/>
 <input type="button" id="add_Gallery" value="add gallery" style="display:block; float:left;"/>
 <input type="button" id="add_Carousel" value="add carousel" style="display:block; float:left;"/>
@@ -137,7 +137,7 @@ $(function () {
 						"valid_children" : ["Image","Text","Article","Gallery","Form"],
             "icon" : { "image" : "/images/elements/html_element.jpg"}
 					},
-                    // composed elements
+          // composed elements
 					"Page" : {
 						"valid_children" : ["Article","HtmlElement", "Page", "Picture"],
             "icon" : { "image" : "/images/elements/page.png"}
@@ -186,7 +186,7 @@ $(function () {
 		})
 		.bind("create.jstree", function (e, data) {
 			$.post(
-				"tree/new",
+				"tree/create",
 				{
 					"operation" : "create_node",
 					"id" : data.rslt.parent.attr("id").replace("node_",""),
