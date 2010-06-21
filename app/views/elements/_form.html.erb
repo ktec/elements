@@ -12,12 +12,12 @@
 </p>
 <p>
   <%= f.label :type %><br />
-  <%= f.select :type, Element::SUBCLASSES,
+  <%= f.select :type, Element::COMPONENTS,
   { :prompt => "Select one:" },
       { :onchange => remote_function(
         :url => { :action => 'select_type' },
         :with => "'type='+this.value",
-        :update => "attachment"
+        :update => "component"
         )
 
        } %>

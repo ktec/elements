@@ -5,4 +5,5 @@ class Element < ActiveRecord::Base
   default_scope :order => 'position'
   has_one :component, :as => :attachable, :dependent => :destroy
   accepts_nested_attributes_for :component, :allow_destroy => true
+  COMPONENTS = %w(Picture)
 end
