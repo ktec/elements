@@ -3,22 +3,7 @@
 <% form_for(@element) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :position %><br />
-    <%= f.text_field :position %>
-  </p>
-  <p>
-    <%= f.label :ancestry %><br />
-    <%= f.text_field :ancestry %>
-  </p>
-  <p>
-    <%= f.label :ancestry_depth %><br />
-    <%= f.text_field :ancestry_depth %>
-  </p>
+  <%= render "form", :f => f %>
   <p>
     <%= f.submit 'Update' %>
   </p>
