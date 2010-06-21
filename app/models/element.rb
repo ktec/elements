@@ -4,5 +4,5 @@ class Element < ActiveRecord::Base
   has_ancestry :cache_depth => true
   default_scope :order => 'position'
   has_one :component, :as => :attachable, :dependent => :destroy
-  accepts_nested_attributes_for :components, :allow_destroy => true
+  accepts_nested_attributes_for :component, :allow_destroy => true
 end
