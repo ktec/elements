@@ -1,4 +1,8 @@
 class Picture < ActiveRecord::Base
-  attr_accessible :title, :description, :image
-  belongs_to :attachable, :polymorphic => true
+  attr_accessible :title, :description, :image, :element_attributes
+  has_one :element, :as => :attachable, :dependent => :destroy
+  accepts_nested_attributes_for :element, :allow_destroy => true
+  has_attached_file :image,
+    :styles => { :thumb => "200x200", :large => "640x480>" },
+    :path => "/:class/:id/:style/:filename"
 end

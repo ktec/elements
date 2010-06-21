@@ -15,7 +15,9 @@ ActiveRecord::Schema.define(:version => 20100620235504) do
     t.string   "name"
     t.integer  "position"
     t.string   "ancestry"
-    t.integer  "ancestry_depth", :default => 0
+    t.integer  "ancestry_depth",  :default => 0
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,8 +28,6 @@ ActiveRecord::Schema.define(:version => 20100620235504) do
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
-    t.integer  "attachable_id"
-    t.string   "attachable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

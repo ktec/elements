@@ -18,6 +18,8 @@
   <%=h @element.ancestry_depth %>
 </p>
 
+<%= render @element.attachable %>
+
 
 <%= link_to 'Edit', edit_element_path(@element) %> |
 <%= link_to 'Back', elements_path %>

@@ -8,10 +8,6 @@ class CreatePictures < ActiveRecord::Migration
       t.string :image_file_name
       t.string :image_content_type
       t.integer :image_file_size
-
-      # polymorphic
-      t.integer :attachable_id
-      t.string :attachable_type
       
       t.timestamps
     end

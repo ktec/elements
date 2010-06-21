@@ -6,6 +6,10 @@ class CreateElements < ActiveRecord::Migration
       t.string :ancestry
       t.integer :ancestry_depth, :default => 0
 
+      # polymorphic
+      t.integer :attachable_id
+      t.string :attachable_type
+
       t.timestamps
     end
   end

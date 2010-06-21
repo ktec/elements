@@ -1,0 +1,19 @@
+<fields>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :image %><br />
+    <% if f.object.image.file? %>
+      <%= image_tag f.object.image.url(:thumb) %>
+    <% else %>
+      <%= f.text_field :image %>
+    <% end %>
+  </p>
+</fields>
+

@@ -6,6 +6,8 @@
     <th>Position</th>
     <th>Ancestry</th>
     <th>Ancestry depth</th>
+    <th>Attachable id</th>
+    <th>Attachable type</th>
   </tr>
 
 <% @elements.each do |element| %>
@@ -14,6 +16,8 @@
     <td><%=h element.position %></td>
     <td><%=h element.ancestry %></td>
     <td><%=h element.ancestry_depth %></td>
+    <td><%=h element.attachable_id %></td>
+    <td><%=h element.attachable_type %></td>
     <td><%= link_to 'Show', element %></td>
     <td><%= link_to 'Edit', edit_element_path(element) %></td>
     <td><%= link_to 'Destroy', element, :confirm => 'Are you sure?', :method => :delete %></td>
