@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100620235504) do
+ActiveRecord::Schema.define(:version => 20100621150310) do
 
   create_table "elements", :force => true do |t|
     t.string   "name"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(:version => 20100620235504) do
     t.integer  "ancestry_depth",  :default => 0
     t.integer  "attachable_id"
     t.string   "attachable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pages", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "keywords"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

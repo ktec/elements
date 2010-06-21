@@ -18,7 +18,7 @@
   <%=h @element.ancestry_depth %>
 </p>
 
-<%= render @element.attachable %>
+<%= render @element.attachable unless @element.attachable.nil? %>
 
 
 <%= link_to 'Edit', edit_element_path(@element) %> |

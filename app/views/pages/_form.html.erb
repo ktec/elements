@@ -1,0 +1,18 @@
+<p>
+  <%= f.label :element %><br />
+  <% f.fields_for :element_attributes do |builder|  %>
+    <%= render 'elements/form', :f => builder %>
+  <% end %>
+</p>
+<p>
+  <%= f.label :title %><br />
+  <%= f.text_field :title %>
+</p>
+<p>
+  <%= f.label :description %><br />
+  <%= f.text_field :description %>
+</p>
+<p>
+  <%= f.label :keywords %><br />
+  <%= f.text_field :keywords %>
+</p>
