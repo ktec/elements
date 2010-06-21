@@ -5,7 +5,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :pictures
 
-  map.resources :elements
+  map.resources :elements,
+    :collection => {
+      :select_type => [:post,:get]
+    }
 
   # The priority is based upon order of creation: first created -> highest priority.
 

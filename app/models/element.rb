@@ -5,5 +5,5 @@ class Element < ActiveRecord::Base
   default_scope :order => 'position'
   belongs_to :attachable, :polymorphic => true, :dependent => :destroy
   validates_presence_of :name
-  COMPONENTS = %w(Picture Paragraph Page Gallery)
+  COMPONENTS = %w(Page Domain Picture)
 end

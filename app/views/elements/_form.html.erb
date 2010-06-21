@@ -17,5 +17,16 @@
   <% end %>
 </p>
 <% else %>
-
+<p>
+  <%= f.label :attachable %><br />
+  <%= f.select :attachable, Element::COMPONENTS,
+    { :prompt => "Select one:" },
+    { :onchange => remote_function(
+        :url => { :action => :new_component },
+        :with => "'type='+this.value",
+        :update => "component")
+    } %>
+  <%#= f.text_field :type %>
+</p>
+<div id="component"></div>
 <% end %>

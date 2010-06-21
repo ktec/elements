@@ -80,4 +80,15 @@ class ElementsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # GET /elements/new_component
+  def new_component
+    @element = Element.new
+    @element.attachable = params[:type].constantize.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @element }
+    end
+  end
+  
 end
