@@ -1,0 +1,10 @@
+<p>
+  <%= f.label :element %><br />
+  <% f.fields_for :element_attributes do |builder|  %>
+    <%= render 'elements/form', :f => builder %>
+  <% end %>
+</p>
+<p>
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+</p>
