@@ -10,6 +10,8 @@ ActionController::Routing::Routes.draw do |map|
       :select_type => [:post,:get]
     }
 
+  map.tree "tree/:action", :controller => :tree
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

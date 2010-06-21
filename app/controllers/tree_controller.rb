@@ -38,7 +38,7 @@ class TreeController < ApplicationController
     end
   end
 
-  # POST /tree/update
+  # PUT /tree/update
   def update
     respond_to do |format|
       @element = Element.find(params[:id])

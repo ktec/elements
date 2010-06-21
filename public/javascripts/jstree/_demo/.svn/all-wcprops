@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/!svn/ver/166/trunk/_demo
+END
+file.png
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/157/trunk/_demo/file.png
+END
+_dump.sql
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/157/trunk/_demo/_dump.sql
+END
+_install.txt
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/157/trunk/_demo/_install.txt
+END
+root.png
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/157/trunk/_demo/root.png
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/166/trunk/_demo/index.html
+END
+config.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/157/trunk/_demo/config.php
+END
+server.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/157/trunk/_demo/server.php
+END
+folder.png
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/157/trunk/_demo/folder.png
+END

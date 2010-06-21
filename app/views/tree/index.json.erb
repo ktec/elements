@@ -3,14 +3,10 @@
   "attr":
     {
       "id":"node_<%= element.id %>",
-      <% if element.attachable.nil? %>
-      "rel":"<%= element.is_root? ? "drive" : !element.type.nil? ? element.type : element.has_children? ? "folder" : "folder" %>"
-      <% else %>
-      "rel":"<%= element.attachable.type %>"
-      <% end %>
+      "rel":"<%= element.attachable.nil? ? (element.is_root? ? "drive" : "element") : element.attachable.type %>"
     },
-  "data":"<%=h element.name %>",
-  "state":"closed"
+  "data":"<%=h element.name %>"
+  <%= ',"state":"closed"' if element.has_children? %>
 }<%= "," if i < @elements.count-1 %>
 <% end %>]
 
