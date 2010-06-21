@@ -10,4 +10,12 @@
   <%= f.label :position %><br />
   <%= f.text_field :position %>
 </p>
+<% unless f.object.nil? or f.object.attachable.nil? %>
+<p>
+  <% f.fields_for :attachable, f.object.attachable do |builder|  %>
+    <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder %>
+  <% end %>
+</p>
+<% else %>
 
+<% end %>

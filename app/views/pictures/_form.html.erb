@@ -1,10 +1,4 @@
 <p>
-  <%= f.label :element %><br />
-  <% f.fields_for :element_attributes do |builder|  %>
-    <%= render 'elements/form', :f => builder %>
-  <% end %>
-</p>
-<p>
   <%= f.label :title %><br />
   <%= f.text_field :title %>
 </p>
@@ -14,5 +8,9 @@
 </p>
 <p>
   <%= f.label :image %><br />
-  <%= f.text_field :image %>
+  <% if f.object.image.file? %>
+    <%= image_tag f.object.image.url(:thumb) %>
+  <% else %>
+    <%= f.file_field :image %>
+  <% end %>
 </p>

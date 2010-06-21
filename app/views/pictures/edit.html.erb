@@ -2,9 +2,10 @@
 
 <% form_for(@picture) do |f| %>
   <%= f.error_messages %>
-  
+
+  <%= render "elements/fields", :f => f %>
   <%= render "form", :f => f %>
-  <p>
+<p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>

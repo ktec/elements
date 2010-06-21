@@ -3,7 +3,7 @@ class Element < ActiveRecord::Base
   # Behaviours
   has_ancestry :cache_depth => true
   default_scope :order => 'position'
-  belongs_to :attachable, :polymorphic => true
+  belongs_to :attachable, :polymorphic => true, :dependent => :destroy
   validates_presence_of :name
   COMPONENTS = %w(Picture Paragraph Page Gallery)
 end
