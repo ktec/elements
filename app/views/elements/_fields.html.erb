@@ -1,6 +1,7 @@
 <div>
   <%= f.label :element %><br />
-  <% f.fields_for :element do |builder|  %>
+  <% obj = f.object.new_record? ? :element_attributes : :element %>
+  <% f.fields_for obj do |builder| %>
     <%= render 'elements/form', :f => builder %>
   <% end %>
 </div>

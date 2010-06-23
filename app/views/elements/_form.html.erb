@@ -1,30 +1,43 @@
-<p>
-  <%= f.label :name %><br />
-  <%= f.text_field :name %>
-</p>
-<p>
-  <%= f.label :parent %><br />
-  <%= f.select :parent_id, options_for_select(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.name} #{"(#{i.attachable.class})" unless i.attachable.nil?}" }, {}, :class => "icon-menu" %>
-</p>
-<p>
-  <%= f.label :position %><br />
-  <%= f.text_field :position %>
-</p>
-<div>
-<% unless f.object.nil? or f.object.attachable.nil? %>
-  <% f.fields_for :attachable, f.object.attachable do |builder|  %>
-    <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder %>
-  <% end %>
-<% else %>
-  <%= f.label :attachable %><br />
-  <%= f.select :attachable, Element::COMPONENTS,
-    { :prompt => "Select one:" },
-    { :onchange => remote_function(
-        :url => { :action => :new_component },
-        :with => "'type='+this.value",
-        :update => "component")
-    } %>
-  <%#= f.text_field :type %>
-<div id="component"></div>
-<% end %>
+<div id="form_tabs">
+  <ul>
+    <li><a href="#tab1">Element</a></li>
+    <li><a href="#tab2">Attachable</a></li>
+  </ul>
+  <div id="tab1">
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :parent %><br />
+      <%= f.select :parent_id, options_for_select(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.name} #{"(#{i.attachable.class})" unless i.attachable.nil?}" }, {}, :class => "icon-menu" %>
+    </p>
+    <p>
+      <%= f.label :position %><br />
+      <%= f.text_field :position %>
+    </p>
+  </div>
+  <div id="tab2">
+    <% unless f.object.nil? or f.object.attachable.nil? %>
+      <% f.fields_for :attachable, f.object.attachable do |builder|  %>
+        <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder %>
+      <% end %>
+    <% else %>
+      <%= f.label :attachable %><br />
+      <%= f.select :attachable, Element::COMPONENTS,
+        { :prompt => "Select one:" },
+        { :onchange => remote_function(
+          :url => new_component_elements_url,
+          :with => "'type='+this.value",
+          :update => "component")
+          } %>
+          <%#= f.text_field :type %>
+      <div id="component"></div>
+    <% end %>
+  </div>
 </div>
+<script>
+  $(document).ready(function() {
+    $("#form_tabs").tabs();
+  });
+</script>

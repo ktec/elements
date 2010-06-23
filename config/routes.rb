@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :elements,
     :collection => {
-      :select_type => [:post,:get]
+      :new_component => [:post,:get]
     }
 
   map.tree "tree/:action", :controller => :tree
