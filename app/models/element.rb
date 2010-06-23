@@ -1,14 +1,14 @@
 class Element < ActiveRecord::Base
-  attr_accessible :name, :parent_id, :position
+  attr_accessible :name, :parent_id, :position, :type, :attachable
   # Behaviours
   has_ancestry :cache_depth => true
-  default_scope :order => 'position'
+  default_scope :order => :position
   belongs_to :attachable, :polymorphic => true, :dependent => :destroy
   validates_presence_of :name
   COMPONENTS = %w(Page Domain Picture)
   
   # Alias for <tt>acts_as_taggable_on :tags</tt>:
-  acts_as_taggable  
+  #acts_as_taggable  
 
   def add_child(element,position=nil)
     #need to add errors to @element.errors and return something
