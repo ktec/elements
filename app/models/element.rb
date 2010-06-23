@@ -8,7 +8,7 @@ class Element < ActiveRecord::Base
   COMPONENTS = %w(Page Domain Picture)
   
   # Alias for <tt>acts_as_taggable_on :tags</tt>:
-  #acts_as_taggable  
+  acts_as_taggable
 
   def add_child(element,position=nil)
     #need to add errors to @element.errors and return something
