@@ -6,6 +6,9 @@ class Element < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true, :dependent => :destroy
   validates_presence_of :name
   COMPONENTS = %w(Page Domain Picture)
+  
+  # Alias for <tt>acts_as_taggable_on :tags</tt>:
+  acts_as_taggable  
 
   def add_child(element,position=nil)
     #need to add errors to @element.errors and return something

@@ -37,7 +37,8 @@ Rails::Initializer.run do |config|
 
   config.gem "ancestry"
   config.gem "paperclip"
-
+  config.gem "acts-as-taggable-on"
+  
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de

@@ -16,6 +16,10 @@
       <%= f.label :position %><br />
       <%= f.text_field :position %>
     </p>
+    <p>
+      <%= f.label :tag_list %><br />
+      <%= f.text_field :tag_list %>
+    </p>
   </div>
   <div id="tab2">
     <% unless f.object.nil? or f.object.attachable.nil? %>
@@ -24,6 +28,7 @@
       <% end %>
     <% else %>
       <%= f.label :attachable %><br />
+      <div id="component">
       <%= f.select :attachable, Element::COMPONENTS,
         { :prompt => "Select one:" },
         { :onchange => remote_function(
@@ -32,7 +37,7 @@
           :update => "component")
           } %>
           <%#= f.text_field :type %>
-      <div id="component"></div>
+      </div>
     <% end %>
   </div>
 </div>

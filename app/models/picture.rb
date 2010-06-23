@@ -5,4 +5,5 @@ class Picture < ActiveRecord::Base
   has_attached_file :image,
     :styles => { :thumb => "200x200", :large => "640x480>" },
     :path => "/:class/:id/:style/:filename"
+  validates_presence_of :image
 end
