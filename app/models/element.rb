@@ -1,14 +1,24 @@
 class Element < ActiveRecord::Base
-  attr_accessible :name, :parent_id, :position, :type, :attachable
+  belongs_to :attachable, :polymorphic => true, :dependent => :destroy
   # Behaviours
   has_ancestry :cache_depth => true
   default_scope :order => :position
-  belongs_to :attachable, :polymorphic => true, :dependent => :destroy
-  validates_presence_of :name
-  COMPONENTS = %w(Page Domain Picture)
-  
   # Alias for <tt>acts_as_taggable_on :tags</tt>:
   acts_as_taggable
+
+  accepts_nested_attributes_for :attachable
+  
+  # Implement build_attachable because it will not be generated automatically
+  def build_attachable(attr_params)
+    self.attachable = attr_params[:attachable_type].constantize.new(attr_params)
+  end
+  
+  attr_accessible :name, :parent_id, :position, :type, 
+    :attachable_type, :attachable_id, :attachable, 
+    :attachable_attributes, :tag_list
+  validates_presence_of :name
+
+  COMPONENTS = %w(Page Domain Picture)
 
   def add_child(element,position=nil)
     #need to add errors to @element.errors and return something

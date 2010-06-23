@@ -4,13 +4,15 @@
     <li><a href="#tab2">Attachable</a></li>
   </ul>
   <div id="tab1">
+    <fieldset id="element">
+    <%= f.label :element %><br />
     <p>
       <%= f.label :name %><br />
       <%= f.text_field :name %>
     </p>
     <p>
       <%= f.label :parent %><br />
-      <%= f.select :parent_id, options_for_select(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.name} #{"(#{i.attachable.class})" unless i.attachable.nil?}" }, {}, :class => "icon-menu" %>
+      <%= f.select :parent_id, options_for_select(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.name} #{"(#{i.attachable.class})" unless i.attachable.nil?}" } %>
     </p>
     <p>
       <%= f.label :position %><br />
@@ -24,20 +26,19 @@
   <div id="tab2">
     <% unless f.object.nil? or f.object.attachable.nil? %>
       <% f.fields_for :attachable, f.object.attachable do |builder|  %>
+        <%#= f.text_field :attachable_id %>
+        <%= builder.hidden_field :attachable_type, :value => builder.object.class.to_s %>
         <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder %>
       <% end %>
     <% else %>
-      <%= f.label :attachable %><br />
-      <div id="component">
-      <%= f.select :attachable, Element::COMPONENTS,
+      <%= f.select "attachable_type", Element::COMPONENTS,
         { :prompt => "Select one:" },
         { :onchange => remote_function(
-          :url => new_component_elements_url,
-          :with => "'type='+this.value",
-          :update => "component")
-          } %>
-          <%#= f.text_field :type %>
-      </div>
+                          :url => new_component_elements_url,
+                          :with => "'type='+this.value",
+                          :update => "component")
+        } %>
+      <div id="component"></div>
     <% end %>
   </div>
 </div>

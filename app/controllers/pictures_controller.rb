@@ -25,6 +25,7 @@ class PicturesController < ApplicationController
   # GET /pictures/new.xml
   def new
     @picture = Picture.new
+    @picture.build_element
 
     respond_to do |format|
       format.html # new.html.erb
@@ -57,6 +58,7 @@ class PicturesController < ApplicationController
   # PUT /pictures/1.xml
   def update
     @picture = Picture.find(params[:id])
+    @picture.build_element
 
     respond_to do |format|
       if @picture.update_attributes(params[:picture])

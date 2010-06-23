@@ -1,16 +1,19 @@
-<p>
-  <%= f.label :title %><br />
-  <%= f.text_field :title %>
-</p>
-<p>
-  <%= f.label :description %><br />
-  <%= f.text_field :description %>
-</p>
-<p>
-  <%= f.label :image %><br />
-  <% if f.object.image.file? %>
+<fieldset id="<%= f.object.class.to_s.downcase %>">
+  <%= f.hidden_field :attachable_type, :value => f.object.class.to_s %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :image %><br />
+    <% if f.object.image.file? %>
     <%= image_tag f.object.image.url(:thumb) %>
-  <% else %>
+    <% else %>
     <%= f.file_field :image %>
-  <% end %>
-</p>
+    <% end %>
+  </p>
+</fieldset>

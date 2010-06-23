@@ -1,12 +1,15 @@
-<p>
-  <%= f.label :title %><br />
-  <%= f.text_field :title %>
-</p>
-<p>
-  <%= f.label :description %><br />
-  <%= f.text_field :description %>
-</p>
-<p>
-  <%= f.label :keywords %><br />
-  <%= f.text_field :keywords %>
-</p>
+<fieldset id="<%= f.object.class.to_s.downcase %>">
+  <%= f.hidden_field :attachable_type, :value => f.object.class.to_s %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :keywords %><br />
+    <%= f.text_field :keywords %>
+  </p>
+</fieldset>
