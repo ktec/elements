@@ -1,0 +1,6 @@
+Navigation
+<ol>
+<% @domain.element.children.each do |element| %>
+<li><%= link_to h(element.name), element_path(element) %></li>
+<% end %>
+</ol>
