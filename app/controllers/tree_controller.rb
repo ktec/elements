@@ -26,7 +26,12 @@ class TreeController < ApplicationController
     respond_to do |format|
       @element = Element.new
       @element.name = params[:title]
-      @element.attachable = params[:type].constantize.new
+      unless params[:type].nil?
+        class_name = params[:type]
+        if class_exists?(class_name)
+          @element.attachable = class_name.constantize.new
+        end
+      end
       @element.parent = Element.find(params[:id])
 			@element.position = params[:position]
       if @element.save
