@@ -14,6 +14,7 @@ class DomainsController < ApplicationController
   # GET /domains/1.xml
   def show
     @domain = Domain.find(params[:id])
+    @domain.build_element if @domain.element.nil?
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +26,7 @@ class DomainsController < ApplicationController
   # GET /domains/new.xml
   def new
     @domain = Domain.new
+    @domain.build_element if @domain.element.nil?
 
     respond_to do |format|
       format.html # new.html.erb

@@ -36,6 +36,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1/edit
   def edit
     @picture = Picture.find(params[:id])
+    @picture.build_element if @picture.element.nil?
   end
 
   # POST /pictures

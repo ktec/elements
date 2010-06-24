@@ -3,7 +3,7 @@
   "attr":
     {
       "id":"node_<%= element.id %>",
-      "rel":"<%= element.attachable.nil? ? (element.is_root? ? "drive" : "element") : element.attachable.type %>"
+      "rel":"<%= element.attachable.blank? ? (element.is_root? ? "drive" : "element") : element.attachable.type %>"
     },
   "data":"<%=h element.name %>"
   <%= ',"state":"closed"' if element.has_children? %>
