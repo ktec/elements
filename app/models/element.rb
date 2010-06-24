@@ -9,17 +9,22 @@ class Element < ActiveRecord::Base
   accepts_nested_attributes_for :attachable
   
   # Implement build_attachable because it will not be generated automatically
-  def build_attachable(attr_params)
-    self.attachable = attr_params[:attachable_type].constantize.new(attr_params)
+  def build_attachable(attr_params={})
+    @attachable_type = attr_params[:attachable_type] || self.attachable_type.to_s
+    self.attachable = @attachable_type.constantize.new(attr_params) unless @attachable_type.nil?
   end
   
   attr_accessible :name, :parent_id, :position, :type, 
     :attachable_type, :attachable_id, :attachable, 
     :attachable_attributes, :tag_list
-  validates_presence_of :name
+  validates_presence_of :name, :attachable
 
   COMPONENTS = %w(Page Domain Picture)
 
+  def has_attachable?
+    return (attachable_type != "" && attachable_id != "")
+  end
+  
   def add_child(element,position=nil)
     #need to add errors to @element.errors and return something
     temp = element.children

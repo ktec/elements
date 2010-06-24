@@ -12,7 +12,7 @@
     </p>
     <p>
       <%= f.label :parent %><br />
-      <%= f.select :parent_id, options_for_select(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.name} #{"(#{i.attachable.class})" unless i.attachable.nil?}" } %>
+      <%= f.select :parent_id, options_for_select(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.name} #{"(#{i.attachable.class})" if i.has_attachable?}" } %>
     </p>
     <p>
       <%= f.label :position %><br />
@@ -24,21 +24,20 @@
     </p>
   </div>
   <div id="tab2">
-    <% unless f.object.nil? or f.object.attachable.nil? %>
-      <% f.fields_for :attachable, f.object.attachable do |builder|  %>
-        <%#= f.text_field :attachable_id %>
-        <%= builder.hidden_field :attachable_type, :value => builder.object.class.to_s %>
-        <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder %>
-      <% end %>
-    <% else %>
+    <% unless f.object.nil? and f.object.has_attachable? %>
       <%= f.select "attachable_type", Element::COMPONENTS,
         { :prompt => "Select one:" },
         { :onchange => remote_function(
                           :url => new_component_elements_url,
-                          :with => "'type='+this.value",
+                          :with => "'attachable_type='+this.value",
                           :update => "component")
         } %>
       <div id="component"></div>
+    <% else %>
+      <% f.fields_for :attachable, f.object.attachable do |builder|  %>
+        <%= builder.hidden_field :attachable_type, :value => builder.object.class.to_s %>
+        <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder %>
+      <% end %>
     <% end %>
   </div>
 </div>
