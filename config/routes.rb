@@ -1,9 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :domains
+  map.resources :domains, :except => [ :new, :edit, :update, :destroy ]
 
-  map.resources :pages
+  map.resources :pages, :except => [ :new, :edit, :update, :destroy ]
 
-  map.resources :pictures
+  map.resources :pictures, :except => [ :new, :edit, :update, :destroy ]
 
   map.resources :elements,
     :collection => {
