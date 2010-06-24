@@ -1,6 +1,6 @@
 log/**.log
 tags
-public/system/**
+public/system/**/**
 log/*.log
 db/*.sqlite3
 
