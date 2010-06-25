@@ -31,18 +31,18 @@
                         :with => "'attachable_type='+this.value",
                         :update => "component")
       } %>
-    <% if f.object.nil? and f.object.has_attachable? %>
     <div id="component">
+    <% if f.object.nil? and f.object.has_attachable? %>
       <% f.fields_for :attachable, f.object.attachable do |builder|  %>
         <%= builder.hidden_field :attachable_type, :value => builder.object.class.to_s %>
         <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder %>
       <% end %>
-    </div>
     <% end %>
+    </div>
   </div>
 </div>
 <script>
   $(document).ready(function() {
-    $("#form_tabs").tabs();
+    //$("#form_tabs").tabs();
   });
 </script>

@@ -1,8 +1,6 @@
-<%
-f = ActionView::Helpers::FormBuilder.new(:element, @element, @template, {}, proc {})
-%>
+<% f = ActionView::Helpers::FormBuilder.new(:element, @element, @template, {}, proc {}) %>
 <p>
-  <% f.fields_for :attachable, f.object.attachable do |builder|  %>
-  <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder %>
+  <% f.fields_for :attachable, f.object.attachable do |builder| %>
+    <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder %>
   <% end %>
 </p>

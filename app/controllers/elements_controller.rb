@@ -1,6 +1,6 @@
 class ElementsController < InheritedResources::Base
   respond_to :html, :xml, :json
-  respond_to :js, :only => :create
+  respond_to :js, :only => :new_component
   #respond_to :iphone, :except => [ :edit, :update ]
 
   # this way allows us to browse via the polymorphic controllers
@@ -23,7 +23,8 @@ class ElementsController < InheritedResources::Base
     @element = Element.new
     @element.build_attachable(params)
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :layout => false }# new_component.html.erb
+      format.js { render :layout => false, :content_type => Mime::HTML }# new_component.html.js
       format.xml  { render :xml => @element }
     end
   end
