@@ -4,4 +4,4 @@ paperclip --version '=2.3.3' --source rubygems.org
 acts-as-taggable-on --version '=2.0.6' --source rubygems.org
 inherited_resources --version '=1.0.2' --source rubygems.org
 has_scope --version '=0.5.0' --source rubygems.org
-responders --version '=0.4.2' --source rubygems.org
+responders --version '=0.6.1' --source rubygems.org
