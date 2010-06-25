@@ -40,7 +40,7 @@ Rails::Initializer.run do |config|
   config.gem "acts-as-taggable-on"
   config.gem "inherited_resources", :version => "1.0.2"
   config.gem "has_scope"
-  config.gem "responders", :version => "0.4.2"
+  config.gem "responders", :version => ">=0.4.2"
   
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
