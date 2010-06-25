@@ -8,12 +8,5 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   protected
-
-  def class_exists?(class_name)
-    klass = Module.const_get(class_name)
-    return klass.is_a?(Class)
-  rescue NameError
-    return false
-  end
   
 end

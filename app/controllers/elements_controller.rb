@@ -2,7 +2,22 @@ class ElementsController < InheritedResources::Base
   respond_to :html, :xml, :json
   respond_to :js, :only => :create
   #respond_to :iphone, :except => [ :edit, :update ]
-    
+
+  # this way allows us to browse via the polymorphic controllers
+  #belongs_to :page,:picture,:domain, :polymorphic => true, :optional => true, :singleton => true
+  # this way allows us to browse via the elements controller, but not nested polymorphic models
+  #belongs_to :page, :picture, :domain, :polymorphic => true, :optional => true
+
+  #belongs_to :domain, :singleton => true, :optional => true
+
+  has_scope :featured, :type => :boolean
+  has_scope :by_tag
+  has_scope :limit, :default => 10, :only => :index
+ 
+  def index
+    @elements = apply_scopes(Element).all
+  end
+  
   # GET /elements/new_component
   def new_component
     @element = Element.new

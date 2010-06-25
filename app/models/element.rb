@@ -19,6 +19,10 @@ class Element < ActiveRecord::Base
     :attachable_attributes, :tag_list
   validates_presence_of :name, :attachable
 
+  named_scope :featured, :conditions => { :featured => true }
+  named_scope :by_tag, proc {|tag| { :conditions => { :tag => tag } } }
+  named_scope :limit, proc {|limit| { :limit => limit.to_i } }
+  
   COMPONENTS = %w(Page Domain Picture)
 
   def has_attachable?

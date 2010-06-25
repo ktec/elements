@@ -1,14 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :domains, :except => [ :new, :edit, :update, :destroy ]
-
-  map.resources :pages, :except => [ :new, :edit, :update, :destroy ]
-
-  map.resources :pictures, :except => [ :new, :edit, :update, :destroy ]
-
-  map.resources :elements,
-    :collection => {
-      :new_component => [:post,:get]
-    }
+  map.resources :domains, :has_one => :element
+  
+  map.resources :pages, :has_one => :element
+  
+  map.resources :pictures, :has_one => :element
+  
+  map.resources :elements, :collection => {:new_component => [:post,:get]} do |elements|
+    elements.resource :picture
+    elements.resource :page
+    elements.resource :domain
+  end
 
   map.tree "tree/:action", :controller => :tree
 
