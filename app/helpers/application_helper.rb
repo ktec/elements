@@ -22,4 +22,35 @@ module ApplicationHelper
     end
     #link_to_function(name, h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
   end
+  def navigation_for(domain = request.domain)
+    @domain = Domain.find_by_name(domain)
+    unless @domain.blank?
+      content_for :navigation do
+        convert_to_list(@domain.element)
+      end
+    end
+  end
+  def convert_to_list(element)
+    result = "<ul>"
+    element.children.each do |element|
+      if element.attachable.is_a?(Page)
+        if defined?(@page)
+          current = @page.element
+          #highlight = true if current.ancestors.include?(element) or current == element unless current.nil? or current.id.nil?
+          highlight = true if current == element unless current.nil? or current.id.nil?
+          result << "<li " + (highlight ? "class=\"highlighted\">" : ">")
+        else
+          result << "<li>"
+        end
+        result << link_to( h(element.name), send("#{element.attachable.type.to_s.downcase}_path", element.attachable))
+        result << convert_to_list(element) if element.has_children?
+        result << "</li>"
+      end
+    end
+    result << "</ul>"
+    result
+  end
+  def liquidize(content, arguments)
+    RedCloth.new(Liquid::Template.parse(content).render(arguments, :filters => [LiquidFilters])).to_html
+  end
 end

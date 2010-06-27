@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20100623003439) do
     t.string   "title"
     t.string   "description"
     t.string   "keywords"
+    t.string   "layout_name"
+    t.text     "custom_layout_content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

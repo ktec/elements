@@ -41,6 +41,17 @@ Rails::Initializer.run do |config|
   config.gem "inherited_resources", :version => "1.0.2"
   config.gem "has_scope"
   config.gem "responders", :version => ">=0.4.2"
+  config.gem "liquid"
+  config.gem "RedCloth"
+
+  # TODO: Implement these in future versions
+  # config.gem "meta_search"
+  # config.gem "devise"
+  # config.gem "formtastic"
+  # config.gem "paperclip"
+  # config.gem "acts_as_solr" # might be this websolr-acts_as_solr
+  # config.gem "RedCloth" # for text markup
+  # config.gem "liquid" # for templates
   
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]

@@ -8,26 +8,19 @@
   <meta name="keywords" content="<%=yield(:keywords)%>"/>
   <meta name="description" content="<%=yield(:description)%>"/>
   <%= stylesheet_link_tag 'scaffold', 'themes/base/jquery.ui.all.css' %>
-  <%= javascript_include_tag :defaults, 'jstree/jquery.jstree', 'jstree/_lib/jquery.cookie', 'jstree/_lib/jquery.hotkeys' %>
+  <%= javascript_include_tag :defaults %>
 </head>
 <body>
 
 <p style="color: green"><%= notice %></p>
 <p style="color: red"><%= alert %></p>
 
-ELEMENTS APPLICATION LAYOUT
-
-<div id="navigation">
-<%= yield :navigation %>
-</div>
-
-<div id="content">
-<%= yield %>
-</div>
-
-<div id="footer">
-<%= yield :footer %>
-</div>
+<%= liquidize(@page.custom_layout_content,
+        'content' => yield, 
+        'title' => yield(:title),
+        'navigation' => yield(:navigation),
+        'footer' => yield(:footer)
+        ) %>
 
 </body>
 </html>

@@ -1,8 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :domains, :has_one => :element
-  
   map.resources :pages, :has_one => :element
-  
   map.resources :pictures, :has_one => :element
   
   map.resources :elements, :collection => {:new_component => [:post,:get]} do |elements|

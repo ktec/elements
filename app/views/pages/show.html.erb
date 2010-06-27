@@ -1,6 +1,17 @@
+<%
+content_for :title, h(@page.title)
+content_for :description, h(@page.description)
+content_for :keywords, h(@page.title)
+navigation_for(request.domain)
+%>
 <p>
   <b>Title:</b>
   <%=h @page.title %>
+</p>
+
+<p>
+  <b>Keywords:</b>
+  <%=h @page.keywords %>
 </p>
 
 <p>
@@ -8,7 +19,9 @@
   <%=h @page.description %>
 </p>
 
-<p>
-  <b>Keywords:</b>
-  <%=h @page.keywords %>
-</p>
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
+
+<% @page.element.children.each do |element| %>
+  <%= render element.attachable unless element.attachable.is_a?(Page) %>
+<% end %>

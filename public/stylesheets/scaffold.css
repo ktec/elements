@@ -52,3 +52,14 @@ a:hover { color: #fff; background-color:#000; }
   list-style: square;
 }
 
+li:hover {}
+li a:hover { color: blue; }
+li.highlighted a {
+  color: red;
+}
+li a {
+  text-decoration:none;
+}
+li.highlighted {
+}
+

@@ -6,4 +6,5 @@ class Picture < ActiveRecord::Base
     :styles => { :thumb => "200x200", :large => "640x480>" }#,
     #:path => "/:class/:id/:style/:filename"
   validates_presence_of :image
+  liquid_methods :title, :description, :image
 end

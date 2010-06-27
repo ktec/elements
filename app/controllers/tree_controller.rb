@@ -3,13 +3,13 @@ class TreeController < ApplicationController
   # GET /tree/children
   # POST /tree/children
   def children
+    id = params[:id]
+    if id == ""||id.nil?
+      @elements = Element.roots
+    else
+      @elements = (Element.exists?(id)) ? Element.find(id).children : nil
+    end
     respond_to do |format|
-      id = params[:id]
-      if id == ""||id.nil?
-        @elements = Element.roots
-      else
-        @elements = (Element.exists?(id)) ? Element.find(id).children : nil
-      end
       format.json { render "index.json.erb" }
     end
   end
@@ -23,21 +23,21 @@ class TreeController < ApplicationController
 
   # POST /tree/create
   def create
-    respond_to do |format|
-      @element = Element.new
-      @element.name = params[:title]
-      unless params[:type].nil?
-        class_name = params[:type]
-        if class_exists?(class_name)
-          @element.attachable = class_name.constantize.new
-        end
+    @element = Element.new
+    @element.name = params[:title]
+    unless params[:type].nil?
+      class_name = params[:type]
+      if class_exists?(class_name)
+        @element.attachable = class_name.constantize.new(params)
       end
-      @element.parent = Element.find(params[:id])
-			@element.position = params[:position]
+    end
+    @element.parent = Element.find(params[:id]) if Element.exists?(params[:id]) 
+		@element.position = params[:position]
+    respond_to do |format|
       if @element.save
-        format.json { render :json => {:status => "200", :id => @element.id} }
+        format.json { render :json => { :status => "200", :id => @element.id }, :template => false }
       else
-        format.json { render :status => @element.errors }
+        format.json { render :json => { :status => @element.errors }, :template => false }
       end
     end
   end
@@ -66,11 +66,11 @@ class TreeController < ApplicationController
     end
   end
 
-  # POST /tree/create
+  # POST /tree/destroy
   def destroy
+    @element = Element.find(params[:id])
+    @element.destroy
     respond_to do |format|
-      @element = Element.find(params[:id])
-      @element.destroy
       format.json { render :nothing => true }
     end
   end

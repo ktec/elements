@@ -23,6 +23,8 @@ class Element < ActiveRecord::Base
   named_scope :by_tag, proc {|tag| { :conditions => { :tag => tag } } }
   named_scope :limit, proc {|limit| { :limit => limit.to_i } }
   
+  liquid_methods :name, :position, :type, :tag_list
+  
   COMPONENTS = %w(Page Domain Picture)
 
   def has_attachable?
