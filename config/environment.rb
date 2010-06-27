@@ -35,23 +35,21 @@ Rails::Initializer.run do |config|
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'UTC'
 
-  config.gem "ancestry"
-  config.gem "paperclip"
-  config.gem "acts-as-taggable-on"
+  config.gem "ancestry" # for hierarchy of elements
+  config.gem "paperclip" # for attachments
+  config.gem "acts-as-taggable-on" # for tagging elements
   config.gem "inherited_resources", :version => "1.0.2"
   config.gem "has_scope"
   config.gem "responders", :version => ">=0.4.2"
-  config.gem "liquid"
-  config.gem "RedCloth"
+  config.gem "liquid" # for page templates
+  config.gem "RedCloth" # for content markup
 
   # TODO: Implement these in future versions
-  # config.gem "meta_search"
-  # config.gem "devise"
-  # config.gem "formtastic"
-  # config.gem "paperclip"
+  # config.gem "meta_search" # for search
+  # config.gem "devise" # for authentication
+  # config.gem "formtastic" # for clean forms
+  # config.gem "vestal_versions" # for element versioning
   # config.gem "acts_as_solr" # might be this websolr-acts_as_solr
-  # config.gem "RedCloth" # for text markup
-  # config.gem "liquid" # for templates
   
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
