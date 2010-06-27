@@ -36,8 +36,8 @@ module ApplicationHelper
       if element.attachable.is_a?(Page)
         if defined?(@page)
           current = @page.element
-          #highlight = true if current.ancestors.include?(element) or current == element unless current.nil? or current.id.nil?
-          highlight = true if current == element unless current.nil? or current.id.nil?
+          highlight = true if current.ancestors.include?(element) or current == element unless current.nil? or current.id.nil?
+          #highlight = true if current == element unless current.nil? or current.id.nil?
           result << "<li " + (highlight ? "class=\"highlighted\">" : ">")
         else
           result << "<li>"
