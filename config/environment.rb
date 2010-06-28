@@ -50,6 +50,9 @@ Rails::Initializer.run do |config|
   # config.gem "formtastic" # for clean forms
   # config.gem "vestal_versions" # for element versioning
   # config.gem "acts_as_solr" # might be this websolr-acts_as_solr
+  # http://github.com/hagenburger/lemonade for css spriting
+  # config.gem "will_paginate" # for pagination
+  
   
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
