@@ -1,9 +1,9 @@
-<div id="form_tabs">
+<div id="page_form_tabs">
   <ul>
-    <li><a href="#tab1">Basic</a></li>
-    <li><a href="#tab2">Advanced</a></li>
+    <li><a href="#page_tab1">Basic</a></li>
+    <li><a href="#page_tab2">Advanced</a></li>
   </ul>
-  <div id="tab1">
+  <div id="page_tab1">
     <fieldset id="<%= f.object.class.to_s.downcase %>">
       <%= f.hidden_field :attachable_type, :value => f.object.class.to_s %>
       <p>
@@ -20,7 +20,7 @@
       </p>
     </fieldset>
   </div>
-  <div id="tab2">
+  <div id="page_tab2">
     <fieldset id="<%= f.object.class.to_s.downcase %>_advanced">
       <p>
         <%= f.label :layout_name %><br />
@@ -35,7 +35,7 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-  $("#form_tabs").tabs();
+  $("#page_form_tabs").tabs();
   if ($("#page_layout_name").val() != "custom") {
     $("#custom_layout_content").hide();
   }
