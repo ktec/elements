@@ -1,0 +1,18 @@
+li:hover {}
+li a:hover { color: blue; }
+li.highlighted a, li.highlighted li.highlighted a,
+li.highlighted li.highlighted li.highlighted a,
+li.highlighted li.highlighted li.highlighted li.highlighted a{
+  color: red;
+}
+li.highlighted li a, li.highlighted li.highlighted li a,
+li.highlighted li.highlighted li.highlighted li a,
+li.highlighted li.highlighted li.highlighted li.highlighted li a{
+  color: black;
+}
+li a {
+  text-decoration:none;
+}
+li.highlighted {
+}
+
