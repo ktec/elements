@@ -22,6 +22,8 @@ navigation_for(request.domain)
 <%= link_to 'Edit', edit_page_path(@page) %> |
 <%= link_to 'Back', pages_path %>
 
+<%= render "shared/add_this_button.html" %>
+
 <% @page.element.children.each do |element| %>
   <%= render element.attachable unless element.attachable.is_a?(Page) %>
 <% end %>
