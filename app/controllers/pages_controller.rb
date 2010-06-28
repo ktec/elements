@@ -1,8 +1,9 @@
 class PagesController < InheritedResources::Base
   actions :all, :except => [ :new, :destroy ]
   layout :set_layout
-  private
-  def set_layout
-    (action_name == "show"  && @page && @page.layout_name) || 'page'
+  def show
+    @page = resource
+    fresh_when(:etag => @page, :last_modified => @page.updated_at.utc, :public => true)
+    show!
   end
 end
