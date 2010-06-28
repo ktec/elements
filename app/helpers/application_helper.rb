@@ -50,6 +50,12 @@ module ApplicationHelper
     result << "</ul>"
     result
   end
+  def page_title(title)
+    @domain ||= Domain.find_by_name(request.domain)
+    content_for(:title) do
+      @domain.name + (" | " + title unless title.blank?)
+    end
+  end
   def liquidize(content, arguments)
     RedCloth.new(Liquid::Template.parse(content).render(arguments, :filters => [LiquidFilters])).to_html
   end

@@ -1,1 +1,10 @@
-<%= navigation_for("localhost") %>
+Home
+
+<%
+unless @domain.blank?
+  page_title @domain.title
+  content_for :description, @domain.description
+  content_for :keywords, @domain.keywords
+  navigation_for(@domain.name)
+end
+%>

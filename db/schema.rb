@@ -13,6 +13,9 @@ ActiveRecord::Schema.define(:version => 20100623003439) do
 
   create_table "domains", :force => true do |t|
     t.string   "name"
+    t.string   "title"
+    t.string   "description"
+    t.string   "keywords"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
