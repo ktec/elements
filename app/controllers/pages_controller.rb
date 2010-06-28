@@ -1,6 +1,7 @@
 class PagesController < InheritedResources::Base
   actions :all, :except => [ :new, :destroy ]
   before_filter :set_etag, :only => [ :show ]
+  caches_page :index, :show
   layout :set_layout
   private
     def set_layout

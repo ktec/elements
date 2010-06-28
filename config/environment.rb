@@ -52,6 +52,8 @@ Rails::Initializer.run do |config|
   # config.gem "acts_as_solr" # might be this websolr-acts_as_solr
   # http://github.com/hagenburger/lemonade for css spriting
   # config.gem "will_paginate" # for pagination
+  # implement memcache on index/show actions
+  #   check out this link for gotchas : http://www.whatcodecraves.com/articles/2010/02/24/page_caching_gotcha_on_heroku/index.html
   
   
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
