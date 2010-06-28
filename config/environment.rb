@@ -44,12 +44,13 @@ Rails::Initializer.run do |config|
   config.gem "liquid" # for page templates
   config.gem "RedCloth" # for content markup
 
-  config.gem 'warden'
-  config.gem 'devise'  
+  config.gem "warden"
+  config.gem "devise"
   
   # TODO: Implement these in future versions
   # config.gem "meta_search" # for search
-  # config.gem "devise" # for authentication
+  # config.gem "declarative_authorization" # for authorization
+  
   # config.gem "formtastic" # for clean forms
   # config.gem "vestal_versions" # for element versioning
   # config.gem "acts_as_solr" # might be this websolr-acts_as_solr

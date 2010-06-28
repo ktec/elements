@@ -1,4 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.devise_for :users, 
+    :path_names => { 
+      :sign_in => 'login', 
+      :sign_out => 'logout', 
+      :password => 'secret', 
+      :confirmation => 'verification', 
+      :unlock => 'unblock'
+    }  
+
   map.resources :domains, :has_one => :element
   map.resources :pages, :has_one => :element
   map.resources :pictures, :has_one => :element

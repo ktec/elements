@@ -26,3 +26,6 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+# Tell devise where we are
+config.action_mailer.default_url_options = { :host => 'elements.heroku.com' }
