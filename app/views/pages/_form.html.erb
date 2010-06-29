@@ -23,6 +23,10 @@
   <div id="page_tab2">
     <fieldset id="<%= f.object.class.to_s.downcase %>_advanced">
       <p>
+        <%= f.label :show_share_links %><br />
+        <%= f.check_box :show_share_links %>
+      </p>
+      <p>
         <%= f.label :layout_name %><br />
         <%= f.select :layout_name, [["Standard", 'application'], ["Plain", 'plain'], ["Custom", 'custom']] %>
       </p>

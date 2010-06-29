@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100628224102) do
+ActiveRecord::Schema.define(:version => 20100629184056) do
 
   create_table "domains", :force => true do |t|
     t.string   "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20100628224102) do
     t.string   "title"
     t.string   "description"
     t.string   "keywords"
+    t.boolean  "show_share_links",      :default => true
     t.string   "layout_name"
     t.text     "custom_layout_content"
     t.datetime "created_at"
