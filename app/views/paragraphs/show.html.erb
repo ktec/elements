@@ -1,0 +1,8 @@
+<p>
+  <b>Content:</b>
+  <%= RedCloth.new(h(@paragraph.content)).to_html %>
+</p>
+
+
+<%= link_to 'Edit', edit_paragraph_path(@paragraph) %> |
+<%= link_to 'Back', paragraphs_path %>

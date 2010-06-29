@@ -1,0 +1,13 @@
+<h1>Editing paragraph</h1>
+
+<% form_for(@paragraph) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render "form", :f => f %>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @paragraph %> |
+<%= link_to 'Back', paragraphs_path %>

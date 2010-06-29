@@ -17,7 +17,7 @@ body, td, th, pre, code, select, option, input, textarea { font-family:verdana,a
 <div id="menu">
 <input type="button" id="add_Domain" value="add domain" style="display:block; float:left;"/>
 <input type="button" id="add_Page" value="add page" style="display:block; float:left;"/>
-<input type="button" id="add_Text" value="add text" style="display:block; float:left;"/>
+<input type="button" id="add_Paragraph" value="add text" style="display:block; float:left;"/>
 <input type="button" id="add_Picture" value="add picture" style="display:block; float:left;"/>
 <input type="button" id="add_Link" value="add link" style="display:block; float:left;"/>
 <input type="button" id="add_Gallery" value="add gallery" style="display:block; float:left;"/>
@@ -107,7 +107,7 @@ $(function () {
             "icon" : { "image" : "/images/elements/file.png"}
 					},
           // basic building blocks
-					"Text" : {
+					"Paragraph" : {
 						"valid_children" : ["none"],
             "icon" : { "image" : "/images/elements/text.png"}
 					},
@@ -132,7 +132,7 @@ $(function () {
             "icon" : { "image" : "/images/elements/stylesheet.png"}
 					},
 					"HtmlElement" : {
-						"valid_children" : ["Image","Text","Article","Gallery","Form"],
+						"valid_children" : ["Image","Paragraph","Article","Gallery","Form"],
             "icon" : { "image" : "/images/elements/html_element.jpg"}
 					},
           // composed elements
@@ -141,11 +141,11 @@ $(function () {
             "icon" : { "image" : "/images/elements/domain.png"}
 					},
 					"Page" : {
-						"valid_children" : ["Article","HtmlElement", "Page", "Picture"],
+						"valid_children" : ["Article","HtmlElement", "Page", "Picture", "Paragraph"],
             "icon" : { "image" : "/images/elements/page.png"}
 					},
 					"Article" : {
-						"valid_children" : ["image","text"],
+						"valid_children" : ["image","paragraph"],
                         "icon" : { "image" : "/images/elements/article.png"}
 					},
 					// The `folder` type
@@ -193,7 +193,8 @@ $(function () {
 					"id" : data.rslt.parent.attr("id").replace("node_",""),
 					"position" : data.rslt.position,
 					"title" : data.rslt.name,
-					"type" : data.rslt.obj.attr("rel")
+					"type" : data.rslt.obj.attr("rel"),
+          "content" : "Something..."
 				},
 				function (r) {
 					if(r.status) {
@@ -267,7 +268,7 @@ $(function () {
 		switch(this.id) {
 			case "add_default":
 			case "add_Domain":
-			case "add_Text":
+			case "add_Paragraph":
 			case "add_Picture":
 			case "add_Link":
 			case "add_Gallery":
@@ -284,7 +285,6 @@ $(function () {
 				break;
 			case "text": break;
 			default:
-        alert(this.id)
 				$("#demo").jstree(this.id);
 				break;
 		}

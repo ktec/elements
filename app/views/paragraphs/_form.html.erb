@@ -1,0 +1,8 @@
+<fieldset id="<%= f.object.class.to_s.downcase %>">
+  <%= f.hidden_field :attachable_type, :value => f.object.class.to_s %>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.textile_editor :content %>
+  </p>
+</fieldset>
+<%= textile_editor_initialize(:framework => :jquery) %>

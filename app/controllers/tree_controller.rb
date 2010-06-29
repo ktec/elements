@@ -34,7 +34,7 @@ class TreeController < ApplicationController
     @element.parent = Element.find(params[:id]) if Element.exists?(params[:id]) 
 		@element.position = params[:position]
     respond_to do |format|
-      if @element.save
+      if @element.save!
         format.json { render :json => { :status => "200", :id => @element.id }, :template => false }
       else
         format.json { render :json => { :status => @element.errors }, :template => false }

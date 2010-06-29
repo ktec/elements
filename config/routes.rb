@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :paragraphs
+
   map.devise_for :users, 
     :path_names => { 
       :sign_in => 'login', 
