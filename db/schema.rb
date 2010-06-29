@@ -84,12 +84,6 @@ ActiveRecord::Schema.define(:version => 20100629184056) do
     t.string "name"
   end
 
-  create_table "texts", :force => true do |t|
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
