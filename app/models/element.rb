@@ -25,7 +25,7 @@ class Element < ActiveRecord::Base
   
   liquid_methods :name, :position, :type, :tag_list
   
-  COMPONENTS = %w(Page Domain Picture Paragraph)
+  COMPONENTS = %w(Page Domain Picture Paragraph Gallery)
 
   def has_attachable?
     return (attachable_type != "" && attachable_id != "")

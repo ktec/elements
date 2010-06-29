@@ -21,7 +21,6 @@ body, td, th, pre, code, select, option, input, textarea { font-family:verdana,a
 <input type="button" id="add_Picture" value="add picture" style="display:block; float:left;"/>
 <input type="button" id="add_Link" value="add link" style="display:block; float:left;"/>
 <input type="button" id="add_Gallery" value="add gallery" style="display:block; float:left;"/>
-<input type="button" id="add_Carousel" value="add carousel" style="display:block; float:left;"/>
 <input type="button" id="add_Stylesheet" value="add stylesheet" style="display:block; float:left;"/>
 <input type="button" id="add_HtmlElement" value="add htmlelement" style="display:block; float:left;"/>
 <input type="button" id="add_Article" value="add article" style="display:block; float:left;"/>
@@ -120,12 +119,8 @@ $(function () {
             "icon" : { "image" : "/images/elements/link.png"}
 					},
 					"Gallery" : {
-						"valid_children" : ["none"],
+						"valid_children" : ["Picture"],
             "icon" : { "image" : "/images/elements/gallery.png"}
-					},
-					"Carousel" : {
-						"valid_children" : ["none"],
-            "icon" : { "image" : "/images/elements/carousel.png"}
 					},
 					"Stylesheet" : {
 						"valid_children" : ["none"],
@@ -141,11 +136,11 @@ $(function () {
             "icon" : { "image" : "/images/elements/domain.png"}
 					},
 					"Page" : {
-						"valid_children" : ["Article","HtmlElement", "Page", "Picture", "Paragraph"],
+						"valid_children" : ["Article","HtmlElement", "Page", "Gallery", "Picture", "Paragraph"],
             "icon" : { "image" : "/images/elements/page.png"}
 					},
 					"Article" : {
-						"valid_children" : ["image","paragraph"],
+						"valid_children" : ["Picture","Paragraph"],
                         "icon" : { "image" : "/images/elements/article.png"}
 					},
 					// The `folder` type
@@ -272,7 +267,6 @@ $(function () {
 			case "add_Picture":
 			case "add_Link":
 			case "add_Gallery":
-			case "add_Carousel":
 			case "add_Stylesheet":
 			case "add_HtmlElement":
 			case "add_Page":

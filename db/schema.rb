@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(:version => 20100629184056) do
     t.datetime "updated_at"
   end
 
+  create_table "galleries", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "layout_name"
+    t.text     "custom_layout_content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "description"

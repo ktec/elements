@@ -1,5 +1,8 @@
-<div class="picture">
-  <%=image_tag picture.image.url(:thumb), :alt => h(picture.description), :title => h(picture.title)  %>
-  <span id="title"><%=h picture.title %></span>
-  <span id="description"><%=h picture.description %></span>
+<div class="thumbnail">
+  <div class="thumbContents">
+    <%=image_tag picture.image.url(:thumb), :alt => h(picture.description), :title => h(picture.title)  %>
+    <p><%=h picture.title %></p>
+    <div id="description"><p><%=h picture.description %></p></div>
+  </div>
 </div>
+

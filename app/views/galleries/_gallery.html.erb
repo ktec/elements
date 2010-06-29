@@ -1,0 +1,15 @@
+<div class="gallery">
+<p>
+  <b>Title:</b>
+  <%=h gallery.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h gallery.description %>
+</p>
+
+<% gallery.element.children.each do |element| %>
+  <%= render element.attachable if element.attachable.is_a?(Picture) %>
+<% end %>
+</div>

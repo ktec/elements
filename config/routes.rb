@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :galleries
+
   map.resources :paragraphs
 
   map.devise_for :users, 
