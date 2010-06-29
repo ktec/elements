@@ -2,8 +2,6 @@
   <%= f.hidden_field :attachable_type, :value => f.object.class.to_s %>
   <p>
     <%= f.label :content %><br />
-    <% debugger %>
-    <%#= f.text_area :content %>
     <%= f.textile_editor :content, :id => "element_attachable_attributes_content" %>
   </p>
 </fieldset>
