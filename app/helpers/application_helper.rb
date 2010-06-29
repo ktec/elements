@@ -57,6 +57,6 @@ module ApplicationHelper
     end
   end
   def liquidize(content, arguments)
-    RedCloth.new(Liquid::Template.parse(content).render(arguments, :filters => [LiquidFilters])).to_html
+    RedCloth.new(Liquid::Template.parse(h(content)).render(arguments, :filters => [LiquidFilters])).to_html
   end
 end
