@@ -9,6 +9,10 @@
     <%= f.text_field :description %>
   </p>
   <p>
+    <%= f.label :tag_list %><br />
+    <%= f.text_field :tag_list %>
+  </p>
+  <p>
     <%= f.label :image %><br />
     <% if f.object.image.file? %>
     <%= image_tag f.object.image.url(:thumb) %>

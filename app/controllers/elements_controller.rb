@@ -3,6 +3,9 @@ class ElementsController < InheritedResources::Base
   respond_to :js, :only => :new_component
   #respond_to :iphone, :except => [ :edit, :update ]
 
+  # Require authentication for edit and delete.
+  before_filter :tag_cloud, :only => [:index]
+  
   # this way allows us to browse via the polymorphic controllers
   #belongs_to :page,:picture,:domain, :polymorphic => true, :optional => true, :singleton => true
   # this way allows us to browse via the elements controller, but not nested polymorphic models
@@ -13,7 +16,10 @@ class ElementsController < InheritedResources::Base
   has_scope :featured, :type => :boolean
   has_scope :by_tag
   has_scope :limit, :default => 10, :only => :index
+  has_scope :by_type
  
+  caches_action :tag_cloud
+  
   def index
     @elements = apply_scopes(Element).all
   end
@@ -27,6 +33,19 @@ class ElementsController < InheritedResources::Base
       format.js { render :layout => false, :content_type => Mime::HTML }# new_component.html.js
       format.xml  { render :xml => @element }
     end
+  end
+  
+  def tag_cloud
+    # prime candidate for caching
+    @tags ||= Element.tag_counts_on(:tags)
+  end
+  
+  def after_save
+    expire_cache
+  end
+  
+  def expire_cache
+    expire_action :action => :edit
   end
   
 end

@@ -16,4 +16,13 @@ class PagesController < InheritedResources::Base
       @page = resource
       fresh_when(:etag => @page, :last_modified => @page.updated_at.utc, :public => true)
     end
+
+    def after_save
+      expire_cache
+    end
+    
+    def expire_cache
+      expire_page :action => :index, :show
+    end
+  
 end

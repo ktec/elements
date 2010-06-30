@@ -3,6 +3,10 @@ class Gallery < ActiveRecord::Base
   has_one :element, :as => :attachable, :dependent => :destroy
   accepts_nested_attributes_for :element, :allow_destroy => true
   validates_presence_of :title
-  has_many :pictures, :through => :element, :conditions => { :attachable_type => "Picture" }
+  #has_many :pictures, :joins => :elements, :conditions => { :attachable_type => "Picture" }
   #liquid_methods :title, :description, :keywords
+  def pictures
+    element.children.by_type('Picture') #.each { |e| n ||<< e.attachable }
+  end
+  acts_as_taggable_on :tags
 end

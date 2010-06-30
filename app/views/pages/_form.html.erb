@@ -15,13 +15,17 @@
         <%= f.text_field :description %>
       </p>
       <p>
-        <%= f.label :keywords %><br />
-        <%= f.text_field :keywords %>
+        <%= f.label :tag_list %><br />
+        <%= f.text_field :tag_list %>
       </p>
     </fieldset>
   </div>
   <div id="page_tab2">
     <fieldset id="<%= f.object.class.to_s.downcase %>_advanced">
+      <p>
+        <%= f.label :keywords %><br />
+        <%= f.text_field :keywords %>
+      </p>
       <p>
         <%= f.label :show_share_links %><br />
         <%= f.check_box :show_share_links %>

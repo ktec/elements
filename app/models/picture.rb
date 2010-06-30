@@ -7,4 +7,5 @@ class Picture < ActiveRecord::Base
     #:path => "/:class/:id/:style/:filename"
   validates_presence_of :image
   liquid_methods :title, :description, :image
+  acts_as_taggable_on :tags
 end

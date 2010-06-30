@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Position</th>
+    <th>Tags</th>
     <th>Ancestry</th>
     <th>Ancestry depth</th>
     <th>Attachable id</th>
@@ -14,6 +15,7 @@
   <tr>
     <td><%=h element.name %></td>
     <td><%=h element.position %></td>
+    <td><%=h element.tag_list %></td>
     <td><%=h element.ancestry %></td>
     <td><%=h element.ancestry_depth %></td>
     <td><%=h element.attachable_id %></td>
@@ -28,3 +30,12 @@
 <br />
 
 <%= link_to 'New element', new_element_path %>
+
+<br />
+
+<div class="tag_cloud">
+<h1 class="heading">Tag Cloud</h1>
+<% tag_cloud(@tags, %w(tag1 tag2 tag3 tag4)) do |tag, css_class| %>
+  <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
+<% end %>
+</div>

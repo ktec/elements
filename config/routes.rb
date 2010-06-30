@@ -16,12 +16,14 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pages, :has_one => :element
   map.resources :pictures, :has_one => :element
   
-  map.resources :elements, :collection => {:new_component => [:post,:get]} do |elements|
+  map.resources :elements, :collection => { :new_component => [:post,:get] } do |elements|
     elements.resource :picture
     elements.resource :page
     elements.resource :domain
   end
-
+  
+  map.elements_by_tag "elements/tag/:by_tag", :controller => :elements
+  map.elements_by_type "elements/type/:by_type", :controller => :elements
   map.tree "tree/:action", :controller => :tree
 
   # The priority is based upon order of creation: first created -> highest priority.

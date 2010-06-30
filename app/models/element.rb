@@ -5,6 +5,7 @@ class Element < ActiveRecord::Base
   default_scope :order => :position
   # Alias for <tt>acts_as_taggable_on :tags</tt>:
   acts_as_taggable
+  acts_as_taggable_on :tags
 
   accepts_nested_attributes_for :attachable
   
@@ -20,12 +21,18 @@ class Element < ActiveRecord::Base
   validates_presence_of :name, :attachable
 
   named_scope :featured, :conditions => { :featured => true }
-  named_scope :by_tag, proc {|tag| { :conditions => { :tag => tag } } }
+  named_scope :by_tag, proc {|tag| { :joins => [:taggings,:tags], :conditions => ["tags.name = ?", tag ] } }
   named_scope :limit, proc {|limit| { :limit => limit.to_i } }
+  named_scope :by_type, proc {|type| { :conditions => { :attachable_type => type } } }
+  #named_scope :pictures, lambda { { :joins => :children, :having => { :attachable_type => "Picture" } } }
   
   liquid_methods :name, :position, :type, :tag_list
   
   COMPONENTS = %w(Page Domain Picture Paragraph Gallery)
+  
+  def featured
+    true
+  end
 
   def has_attachable?
     return (attachable_type != "" && attachable_id != "")
