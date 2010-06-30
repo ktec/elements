@@ -5,34 +5,24 @@ content_for :keywords, h(@page.title)
 navigation_for(request.domain)
 
 if user_signed_in?
-  flash[:notice] = "You should consider adding a title to this page" if (@page.title = "")
-  flash[:notice] = "You should consider adding a description to this page" if (@page.description = "") 
+  flash[:notice] = "You should consider adding a title to this page.<br/>" if (@page.title == "")
+  flash[:notice] += "You should consider adding a description to this page." if (@page.description == "") 
+  flash[:notice] += "You should consider adding some keywords to this page.<br/>" if (@page.keywords == "")
 end
 %>
-<p>
-  <b>Title:</b>
-  <%=h @page.title %>
-</p>
-
-<p>
-  <b>Keywords:</b>
-  <%=h @page.keywords %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @page.description %>
-</p>
+<h1 class="title"><%=h @page.title %></h1>
 
 <% @page.element.children.each do |element| %>
   <%= render element.attachable unless element.attachable.is_a?(Page) %>
 <% end %>
 
 <% if user_signed_in? %>
-<div id="admin_page_links">
-  <%= link_to 'Edit', edit_page_path(@page) %> |
-  <%= link_to 'Back', pages_path %>
-</div>
+  <% content_for :admin do %>
+  <div id="admin_page_links">
+    <%= link_to 'Edit', edit_page_path(@page) %> |
+    <%= link_to 'Back', pages_path %>
+  </div>
+  <% end %>
 <% end %>
 
 <% if @page.show_share_links? %>

@@ -10,12 +10,14 @@
   <%= stylesheet_link_tag 'scaffold', 'theme', 'element-gallery', 'themes/base/jquery.ui.all.css', :cache => true %>
   <%= javascript_include_tag :defaults, :cache => true %>
 </head>
-<body>
+<body id="page">
 
 <p style="color: green"><%= notice %></p>
 <p style="color: red"><%= alert %></p>
 
-ELEMENTS PAGE LAYOUT
+<div id="admin">
+<%= yield :admin %>
+</div>
 
 <div id="navigation">
 <%= yield :navigation %>

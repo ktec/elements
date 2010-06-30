@@ -10,13 +10,14 @@
   <%= stylesheet_link_tag 'scaffold', 'theme', 'element-gallery', 'themes/base/jquery.ui.all.css' %>
   <%= javascript_include_tag :defaults %>
 </head>
-<body>
+<body id="custom">
 
 <p style="color: green"><%= notice %></p>
 <p style="color: red"><%= alert %></p>
 
 <%= liquidize(@page.custom_layout_content,
         'content' => yield, 
+        'admin' => yield(:admin), 
         'title' => yield(:title),
         'navigation' => yield(:navigation),
         'footer' => yield(:footer)
@@ -24,4 +25,3 @@
 
 </body>
 </html>
-

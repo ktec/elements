@@ -1,13 +1,48 @@
+/* LAYOUTS */
+body#plain {
+    background: #fff;
+}
+
+body#application {
+    padding: 25px;
+    background: #ccc;
+}
+
+body#custom {
+    padding: 25px;
+    background: #ccc;
+}
+
+body#page {
+    padding: 25px;
+    background: #ddd;
+}
+
+/* CONTENT AREA */
+#content {
+    clear: both;
+    padding: 25px;
+    /*min-height: 420px;*/
+    height: auto !important;
+    height: 420px;
+    background: #fff;
+    border: 1px solid #eee;
+}
+
+#page_share_links {
+  float: right;
+  clear: right;
+  width: 370px;
+  margin: 0 37px 0 0;
+}
+
+/* NAVIGATION */
 li:hover {}
 li a:hover { color: blue; }
-li.highlighted a, li.highlighted li.highlighted a,
-li.highlighted li.highlighted li.highlighted a,
-li.highlighted li.highlighted li.highlighted li.highlighted a{
+li.highlighted a, li.highlighted li.highlighted a, li.highlighted li.highlighted li.highlighted a, li.highlighted li.highlighted li.highlighted li.highlighted a{
   color: red;
 }
-li.highlighted li a, li.highlighted li.highlighted li a,
-li.highlighted li.highlighted li.highlighted li a,
-li.highlighted li.highlighted li.highlighted li.highlighted li a{
+li.highlighted li a, li.highlighted li.highlighted li a, li.highlighted li.highlighted li.highlighted li a, li.highlighted li.highlighted li.highlighted li.highlighted li a{
   color: black;
 }
 li a {
