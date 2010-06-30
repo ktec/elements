@@ -1,15 +1,7 @@
 <div class="gallery">
-<p>
-  <b>Title:</b>
-  <%=h gallery.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h gallery.description %>
-</p>
-
-<% gallery.element.children.each do |element| %>
+  <h1 class="title"><%=h gallery.title %></h1>
+  <h2 class="decsription"><%=h gallery.description %></h2>
+  <% gallery.pictures.each do |element| %>
   <%= render element.attachable if element.attachable.is_a?(Picture) %>
-<% end %>
+  <% end %>
 </div>

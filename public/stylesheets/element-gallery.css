@@ -3,16 +3,17 @@
 .gallery { clear:both; }
 
 .gallery .thumbnail {
+    border: 1px solid #cdcdcd;
     font-size: 12px !important;
     background: none !important;
     margin: 0 8px 15px 0 !important;
 }
     .gallery .thumbnail .thumbContents {
-        padding: 5px !important;
-        background: #EDEDED !important;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-        border: none !important;
+      padding: 5px !important;
+      background: #EDEDED !important;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border: none !important;
     }
         .gallery .thumbnail .thumbContents a { 
             border: none  !important;
@@ -38,8 +39,8 @@
     line-height: 1.2em;
     display: inline;
     height: auto !important;
-    height: 165px;
-    min-height: 165px;
+    /*height: 165px;
+    min-height: 165px;*/
     padding: 0;
     }
 
