@@ -53,7 +53,7 @@ module ApplicationHelper
   def page_title(title)
     @domain ||= Domain.find_by_name(request.domain)
     content_for(:title) do
-      @domain.name + (" | " + title unless title.blank?)
+      (title + " | " unless title.blank?) + @domain.name
     end
   end
   def liquidize(content, arguments)
