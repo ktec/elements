@@ -22,7 +22,7 @@ class PagesController < InheritedResources::Base
     end
     
     def expire_cache
-      expire_page :action => :index, :show
+      expire_page :action => [:index, :show]
     end
   
 end
