@@ -1,6 +1,8 @@
 <div class="thumbnail">
   <div class="thumbContents">
-    <%=image_tag picture.image.url(:thumb), :alt => h(picture.description), :title => h(picture.title)  %>
+    <% image_with_title = image_tag picture.image.url(:thumb), :alt => h(picture.description), :title => h(picture.title) %>  
+    <% gallery_id = picture.title if gallery_id.blank? %>
+    <%= link_to image_with_title, picture.image.url(:large), :rel => "#{gallery_id}", :title => picture.title %>
     <p><%=h picture.title %></p>
     <div id="description"><p><%=h picture.description %></p></div>
   </div>

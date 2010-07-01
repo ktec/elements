@@ -8,7 +8,7 @@ ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :theme => [
 
 # FancyPants #
 ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :fancybox => [
-	"/javscripts/fancybox/jquery.fancybox-1.3.1.css"
+	"/javascripts/fancybox/jquery.fancybox-1.3.1.css"
 ]
 ActionView::Helpers::AssetTagHelper.register_javascript_expansion :fancybox => [
   'fancybox/jquery.mousewheel-3.0.2.pack',

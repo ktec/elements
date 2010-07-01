@@ -7,7 +7,7 @@
   <title><%= yield(:title) %></title>
   <meta name="keywords" content="<%=yield(:keywords)%>"/>
   <meta name="description" content="<%=yield(:description)%>"/>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :defaults, :cache => true %>
 </head>
 <body id="plain">
 
