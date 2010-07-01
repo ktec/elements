@@ -7,8 +7,9 @@
   <title><%= yield(:title) %></title>
   <meta name="keywords" content="<%=yield(:keywords)%>"/>
   <meta name="description" content="<%=yield(:description)%>"/>
-  <%= stylesheet_link_tag 'scaffold', 'theme', 'element-gallery', 'themes/base/jquery.ui.all.css' %>
-  <%= javascript_include_tag :defaults, 'jstree/jquery.jstree', 'jstree/_lib/jquery.cookie', 'jstree/_lib/jquery.hotkeys' %>
+  <%= stylesheet_link_tag :theme %>
+  <%= javascript_include_tag :defaults, :jstree, :fancybox, :cache => true %>
+
 </head>
 <body id="application">
 

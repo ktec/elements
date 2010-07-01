@@ -1,32 +1,54 @@
 /* LAYOUTS */
+html, body {
+	margin: 0;
+	padding: 0;	
+}
+
 body#plain {
-    background: #fff;
+    background: #F2F2F2;
 }
 
 body#application {
     padding: 25px;
-    background: #ccc;
+    background: #F2F2F2;
 }
 
 body#custom {
     padding: 25px;
-    background: #ccc;
+    background: #F2F2F2;
 }
 
 body#page {
     padding: 25px;
-    background: #ddd;
+    background: #F2F2F2;
+}
+
+h1 {
+	font-family: "Museo 700", Arial;
+}
+
+hr {
+	border: none;
+	height: 1px; line-height: 1px;
+	background: #D8D8D8;
+	margin-bottom: 20px;
+	padding: 0;
 }
 
 /* CONTENT AREA */
 #content {
-    clear: both;
-    padding: 25px;
-    /*min-height: 420px;*/
-    height: auto !important;
-    height: 420px;
-    background: #fff;
-    border: 1px solid #eee;
+  clear: both;
+  padding: 25px;
+  min-height: 420px;
+  height: auto !important;
+  height: 420px;
+  border: 1px solid #D2D2D2;
+	-moz-box-shadow: 0 0 30px #CCC;
+	-webkit-box-shadow: 0 0 30px #CCC;
+	box-shadow: 0 0 30px #CCC;
+	background: #FFF;
+  /*background: -webkit-gradient(linear, left top, left 15, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));*/
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 15px);
 }
 
 #page_share_links {

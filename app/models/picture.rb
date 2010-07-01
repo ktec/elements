@@ -6,7 +6,7 @@ class Picture < ActiveRecord::Base
     :styles => { 
         :tiny_thumb => "50x20>", 
         :small_thumb =>"100x100>", 
-        :thumb => "200x200>", 
+        :thumb => "200x200", 
         :large => "640x480>" }#,
         #:custom => Proc.new { |instance| "#{instance.image_width}x#{instance.image_height}>" } }
     #:path => "/:class/:id/:style/:filename"
