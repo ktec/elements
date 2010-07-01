@@ -4,5 +4,4 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :element, :allow_destroy => true
   validates_presence_of :title
   liquid_methods :title, :description, :keywords
-  acts_as_taggable_on :tags
 end

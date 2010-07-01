@@ -4,6 +4,7 @@
   <tr>
     <th>Title</th>
     <th>Description</th>
+    <th>Tags</th>
     <th>Image</th>
   </tr>
 
@@ -11,7 +12,8 @@
   <tr>
     <td><%=h picture.title %></td>
     <td><%=h picture.description %></td>
-    <td><%=h picture.image %></td>
+    <td><%=h picture.element.tag_list %></td>
+    <td><%= image_tag picture.image.url(:tiny_thumb) if picture.image.file? %></td>
     <td><%= link_to 'Show', picture %></td>
     <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
     <td><%= link_to 'Destroy', picture, :confirm => 'Are you sure?', :method => :delete %></td>

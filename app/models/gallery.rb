@@ -8,5 +8,4 @@ class Gallery < ActiveRecord::Base
   def pictures
     element.children.by_type('Picture') #.each { |e| n ||<< e.attachable }
   end
-  acts_as_taggable_on :tags
 end
