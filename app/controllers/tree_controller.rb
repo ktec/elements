@@ -1,5 +1,5 @@
 class TreeController < ApplicationController
-
+  
   # GET /tree/children
   # POST /tree/children
   def children
@@ -24,9 +24,12 @@ class TreeController < ApplicationController
     end
     respond_to do |format|
       format.json do
-        render :update do |page|
-          page.replace_html "properties", :partial => "elements/element.html.erb"
-        end
+        #redirect_to :controller => "element", :action => "edit", :params => { :element => @element }
+        render :template => "elements/edit.html.erb", :locals => { :element => @element }
+        #render :update do |page|
+        #  page.replace_html "properties", :partial => "elements/edit.html.erb"
+        #  page.visual_effect :highlight, "properties"
+        #end
       end
 
       #format.json { render @element, :template => false }

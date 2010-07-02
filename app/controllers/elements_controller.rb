@@ -1,6 +1,6 @@
 class ElementsController < InheritedResources::Base
   respond_to :html, :xml, :json
-  respond_to :js, :only => :new_component
+  respond_to :js, :only => [:new_component, :edit]
   #respond_to :iphone, :except => [ :edit, :update ]
 
   # Require authentication for edit and delete.
@@ -22,6 +22,12 @@ class ElementsController < InheritedResources::Base
   
   def index
     @elements = apply_scopes(Element).all
+  end
+  
+  def edit
+    edit! do |format|
+      format.js { render "edit.html.erb", :layout => false, :content_type => Mime::HTML }
+    end
   end
   
   # GET /elements/new_component
@@ -46,6 +52,11 @@ class ElementsController < InheritedResources::Base
   
   def expire_cache
     expire_action :action => :edit
+  end
+  
+  def render(*args)
+  	#args.first[:layout] = false if request.xhr? and args.first[:layout].nil?
+	  super
   end
   
 end

@@ -204,22 +204,16 @@ $(function () {
 			);
 		})
 		.bind("select_node.jstree", function (e, data) {
-			$.post(
-				"/tree/select",
-				{
-					"id" : data.rslt.obj.attr("id").replace("node_",""),
-				},
-				function (r) {
-					if(!r.status) {
-            //console.log("select node")
-					}
-					else {
-            alert("got here instead")
-					}
-				}
-      )
-      //alert(data.rslt.obj.attr("id").replace("node_",""));
-      //alert(data.rslt.obj.attr("rel").replace("node_",""))
+      var id = data.rslt.obj.attr("id").replace("node_","");
+      var url = "/elements/" + id + "/edit";
+      $.ajax({
+        type: 'GET',
+        dataType: 'script',
+        url: url,
+        success: function(data) {
+          $('#properties').html(data);
+        }
+      });
     })
 		.bind("move_node.jstree", function (e, data) {
 			$.post(
@@ -347,12 +341,14 @@ $(function () {
   
   
     <div id="menu2">
+    <!--
       <input type="button" id="edit" value="edit" style="display:block; float:left;"/>
       <input type="button" id="rename" value="rename" style="display:block; float:left;"/>
       <input type="button" id="remove" value="remove" style="display:block; float:left;"/>
       <input type="button" id="cut" value="cut" style="display:block; float:left;"/>
       <input type="button" id="copy" value="copy" style="display:block; float:left;"/>
       <input type="button" id="paste" value="paste" style="display:block; float:left;"/>
+    -->
       <!--
       <input type="button" id="clear_search" value="clear" style="display:block; float:right;"/>
       <input type="button" id="search" value="search" style="display:block; float:right;"/>
@@ -379,9 +375,9 @@ $(document).ready(function () {
 			center__paneSelector:	".ui-layout-center" 
 		,	west__paneSelector:		".ui-layout-west" 
 		,	north__paneSelector:		".ui-layout-north" 
-		,	west__size:				  300 
-		,	north__size:        100 
-		,	spacing_open:			  8  // ALL panes
+		,	west__size:				  250 
+		,	north__size:        50 
+		,	spacing_open:			  4  // ALL panes
 		,	spacing_closed:		  12 // ALL panes
 		,	center__onresize:		"innerLayout.resizeAll" 
 		}); 

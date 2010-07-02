@@ -1,6 +1,9 @@
 /*LAYOUTS */
-*{
-  font-family:"Helvetica Neue";
+p {
+font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;*/
+}
+h1,h2,h3,h4,h5,h6 {
+font-family: Helvetica, “Helvetica Neue”, Arial, sans-serif 
 }
 html, body {
 	margin: 0;
