@@ -6,6 +6,7 @@ ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :theme => [
   'themes/base/jquery.ui.all.css'
 ]
 
+
 # FancyPants #
 ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :fancybox => [
 	"/javascripts/fancybox/jquery.fancybox-1.3.1.css"
@@ -21,4 +22,10 @@ ActionView::Helpers::AssetTagHelper.register_javascript_expansion :jstree => [
   'jstree/jquery.jstree', 
   'jstree/_lib/jquery.cookie', 
   'jstree/_lib/jquery.hotkeys'
+]
+
+
+# jquery layout
+ActionView::Helpers::AssetTagHelper.register_javascript_expansion :layout => [
+  'jquery.layout.min'
 ]

@@ -13,7 +13,26 @@ class TreeController < ApplicationController
       format.json { render "index.json.erb" }
     end
   end
+  
+  # GET /tree/select
+  def select
+    id = params[:id]
+    if id == ""||id.nil?
+      @element = Element.roots
+    else
+      @element = (Element.exists?(id)) ? Element.find(id) : nil
+    end
+    respond_to do |format|
+      format.json do
+        render :update do |page|
+          page.replace_html "properties", :partial => "elements/element.html.erb"
+        end
+      end
 
+      #format.json { render @element, :template => false }
+    end
+  end
+  
   # GET /tree
   def index
     respond_to do |format|

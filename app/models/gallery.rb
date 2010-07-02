@@ -6,6 +6,6 @@ class Gallery < ActiveRecord::Base
   #has_many :pictures, :joins => :elements, :conditions => { :attachable_type => "Picture" }
   #liquid_methods :title, :description, :keywords
   def pictures
-    element.children.by_type('Picture') #.each { |e| n ||<< e.attachable }
+    element.children.by_type('Picture').map{|element|element.attachable}#.each { |e| n ||<< e.attachable }
   end
 end

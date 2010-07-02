@@ -2,8 +2,6 @@
 html, body { margin:0; padding:0; }
 body, td, th, pre, code, select, option, input, textarea { font-family:verdana,arial,sans-serif; font-size:10px; }
 .demo, .demo input, .jstree-dnd-helper, #vakata-contextmenu { font-size:10px; font-family:Verdana; }
-#container { width:780px; margin:10px auto; overflow:hidden; position:relative; }
-#demo { width:auto; height:400px; overflow:auto; border:1px solid gray; }
 
 #menu { height:50px; overflow:auto; }
 #menu2 { height:40px; overflow:auto; }
@@ -12,35 +10,8 @@ body, td, th, pre, code, select, option, input, textarea { font-family:verdana,a
 #alog { font-size:9px !important; margin:5px; border:1px solid silver; }
 </style>
 
-<div id="container">
-
-<div id="menu">
-<input type="button" id="add_Domain" value="add domain" style="display:block; float:left;"/>
-<input type="button" id="add_Page" value="add page" style="display:block; float:left;"/>
-<input type="button" id="add_Paragraph" value="add text" style="display:block; float:left;"/>
-<input type="button" id="add_Picture" value="add picture" style="display:block; float:left;"/>
-<input type="button" id="add_Link" value="add link" style="display:block; float:left;"/>
-<input type="button" id="add_Gallery" value="add gallery" style="display:block; float:left;"/>
-<input type="button" id="add_Stylesheet" value="add stylesheet" style="display:block; float:left;"/>
-<input type="button" id="add_HtmlElement" value="add htmlelement" style="display:block; float:left;"/>
-<input type="button" id="add_Article" value="add article" style="display:block; float:left;"/>
-</div>
 
 
-<div id="menu2">
-<input type="button" id="properties" value="properties" style="display:block; float:left;"/>
-<input type="button" id="rename" value="rename" style="display:block; float:left;"/>
-<input type="button" id="remove" value="remove" style="display:block; float:left;"/>
-<input type="button" id="cut" value="cut" style="display:block; float:left;"/>
-<input type="button" id="copy" value="copy" style="display:block; float:left;"/>
-<input type="button" id="paste" value="paste" style="display:block; float:left;"/>
-<input type="button" id="clear_search" value="clear" style="display:block; float:right;"/>
-<input type="button" id="search" value="search" style="display:block; float:right;"/>
-<input type="text" id="text" value="" style="display:block; float:right;" />
-</div>
-
-<!-- the tree container (notice NOT an UL node) -->
-<div id="demo" class="demo"></div>
 <!-- JavaScript neccessary for the tree -->
 <script type="text/javascript">
 $(function () {
@@ -181,6 +152,9 @@ $(function () {
 				"initially_open" : [ "node_2" , "node_3" ]
 			}
 		})
+		.bind("edit.jstree", function (e, data) {
+      alert("edit tree event")
+		})
 		.bind("create.jstree", function (e, data) {
 			$.post(
 				"/tree/create",
@@ -230,6 +204,24 @@ $(function () {
 				}
 			);
 		})
+		.bind("select_node.jstree", function (e, data) {
+			$.post(
+				"/tree/select",
+				{
+					"id" : data.rslt.obj.attr("id").replace("node_",""),
+				},
+				function (r) {
+					if(!r.status) {
+            //console.log("select node")
+					}
+					else {
+            alert("got here instead")
+					}
+				}
+      )
+      //alert(data.rslt.obj.attr("id").replace("node_",""));
+      //alert(data.rslt.obj.attr("rel").replace("node_",""))
+    })
 		.bind("move_node.jstree", function (e, data) {
 			$.post(
 				"/tree/update",
@@ -258,6 +250,7 @@ $(function () {
 });
 </script>
 <script type="text/javascript">
+
 $(function () {
 	$("#menu input,#menu2 input").click(function () {
 		switch(this.id) {
@@ -278,7 +271,9 @@ $(function () {
 				$("#demo").jstree("search", document.getElementById("text").value);
 				break;
 			case "text": break;
-			default:
+      case "edit":
+        alert("dont know how to get the id here");
+      default:
 				$("#demo").jstree(this.id);
 				break;
 		}
@@ -294,5 +289,100 @@ $(function () {
 </div>
 -->
 
-</div>
+	<style type="text/css">
+	/**
+	 *	Basic Layout Theme
+	 *
+	 *	This theme uses the default layout class-names for all classes
+	 *	Add any 'custom class-names', from options: paneClass, resizerClass, togglerClass
+	 */
 
+	.ui-layout-pane { /* all 'panes' */
+		background: #FFF;
+		border: 1px solid #BBB;
+		padding: 10px;
+		overflow: auto;
+	}
+
+	.ui-layout-resizer { /* all 'resizer-bars' */
+		background: #DDD;
+	}
+
+	.ui-layout-toggler { /* all 'toggler-buttons' */
+		background: #AAA;
+	}
+
+	.middle-center {
+		/* center pane that are 'containers' for a nested layout */ 
+		padding: 0; 
+		border: 0;
+    height:400px;
+    min-height:500px;
+	} 
+
+  #content {
+		padding: 8px; 
+		border: 0;
+  }
+
+	</style>
+
+
+<div class="middle-center">
+
+  <div class="ui-layout-north">
+  
+    <div id="menu">
+      <input type="button" id="add_Domain" value="add domain" style="display:block; float:left;"/>
+      <input type="button" id="add_Page" value="add page" style="display:block; float:left;"/>
+      <input type="button" id="add_Paragraph" value="add text" style="display:block; float:left;"/>
+      <input type="button" id="add_Picture" value="add picture" style="display:block; float:left;"/>
+      <input type="button" id="add_Link" value="add link" style="display:block; float:left;"/>
+      <input type="button" id="add_Gallery" value="add gallery" style="display:block; float:left;"/>
+      <input type="button" id="add_Stylesheet" value="add stylesheet" style="display:block; float:left;"/>
+      <input type="button" id="add_HtmlElement" value="add htmlelement" style="display:block; float:left;"/>
+      <input type="button" id="add_Article" value="add article" style="display:block; float:left;"/>
+    </div>
+  
+  
+    <div id="menu2">
+      <input type="button" id="edit" value="edit" style="display:block; float:left;"/>
+      <input type="button" id="rename" value="rename" style="display:block; float:left;"/>
+      <input type="button" id="remove" value="remove" style="display:block; float:left;"/>
+      <input type="button" id="cut" value="cut" style="display:block; float:left;"/>
+      <input type="button" id="copy" value="copy" style="display:block; float:left;"/>
+      <input type="button" id="paste" value="paste" style="display:block; float:left;"/>
+      <!--
+      <input type="button" id="clear_search" value="clear" style="display:block; float:right;"/>
+      <input type="button" id="search" value="search" style="display:block; float:right;"/>
+      <input type="text" id="text" value="" style="display:block; float:right;" />
+      -->
+    </div>
+  
+  </div>
+
+  <div class="ui-layout-west">
+    <!-- the tree container (notice NOT an UL node) -->
+    <div id="demo" class="demo"></div>
+  </div>
+
+  <div class="ui-layout-center">
+    <div id="properties" class="properties"></div>
+  </div>
+
+<div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+		middleLayout = $('div.middle-center').layout({ 
+			center__paneSelector:	".ui-layout-center" 
+		,	west__paneSelector:		".ui-layout-west" 
+		,	north__paneSelector:		".ui-layout-north" 
+		,	west__size:				  300 
+		,	north__size:        100 
+		,	spacing_open:			  8  // ALL panes
+		,	spacing_closed:		  12 // ALL panes
+		,	center__onresize:		"innerLayout.resizeAll" 
+		}); 
+});
+</script>

@@ -1,4 +1,7 @@
-/* LAYOUTS */
+/*LAYOUTS */
+*{
+  font-family:"Helvetica Neue";
+}
 html, body {
 	margin: 0;
 	padding: 0;	
