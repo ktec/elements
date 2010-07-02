@@ -29,3 +29,12 @@ ActionView::Helpers::AssetTagHelper.register_javascript_expansion :jstree => [
 ActionView::Helpers::AssetTagHelper.register_javascript_expansion :layout => [
   'jquery.layout.min'
 ]
+
+# textile editor
+ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :textile_editor => [
+	"textile-editor"
+]
+ActionView::Helpers::AssetTagHelper.register_javascript_expansion :textile_editor => [
+  'textile-editor-config',
+  'textile-editor'
+]

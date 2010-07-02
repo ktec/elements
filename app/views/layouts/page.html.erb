@@ -7,7 +7,7 @@
   <title><%= yield(:title) %></title>
   <meta name="keywords" content="<%=yield(:keywords)%>"/>
   <meta name="description" content="<%=yield(:description)%>"/>
-  <%= stylesheet_link_tag :theme, :fancybox %>
+  <%= stylesheet_link_tag :theme, :fancybox, :cache => true %>
   <%= javascript_include_tag :defaults, :jstree, :fancybox, :cache => true %>
 </head>
 <body id="page">
