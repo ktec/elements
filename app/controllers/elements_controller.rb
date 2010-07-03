@@ -5,6 +5,7 @@ class ElementsController < InheritedResources::Base
 
   # Require authentication for edit and delete.
   before_filter :tag_cloud, :only => [:index]
+  before_filter :set_attachable, :only => [:new, :update, :new_component]
   
   # this way allows us to browse via the polymorphic controllers
   #belongs_to :page,:picture,:domain, :polymorphic => true, :optional => true, :singleton => true
@@ -28,6 +29,10 @@ class ElementsController < InheritedResources::Base
     edit! do |format|
       format.js { render "edit.html.erb", :layout => false, :content_type => Mime::HTML }
     end
+  end
+  
+  def set_attachable
+    @classname = "element_attachable_attributes"
   end
   
   def destroy
