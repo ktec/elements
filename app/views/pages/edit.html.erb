@@ -1,6 +1,6 @@
 <h1>Editing page</h1>
 
-<% form_for(@page, :html => {:multipart => true}) do |f| %>
+<% form_for(@page, :html => {:multipart => true, 'data-remote' => true}) do |f| %>
   <%= f.error_messages %>
 
   <%= render "form", :f => f %>

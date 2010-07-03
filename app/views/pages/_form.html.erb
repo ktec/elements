@@ -6,7 +6,7 @@
   </ul>
   <div id="<%= @classname %>_tab1">
     <fieldset id="<%= @classname %>">
-      <%= f.hidden_field :attachable_type, :value => f.object.class.to_s %>
+      <%= f.hidden_field :attachable_type, :value => f.object.class.to_s unless f.object.is_a?(Page)  %>
       <p>
         <%= f.label :title %><br />
         <%= f.text_field :title %>

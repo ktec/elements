@@ -64,6 +64,8 @@ module Responders
   #
   #     respond_with(@user, :notice => "Hooray! Welcome!", :alert => "Woot! You failed.")
   #
+  # * :flash_now - Sets the flash message using flash.now. Accepts true, :on_failure or :on_sucess.
+  #
   # == Configure status keys
   #
   # As said previously, FlashResponder by default use :notice and :alert
@@ -80,24 +82,30 @@ module Responders
 
     def initialize(controller, resources, options={})
       super
-      @flash  = options.delete(:flash)
-      @notice = options.delete(:notice)
-      @alert  = options.delete(:alert)
+      @flash     = options.delete(:flash)
+      @notice    = options.delete(:notice)
+      @alert     = options.delete(:alert)
+      @flash_now = options.delete(:flash_now)
     end
 
     def to_html
-      super
       set_flash_message! if set_flash_message?
+      super
+    end
+
+    def to_js
+      set_flash_message! if set_flash_message?
+      to_format
     end
 
   protected
 
     def set_flash_message!
       if has_errors?
-        controller.flash[:alert] ||= @alert if @alert
+        set_flash(:alert, @alert)
         status = Responders::FlashResponder.flash_keys.last
       else
-        controller.flash[:notice] ||= @notice if @notice
+        set_flash(:notice, @notice)
         status = Responders::FlashResponder.flash_keys.first
       end
 
@@ -105,7 +113,18 @@ module Responders
 
       options = mount_i18n_options(status)
       message = ::I18n.t options[:default].shift, options
-      controller.flash[status] = message unless message.blank?
+      set_flash(status, message)
+    end
+
+    def set_flash(key, value)
+      return if value.blank?
+      flash = controller.flash
+      flash = flash.now if set_flash_now?
+      flash[key] ||= value
+    end
+
+    def set_flash_now?
+      (@flash_now == true) || (has_errors? ? @flash_now == :on_failure : @flash_now == :on_success) || (format == :js)
     end
 
     def set_flash_message? #:nodoc:

@@ -55,6 +55,15 @@ end
 class SuperProjectsController < ProjectsController
 end
 
+class NonInheritedResourcesController < ActionController::Base
+  def index
+    respond_to do |format|
+      format.xml { render :text => 'Render XML' }
+      format.any { render :text => 'Render HTML' }
+    end
+  end
+end
+
 class RespondToFunctionalTest < ActionController::TestCase
   tests ProjectsController
 
@@ -150,6 +159,16 @@ class RespondToFunctionalTest < ActionController::TestCase
   def test_respond_to_skip_default_template_when_it_is_in_block
     @request.accept = '*/*'
     get :respond_to_skip_default_template
+    assert_equal 'Render HTML', @response.body.strip
+  end
+end
+
+class RespondToFunctionalStandardControllerTest < ActionController::TestCase
+  tests NonInheritedResourcesController
+  
+  def test_respond_with_no_specific_format
+    @request.accept = 'application/xml,application/xhtml+xml,text/html'
+    get :index
     assert_equal 'Render HTML', @response.body.strip
   end
 end

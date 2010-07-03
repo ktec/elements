@@ -38,9 +38,9 @@ Rails::Initializer.run do |config|
   config.gem "ancestry" # for hierarchy of elements
   config.gem "paperclip" # for attachments
   config.gem "acts-as-taggable-on" # for tagging elements
-  config.gem "inherited_resources", :version => "1.0.2"
+  config.gem "inherited_resources", :version => "1.0.6"
   config.gem "has_scope"
-  config.gem "responders", :version => ">=0.4.2"
+  config.gem "responders", :version => ">=0.4.3"
   config.gem "liquid" # for page templates
   config.gem "RedCloth" # for content markup
 
