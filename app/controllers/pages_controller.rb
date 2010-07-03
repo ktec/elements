@@ -6,13 +6,7 @@ class PagesController < InheritedResources::Base
   before_filter :authenticate_user!, :only => [ :edit, :update, :destroy ]
   caches_page :index, :show
   layout :set_layout
-  
-  def update
-    # uncomment this to display a flash message
-    # flash.now[:alert] = "Hello world"
-    update!
-  end
-  
+    
   private
     def set_layout
       (action_name == "show"  && @page && @page.layout_name) || 'page'
