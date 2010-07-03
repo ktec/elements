@@ -12,7 +12,7 @@
   </tr>
 
 <% @elements.each do |element| %>
-  <tr>
+  <tr id="element-<%=h element.id %>">
     <td><%=h element.name %></td>
     <td><%=h element.position %></td>
     <td><%=h element.tag_list %></td>
@@ -22,7 +22,7 @@
     <td><%=h element.attachable_type %></td>
     <td class="show"><%= link_to content_tag("span",'Show'), element %></td>
     <td class="edit"><%= link_to content_tag("span",'Edit'), edit_element_path(element) %></td>
-    <td class="destroy"><%= link_to content_tag("span",'Destroy'), element, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="destroy"><%= link_to content_tag("span",'Destroy'), element, :confirm => 'Are you sure?', "data-remote" => true, "data-method" => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -1,11 +1,12 @@
 <h1>Editing element</h1>
 
-<% form_for(@element, :html => {:multipart => true}) do |f| %>
+<% form_for(@element, :html => {:multipart => true,'data-remote' => true}) do |f| %>
   <%= f.error_messages %>
 
   <%= render "form", :f => f %>
   <p>
     <%= f.submit 'Update' %>
+    <%= submit_to_remote 'commit', 'Update', :update => { :success => "succeed", :failure => "fail" } %>
   </p>
 <% end %>
 

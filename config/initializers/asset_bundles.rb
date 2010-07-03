@@ -1,3 +1,10 @@
+# Add Jquery rails support
+ActionView::Helpers::AssetTagHelper.register_javascript_expansion :defaults => [
+'jquery.min',
+'rails',
+'jquery-ui.min'
+]
+
 # Default stylesheet asset pack set #
 ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :theme => [
   'scaffold', 

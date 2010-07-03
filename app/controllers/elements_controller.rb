@@ -1,6 +1,6 @@
 class ElementsController < InheritedResources::Base
   respond_to :html, :xml, :json
-  respond_to :js, :only => [:new_component, :edit]
+  respond_to :js #, :only => [:new_component, :edit]
   #respond_to :iphone, :except => [ :edit, :update ]
 
   # Require authentication for edit and delete.
@@ -41,7 +41,7 @@ class ElementsController < InheritedResources::Base
       if @element.errors.empty?
         format.json { render :json => { :status => "200", :id => @element.id }, :template => false }
       else
-        format.json { render :json => { :status => "error", :errors => @element.errors.full_messages }, :template => false }
+        format.json { render :json => { :status => "500", :errors => @element.errors.full_messages }, :template => false }
       end
     end
   end
