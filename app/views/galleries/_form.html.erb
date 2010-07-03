@@ -1,4 +1,4 @@
-<% @classname = f.object.class.to_s.downcase %>
+<% @classname ||= f.object.class.to_s.downcase %>
 <div id="<%= @classname %>_form_tabs">
   <ul>
     <li><a href="#<%= @classname %>_tab1">Settings</a></li>

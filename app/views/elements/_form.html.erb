@@ -21,12 +21,7 @@
   </div>
   <div id="element_tab2">
     <%= f.select "attachable_type", Element::COMPONENTS,
-      { :prompt => "Select one:" },
-      { :onchange => remote_function(
-                        :url => new_component_elements_url,
-                        :with => "'attachable_type='+this.value",
-                        :update => "component")
-      } %>
+      { :prompt => "Select one:" } %>
     <div id="component">
     <% if !f.object.nil? and f.object.has_attachable? %>
       <% f.fields_for :attachable, f.object.attachable do |builder|  %>
@@ -40,5 +35,13 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $("#element_form_tabs").tabs();
+    $('#element_attachable_type').change(function() {
+      var type = $(this).val();
+      $.post(
+        '<%= new_component_elements_url %>',
+        {attachable_type:type},
+        function (data){$("#component").html(data)}
+      )
+    });
   });
 </script>
