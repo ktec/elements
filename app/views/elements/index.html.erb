@@ -20,22 +20,40 @@
     <td><%=h element.ancestry_depth %></td>
     <td><%=h element.attachable_id %></td>
     <td><%=h element.attachable_type %></td>
-    <td><%= link_to 'Show', element %></td>
-    <td><%= link_to 'Edit', edit_element_path(element) %></td>
-    <td><%= link_to 'Destroy', element, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="show"><%= link_to content_tag("span",'Show'), element %></td>
+    <td class="edit"><%= link_to content_tag("span",'Edit'), edit_element_path(element) %></td>
+    <td class="destroy"><%= link_to content_tag("span",'Destroy'), element, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
+<style>
+.show a,.edit a,.destroy a {
+	display:block;
+	width:16px; height:16px;
+	margin:0; padding:0;
+	text-decoration: none;
+}
+.show a span,.edit a span,.destroy a span {
+  display:none;
+}
+.show a {
+	background: url("/images/actions/view.png") top left no-repeat;
+}
+.edit a {
+	background: url("/images/actions/edit.gif") top left no-repeat;
+}
+.destroy a {
+	background: url("/images/actions/delete.png") top left no-repeat;
+}
+
+
+</style>
+  
 <br />
 
 <%= link_to 'New element', new_element_path %>
 
 <br />
 
-<div class="tag_cloud">
-<h1 class="heading">Tag Cloud</h1>
-<% tag_cloud(@tags, %w(tag1 tag2 tag3 tag4)) do |tag, css_class| %>
-  <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
-<% end %>
-</div>
+<%= render :partial => "tag_cloud" %>

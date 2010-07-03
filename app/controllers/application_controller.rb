@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
   
   def get_domain
-    @domain ||= Domain.find_by_name(request.domain)
+    @domain ||= Domain.find_by_name(request.host)
   end
   
 end

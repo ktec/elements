@@ -45,9 +45,9 @@ hr {
 #content {
   clear: both;
   padding: 25px;
-  min-height: 420px;
+  min-height: 800px;
   height: auto !important;
-  height: 420px;
+  height: 800px;
   border: 1px solid #D2D2D2;
 	-moz-box-shadow: 0 0 30px #CCC;
 	-webkit-box-shadow: 0 0 30px #CCC;

@@ -155,7 +155,7 @@ $(function () {
       var type = data.rslt.obj.attr("rel");
 			$.post(
 				"/elements/",
-				{
+        { 
           "element" : {
             "id" : "new_element",
             "name" : data.rslt.name,
@@ -163,11 +163,14 @@ $(function () {
             "position" : data.rslt.position,
             "tag_list" : type,
             "attachable_type" : type,
+          // here we need to set up some json templates for
+          // each new attachable - eg. Paragraph content can't be blank
             "attachable_attributes": {
               "attachable_type" : type,
               "title" : data.rslt.name,
               "description" : "",
               "keywords" : "",
+              "content" : "Something here...",
               "show_share_links" : 1
             }
           }
@@ -248,7 +251,7 @@ $(function () {
 							data.inst.refresh(data.rslt.oc);
 						}
 					}
-					$("#analyze").click();
+					//$("#analyze").click();
 				}
 			);
 		});
@@ -321,8 +324,8 @@ $(function () {
 		/* center pane that are 'containers' for a nested layout */ 
 		padding: 0; 
 		border: 0;
-    height:400px;
-    min-height:500px;
+    height:800px;
+    min-height:600px;
 	} 
 
   #content {

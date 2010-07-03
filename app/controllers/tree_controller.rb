@@ -1,4 +1,6 @@
 class TreeController < ApplicationController
+
+  before_filter :authenticate_user!
   
   # GET /tree/children
   # POST /tree/children
@@ -13,29 +15,7 @@ class TreeController < ApplicationController
       format.json { render "index.json.erb" }
     end
   end
-  
-  # GET /tree/select
-  def select
-    id = params[:id]
-    if id == ""||id.nil?
-      @element = Element.roots
-    else
-      @element = (Element.exists?(id)) ? Element.find(id) : nil
-    end
-    respond_to do |format|
-      format.json do
-        #redirect_to :controller => "element", :action => "edit", :params => { :element => @element }
-        render :template => "elements/edit.html.erb", :locals => { :element => @element }
-        #render :update do |page|
-        #  page.replace_html "properties", :partial => "elements/edit.html.erb"
-        #  page.visual_effect :highlight, "properties"
-        #end
-      end
-
-      #format.json { render @element, :template => false }
-    end
-  end
-  
+    
   # GET /tree
   def index
     respond_to do |format|

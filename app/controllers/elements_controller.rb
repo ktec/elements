@@ -15,7 +15,7 @@ class ElementsController < InheritedResources::Base
 
   has_scope :featured, :type => :boolean
   has_scope :by_tag
-  has_scope :limit, :default => 10, :only => :index
+  has_scope :limit, :default => 1000, :only => :index
   has_scope :by_type
  
   caches_action :tag_cloud

@@ -22,11 +22,11 @@ module ApplicationHelper
     end
     #link_to_function(name, h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
   end
-  def navigation_for(domain = request.domain)
-    @domain = Domain.find_by_name(domain)
-    unless @domain.blank?
+  def navigation_for(domain)
+    #@domain = Domain.find_by_name(domain)
+    unless domain.blank?
       content_for :navigation do
-        convert_to_list(@domain.element)
+        convert_to_list(domain.element)
       end
     end
   end

@@ -1,11 +1,12 @@
 Home
 
 <%
+# TODO: DRY this into a helper function
 unless @domain.blank?
   page_title @domain.title
   content_for :description, @domain.description
   content_for :keywords, @domain.keywords
-  navigation_for(@domain.name)
+  navigation_for(@domain)
 end
 %>
 

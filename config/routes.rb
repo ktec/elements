@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+
+  map.elements_by_tag "elements/tag/:by_tag", :controller => :elements
+  map.elements_by_type "elements/type/:by_type", :controller => :elements
+  
   map.resources :galleries
 
   map.resources :paragraphs
@@ -22,8 +26,6 @@ ActionController::Routing::Routes.draw do |map|
     elements.resource :domain
   end
   
-  map.elements_by_tag "elements/tag/:by_tag", :controller => :elements
-  map.elements_by_type "elements/type/:by_type", :controller => :elements
   map.tree "tree/:action", :controller => :tree
 
   # The priority is based upon order of creation: first created -> highest priority.

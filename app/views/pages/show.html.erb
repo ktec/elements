@@ -2,7 +2,7 @@
 page_title h(@page.title)
 content_for :description, h(@page.description)
 content_for :keywords, h(@page.title)
-navigation_for(request.domain)
+navigation_for(@domain)
 
 if user_signed_in?
   flash[:notice] = "You should consider adding a title to this page.<br/>" if (@page.title == "")
