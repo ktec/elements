@@ -43,27 +43,6 @@ class TreeController < ApplicationController
     end
   end
 
-  # POST /tree/create
-  def create
-    @element = Element.new
-    @element.name = params[:title]
-    unless params[:type].nil?
-      class_name = params[:type]
-      if class_exists?(class_name)
-        @element.attachable = class_name.constantize.new(params)
-      end
-    end
-    @element.parent = Element.find(params[:id]) if Element.exists?(params[:id]) 
-		@element.position = params[:position]
-    respond_to do |format|
-      if @element.save!
-        format.json { render :json => { :status => "200", :id => @element.id }, :template => false }
-      else
-        format.json { render :json => { :status => @element.errors }, :template => false }
-      end
-    end
-  end
-
   # PUT /tree/update
   def update
     respond_to do |format|
@@ -85,15 +64,6 @@ class TreeController < ApplicationController
             format.json { render :json => { :status => :unprocessable_entity } }
           end
       end
-    end
-  end
-
-  # POST /tree/destroy
-  def destroy
-    @element = Element.find(params[:id])
-    @element.destroy
-    respond_to do |format|
-      format.json { render :nothing => true }
     end
   end
 

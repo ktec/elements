@@ -142,7 +142,7 @@ $(function () {
 			// the UI plugin - it handles selecting/deselecting/hovering nodes
 			"ui" : {
 				// this makes the node with ID node_4 selected onload
-				"initially_select" : [ "node_4" ]
+				"initially_select" : [ "node_1" ]
 			},
 			// the core plugin - not many options here
 			"core" : {
@@ -151,40 +151,52 @@ $(function () {
 				"initially_open" : [ "node_2" , "node_3" ]
 			}
 		})
-		.bind("edit.jstree", function (e, data) {
-      alert("edit tree event")
-		})
 		.bind("create.jstree", function (e, data) {
+      var type = data.rslt.obj.attr("rel");
 			$.post(
-				"/tree/create",
+				"/elements/",
 				{
-					"id" : data.rslt.parent.attr("id").replace("node_",""),
-					"position" : data.rslt.position,
-					"title" : data.rslt.name,
-					"type" : data.rslt.obj.attr("rel"),
-          "content" : "Something..."
+          "element" : {
+            "id" : "new_element",
+            "name" : data.rslt.name,
+            "parent_id" : data.rslt.parent.attr("id").replace("node_",""),
+            "position" : data.rslt.position,
+            "tag_list" : type,
+            "attachable_type" : type,
+            "attachable_attributes": {
+              "attachable_type" : type,
+              "title" : data.rslt.name,
+              "description" : "",
+              "keywords" : "",
+              "show_share_links" : 1
+            }
+          }
 				},
 				function (r) {
-					if(r.status) {
+					if(r.status == "200") {
 						$(data.rslt.obj).attr("id", "node_" + r.id);
 					}
 					else {
-						$.jstree.rollback(data.rlbk);
+            alert("Eeek something went wrong: " + r.errors)
+  					$.jstree.rollback(data.rlbk);
 					}
-				}
+				},
+        "json"
 			);
 		})
 		.bind("remove.jstree", function (e, data) {
-			$.post(
-				"/tree/destroy",
-				{
-					"operation" : "remove_node",
-					"id" : data.rslt.obj.attr("id").replace("node_","")
+      var id = data.rslt.obj.attr("id").replace("node_","");
+      // rails wants a form post with _method
+      $.post(
+				"/elements/"+id,
+        {
+          _method : "delete"
 				},
 				function (r) {
-					if(!r.status) {
-						$.jstree.rollback(data.rlbk);
-					}
+          alert("We need a response code if this operation failed?")
+					//if(!r.status) {
+					//	$.jstree.rollback(data.rlbk);
+          //}
 				}
 			);
 		})

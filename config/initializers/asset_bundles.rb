@@ -35,6 +35,6 @@ ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :textile_edito
 	"textile-editor"
 ]
 ActionView::Helpers::AssetTagHelper.register_javascript_expansion :textile_editor => [
+  'textile-editor',
   'textile-editor-config',
-  'textile-editor'
 ]

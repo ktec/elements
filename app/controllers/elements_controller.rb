@@ -30,6 +30,22 @@ class ElementsController < InheritedResources::Base
     end
   end
   
+  def destroy
+    destroy! do |format|
+      format.json { render :nothing => true }
+    end
+  end
+
+  def create
+    create! do |format|
+      if @element.errors.empty?
+        format.json { render :json => { :status => "200", :id => @element.id }, :template => false }
+      else
+        format.json { render :json => { :status => "error", :errors => @element.errors.full_messages }, :template => false }
+      end
+    end
+  end
+
   # GET /elements/new_component
   def new_component
     @element = Element.new
