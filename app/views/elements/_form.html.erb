@@ -10,10 +10,10 @@
       <%= f.label :name %><br />
       <%= f.text_field :name %>
     </p>
-    <p>
-      <%= f.label :parent %><br />
-      <%= f.select :parent_id, options_for_select(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.name} #{"(#{i.attachable.class})" if i.has_attachable?}" } %>
-    </p>
+    <!--p>
+      <%#= f.label :parent %><br />
+      <%#= f.select :parent_id, options_for_select(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.name} #{"(#{i.attachable.class})" if i.has_attachable?}" } %>
+    </p-->
     <p>
       <%= f.label :tag_list %><br />
       <%= f.text_field :tag_list %>
