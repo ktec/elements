@@ -1,0 +1,11 @@
+<div id="flash">
+<% flash.each do |name, msg| %>
+<div id="<%= "flash_#{name}" %>" class="msg">
+  <p><%= msg %></p>
+  <script type="text/javascript">
+    $('#flash_<%= name %>').slideDown('slow', function() {});
+    setTimeout("$('#flash_<%= name %>').slideUp('slow', function() {});", 3000)
+  </script>
+</div>
+<% end %>
+</div>

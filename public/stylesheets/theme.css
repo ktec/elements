@@ -29,6 +29,27 @@ body#page {
     background: #F2F2F2;
 }
 
+/* Flashes */
+
+#flash_notice, #flash_error, #flash_alert {
+  width:99.4%;margin: 0 auto;
+  font: 180% 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+  color: #222;
+  text-align: center;
+}
+
+#flash_notice, #flash_alert {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+/* Headings and Paragraphs */
+
 h1 {
 	font-family: "Museo 700", Arial;
 }

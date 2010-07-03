@@ -16,8 +16,7 @@
 
 <body id="custom">
 
-<p style="color: green"><%= notice %></p>
-<p style="color: red"><%= alert %></p>
+<%= render "shared/flashes" %>
 
 <%= liquidize(@page.custom_layout_content,
         'content' => yield, 

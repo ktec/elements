@@ -1,4 +1,8 @@
 // user feedback
 $("#notice").html('<%= flash[:notice] %>');
-$('#element-<%= params[:id]%>').remove();
+var el = $('#element-<%= params[:id]%>');
+el.fadeOut(1000);
+
+
+
  
