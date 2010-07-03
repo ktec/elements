@@ -1,7 +1,7 @@
 <div id="element_form_tabs">
   <ul>
     <li><a href="#element_tab1">Element</a></li>
-    <li><a href="#element_tab2">Attachable</a></li>
+    <li><a href="#element_tab2">Type</a></li>
   </ul>
   <div id="element_tab1">
     <fieldset id="element">
@@ -21,7 +21,7 @@
   </div>
   <div id="element_tab2">
     <%= f.select "attachable_type", Element::COMPONENTS,
-      { :prompt => "Select one:" } %>
+      { :prompt => "Select one:" } if f.object.new_record? %>
     <div id="component">
     <% if !f.object.nil? and f.object.has_attachable? %>
       <% f.fields_for :attachable, f.object.attachable do |builder|  %>
