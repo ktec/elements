@@ -39,7 +39,12 @@
       $(document).ready(function() {
         var ln = $('#<%= @classname %>_layout_name');
         var clc = $('#<%= @classname %>_custom_layout_content');
-        $("#<%= @classname %>_form_tabs").tabs();
+        $("#<%= @classname %>_form_tabs").tabs({
+          cookie: {
+            // store cookie for a day, without, it would be a session cookie
+            expires: 1
+          }
+        });
         if (ln.val() != "custom") {
           clc.hide();
         }

@@ -31,6 +31,12 @@ class ElementsController < InheritedResources::Base
     end
   end
   
+  def update
+    update! do |format|
+      format.html { render "edit.html.erb", :layout => false, :content_type => Mime::HTML }
+    end
+  end
+  
   def set_attachable
     @classname = "element_attachable_attributes"
   end

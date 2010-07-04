@@ -10,9 +10,11 @@
   </p>
   <p>
     <%= f.label :image %><br />
+    <div id="<%= "picture-#{f.object.element.id}-preview" %>">
     <% if f.object.image.file? %>
     <%= image_tag f.object.image.url(:thumb) %>
     <% end %>
+    </div>
     <%= f.file_field :image %>
   </p>
 </fieldset>

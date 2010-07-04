@@ -37,7 +37,12 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-  $("#<%= @classname %>_form_tabs").tabs();
+  $("#<%= @classname %>_form_tabs").tabs({
+    cookie: {
+      // store cookie for a day, without, it would be a session cookie
+      expires: 1
+    }
+  });
   if ($("#<%= @classname %>_layout_name").val() != "custom") {
     $("#<%= @classname %>_custom_layout_content").hide();
   }

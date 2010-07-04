@@ -1,7 +1,7 @@
 <div id="element_form_tabs">
   <ul>
     <li><a href="#element_tab1">Element</a></li>
-    <li><a href="#element_tab2">Type</a></li>
+    <li><a href="#element_tab2"><%= f.object.new_record? ? "Type" : f.object.attachable.class %></a></li>
   </ul>
   <div id="element_tab1">
     <fieldset id="element">
@@ -34,7 +34,12 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function() {
-    $("#element_form_tabs").tabs();
+    $("#element_form_tabs").tabs({
+      cookie: {
+				// store cookie for a day, without, it would be a session cookie
+				expires: 1
+			}
+    });
     $('#element_attachable_type').change(function() {
       var type = $(this).val();
       $.post(

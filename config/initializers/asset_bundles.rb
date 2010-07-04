@@ -2,7 +2,8 @@
 ActionView::Helpers::AssetTagHelper.register_javascript_expansion :defaults => [
 'jquery.min',
 'rails',
-'jquery-ui.min'
+'jquery-ui.min',
+'jquery.form'
 ]
 
 # Default stylesheet asset pack set #
