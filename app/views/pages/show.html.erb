@@ -5,9 +5,9 @@ content_for :keywords, h(@page.title)
 navigation_for(@domain)
 
 if user_signed_in?
-  flash[:notice] = "You should consider adding a title to this page.<br/>" if (@page.title == "")
-  flash[:notice] += "You should consider adding a description to this page." if (@page.description == "") 
-  flash[:notice] += "You should consider adding some keywords to this page.<br/>" if (@page.keywords == "")
+  flash[:notice] ||= ("You should consider adding a title to this page.<br/>" if (@page.title == ""))
+  flash[:notice] ||= ("You should consider adding a description to this page." if (@page.description == "")) 
+  flash[:notice] ||= ("You should consider adding some keywords to this page.<br/>" if (@page.keywords == ""))
 end
 %>
 <h1 class="title"><%=h @page.title %></h1>
