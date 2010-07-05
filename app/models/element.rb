@@ -5,6 +5,7 @@ class Element < ActiveRecord::Base
   default_scope :order => :position
   # Alias for <tt>acts_as_taggable_on :tags</tt>:
   acts_as_taggable
+  acts_as_taggable_on :regions # this allowes us to target specific areas of the page
 
   accepts_nested_attributes_for :attachable
   
@@ -19,7 +20,8 @@ class Element < ActiveRecord::Base
     :attachable_attributes, :tag_list
   validates_presence_of :name, :attachable
 
-  named_scope :featured, :conditions => { :featured => true }
+  named_scope :featured, { :joins => [:taggings,:tags], :conditions => ["tags.name = 'featured'"] }
+  named_scope :by_region, proc {|region| { :joins => [:taggings,:tags], :conditions => ["tagging.context = ? and tags.name = ?", :regions, region ] } }
   named_scope :by_tag, proc {|tag| { :joins => [:taggings,:tags], :conditions => ["tags.name = ?", tag ] } }
   named_scope :limit, proc {|limit| { :limit => limit.to_i } }
   named_scope :by_type, proc {|type| { :conditions => { :attachable_type => type } } }
@@ -29,20 +31,17 @@ class Element < ActiveRecord::Base
   
   COMPONENTS = %w(Page Domain Picture Paragraph Gallery)
   
-  def featured
-    true
-  end
-
   def has_attachable?
     return (attachable_type != "" && attachable_id != "")
   end
   
   def add_child(element,position=nil)
-    #need to add errors to @element.errors and return something
     temp = element.children
     element.ancestry = self.child_ancestry
     element.position = position || siblings.to_i + 1
-    element.save
+    element.save!
+    #need to add errors to @element.errors and return something
+    errors.add_to_base if element.errors
     return element.update_children(temp)
   end
 

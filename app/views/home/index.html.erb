@@ -19,3 +19,7 @@ User controls:
 <%= link_to "sign out", destroy_user_session_url %>
 <% end %>
 
+Featured pages:
+<% @featured_elements.each do |element| %>
+  <%= render element.attachable unless element.attachable.is_a?(Page) %>
+<% end %>
