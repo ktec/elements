@@ -35,35 +35,56 @@ Rails::Initializer.run do |config|
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'UTC'
 
+  # ANCESTRY
   config.gem "ancestry" # for hierarchy of elements
-  config.gem "paperclip" # for attachments
   config.gem "acts-as-taggable-on" # for tagging elements
+  
+  # ATTACHMENTS
+  config.gem "paperclip" # for attachments
+  
+  # ACTION CONTROLLER
   config.gem "inherited_resources", :version => "1.0.6"
   config.gem "has_scope"
   config.gem "responders", :version => ">=0.4.3"
-  config.gem "liquid" # for page templates
-  config.gem "RedCloth" # for content markup
 
+  # AUTHENTICATION
   config.gem "warden"
   config.gem "devise"
-  
-  # TODO: Implement these in future versions
+
+  # SEARCH
   # config.gem "meta_search" # for search
   # acts_as_indexed 
-  # config.gem "acts_as_solr" # might be this websolr-acts_as_solr
   # :git => http://github.com/technoweenie/can_search.git
+  # config.gem "acts_as_solr" # might be this websolr-acts_as_solr
+
+  # AUTHORIZATION
+  # config.gem "declarative_authorization" # for authorization
   # config.gem "declarative_authorization" # for authorization
   
-  # config.gem "formtastic" # for clean forms
-  # config.gem "vestal_versions" # for element/page versioning
-  # http://github.com/hagenburger/lemonade for css spriting
-  # http://github.com/norman/disqus.git for blog post comments
-  # config.gem "will_paginate" # for pagination
+  # CACHING
   # implement memcache on index/show actions
   #   check out this link for gotchas : http://www.whatcodecraves.com/articles/2010/02/24/page_caching_gotcha_on_heroku/index.html
+  
+  # VERSIONING
+  # config.gem "vestal_versions" # for element/page versioning
+  
+  # VIEW HELPERS
+  config.gem "liquid" # for page templates
+  config.gem "RedCloth" # for content markup
+  # config.gem "formtastic" # for clean forms
+  # config.gem "jintastic" # for in place editing 
+  # http://github.com/hagenburger/lemonade for css spriting
+  # config.gem "will_paginate" # for pagination
+  # config.gem "geokit" for location based stuff, geocoding, distance, lat/lng AR lookup and IP based lookup 
+  # http://github.com/vigetlabs/acts_as_markup/ # to support more than just textile
+
+  # BLOG
+  # http://github.com/bscofield/bloget # possible solution for blog component
+  # http://github.com/norman/disqus.git for blog post comments
   
   
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+
 end
