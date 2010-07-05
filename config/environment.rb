@@ -50,12 +50,12 @@ Rails::Initializer.run do |config|
   # TODO: Implement these in future versions
   # config.gem "meta_search" # for search
   # acts_as_indexed 
+  # config.gem "acts_as_solr" # might be this websolr-acts_as_solr
   # :git => http://github.com/technoweenie/can_search.git
   # config.gem "declarative_authorization" # for authorization
   
   # config.gem "formtastic" # for clean forms
-  # config.gem "vestal_versions" # for element versioning
-  # config.gem "acts_as_solr" # might be this websolr-acts_as_solr
+  # config.gem "vestal_versions" # for element/page versioning
   # http://github.com/hagenburger/lemonade for css spriting
   # http://github.com/norman/disqus.git for blog post comments
   # config.gem "will_paginate" # for pagination
