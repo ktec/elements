@@ -30,6 +30,7 @@ body#page {
 
 #flash_notice, #flash_error, #flash_alert {
   float:left;
+  padding-left:4px;
   width:99.4%;margin: 0 auto;
   font: 180% 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
   color: #222;
@@ -72,9 +73,9 @@ hr {
 
 /* NAVIGATION */
 #navigation{
-  clear: both;
-  padding: 25px;
-  margin: 25px;
+  float:left;
+  padding: 0px;
+  margin: 0px;
   min-height: 40px;
   height: auto !important;
 }
