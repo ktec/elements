@@ -8,10 +8,9 @@ ActionView::Helpers::AssetTagHelper.register_javascript_expansion :defaults => [
 
 # Default stylesheet asset pack set #
 ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :theme => [
+  'themes/base/jquery.ui.all.css',
   'scaffold', 
-  'theme', 
-  'element-gallery', 
-  'themes/base/jquery.ui.all.css'
+  'theme'
 ]
 
 

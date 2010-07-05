@@ -4,9 +4,9 @@ class PagesController < InheritedResources::Base
   
   before_filter :set_etag, :only => [ :show ]
   before_filter :authenticate_user!, :only => [ :edit, :update, :destroy ]
-  caches_page :index, :show
+  #caches_page :index, :show
   layout :set_layout
-    
+      
   private
     def set_layout
       (action_name == "show"  && @page && @page.layout_name) || 'page'
@@ -19,14 +19,6 @@ class PagesController < InheritedResources::Base
     def set_etag
       @page = resource
       fresh_when(:etag => @page, :last_modified => @page.updated_at.utc, :public => true)
-    end
-
-    def after_save
-      expire_cache
-    end
-    
-    def expire_cache
-      expire_page :action => [:index, :show]
     end
   
 end
