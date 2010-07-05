@@ -77,5 +77,9 @@ module ApplicationHelper
   
   def remove_child_link(name, f)
     f.hidden_field(:_delete) + link_to(name, "javascript:void(0)", :class => "remove_child")
-  end  
+  end
+  
+  def layout_name
+    controller.active_layout.name
+  end
 end
