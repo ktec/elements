@@ -1,47 +1,36 @@
-# Add Jquery rails support
-ActionView::Helpers::AssetTagHelper.register_javascript_expansion :defaults => [
-'jquery.min',
-'rails',
-'jquery-ui.min',
-'jquery.form'
-]
 
-# Default stylesheet asset pack set #
-ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :theme => [
-  'themes/base/jquery.ui.all.css',
-  'scaffold', 
-  'theme'
-]
+## STYLESHEET BUNDLES
+
+ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :jquery_ui => [
+    'jquery-ui/themes/smoothness/jquery.ui.all.css',
+  ], 
+  :fancybox => [
+  	"/javascripts/fancybox/jquery.fancybox-1.3.1.css"
+  ], 
+  :textile_editor => [
+  	"textile-editor"
+  ]
 
 
-# FancyPants #
-ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :fancybox => [
-	"/javascripts/fancybox/jquery.fancybox-1.3.1.css"
-]
-ActionView::Helpers::AssetTagHelper.register_javascript_expansion :fancybox => [
-  'fancybox/jquery.mousewheel-3.0.2.pack',
-  'fancybox/jquery.fancybox-1.3.1'
-]
+## JAVASCRIPT BUNDLES
 
-
-# jsTree #
-ActionView::Helpers::AssetTagHelper.register_javascript_expansion :jstree => [
-  'jstree/jquery.jstree', 
-  'jstree/_lib/jquery.cookie', 
-  'jstree/_lib/jquery.hotkeys'
-]
-
-
-# jquery layout
-ActionView::Helpers::AssetTagHelper.register_javascript_expansion :layout => [
-  'jquery.layout.min'
-]
-
-# textile editor
-ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :textile_editor => [
-	"textile-editor"
-]
-ActionView::Helpers::AssetTagHelper.register_javascript_expansion :textile_editor => [
-  'textile-editor',
-  'textile-editor-config',
-]
+ActionView::Helpers::AssetTagHelper.register_javascript_expansion :jquery => [
+    'jquery.min',
+    'jquery-ui.min',
+    'jquery.layout.min',
+    'jquery.form',
+    'rails'
+  ],
+  :fancybox => [
+    'fancybox/jquery.mousewheel-3.0.2.pack',
+    'fancybox/jquery.fancybox-1.3.1'
+  ],
+  :jstree => [
+    'jstree/jquery.jstree', 
+    'jstree/_lib/jquery.cookie', 
+    'jstree/_lib/jquery.hotkeys'
+  ],
+  :textile_editor => [
+    'textile-editor',
+    'textile-editor-config',
+  ]
