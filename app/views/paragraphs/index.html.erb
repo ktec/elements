@@ -8,9 +8,9 @@
 <% @paragraphs.each do |paragraph| %>
   <tr>
     <td><%=h paragraph.content %></td>
-    <td><%= link_to 'Show', paragraph %></td>
-    <td><%= link_to 'Edit', edit_paragraph_path(paragraph) %></td>
-    <td><%= link_to 'Destroy', paragraph, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="show"><%= link_to content_tag("span",'Show'), paragraph %></td>
+    <td class="edit"><%= link_to content_tag("span",'Edit'), edit_paragraph_path(paragraph) %></td>
+    <td class="destroy"><%= link_to content_tag("span",'Destroy'), paragraph, :confirm => 'Are you sure?', "data-remote" => true, "data-method" => :delete %></td>
   </tr>
 <% end %>
 </table>

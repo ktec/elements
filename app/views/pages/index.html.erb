@@ -12,9 +12,9 @@
     <td><%=h page.title %></td>
     <td><%=h page.description %></td>
     <td><%=h page.keywords %></td>
-    <td><%= link_to 'Show', page %></td>
-    <td><%= link_to 'Edit', edit_page_path(page) %></td>
-    <td><%= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="show"><%= link_to content_tag("span",'Show'), page %></td>
+    <td class="edit"><%= link_to content_tag("span",'Edit'), edit_page_path(page) %></td>
+    <td class="destroy"><%= link_to content_tag("span",'Destroy'), page, :confirm => 'Are you sure?', "data-remote" => true, "data-method" => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -19,8 +19,7 @@ end
 <% if user_signed_in? %>
   <% content_for :admin do %>
   <div id="admin_page_links">
-    <%= link_to 'Edit', edit_page_path(@page) %> |
-    <%= link_to 'Back', pages_path %>
+    <%= link_to 'Edit', edit_element_path(@page.element) %>
   </div>
   <% end %>
 <% end %>

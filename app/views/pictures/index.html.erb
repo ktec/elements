@@ -14,9 +14,9 @@
     <td><%=h picture.description %></td>
     <td><%=h picture.element.tag_list %></td>
     <td><%= image_tag picture.image.url(:tiny_thumb) if picture.image.file? %></td>
-    <td><%= link_to 'Show', picture %></td>
-    <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-    <td><%= link_to 'Destroy', picture, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="show"><%= link_to content_tag("span",'Show'), picture %></td>
+    <td class="edit"><%= link_to content_tag("span",'Edit'), edit_picture_path(picture) %></td>
+    <td class="destroy"><%= link_to content_tag("span",'Destroy'), picture, :confirm => 'Are you sure?', "data-remote" => true, "data-method" => :delete %></td>
   </tr>
 <% end %>
 </table>

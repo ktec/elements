@@ -134,6 +134,27 @@ li.highlighted {}
 .tag3 { font-size: 1.4em; }
 .tag4 { font-size: 1.6em; }
 
+/* SHOW/EDIT/DELETE LINKS */
+.show a,.edit a,.destroy a {
+	display:block;
+	width:16px; height:16px;
+	margin:0; padding:0;
+	text-decoration: none;
+}
+.show a span,.edit a span,.destroy a span {
+  display:none;
+}
+.show a {
+	background: url("/images/actions/view.png") top left no-repeat;
+}
+.edit a {
+	background: url("/images/actions/edit.gif") top left no-repeat;
+}
+.destroy a {
+	background: url("/images/actions/delete.png") top left no-repeat;
+}
+
+
 
 /* PHOTO GALLERY */
 /* thumbnails */
