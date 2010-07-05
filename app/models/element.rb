@@ -5,7 +5,6 @@ class Element < ActiveRecord::Base
   default_scope :order => :position
   # Alias for <tt>acts_as_taggable_on :tags</tt>:
   acts_as_taggable
-  acts_as_taggable_on :tags
 
   accepts_nested_attributes_for :attachable
   
