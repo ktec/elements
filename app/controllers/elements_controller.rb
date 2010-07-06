@@ -3,7 +3,7 @@ class ElementsController < InheritedResources::Base
   respond_to :js #, :only => [:new_component, :edit]
   #respond_to :iphone, :except => [ :edit, :update ]
 
-  before_filter :new_element, :only => [:new, :create, :new_element_attachable_from_params]
+  before_filter :new_element, :only => [:new, :new_element_attachable_from_params]
   #filter_resource_access
 
   # Require authentication for edit and delete.
@@ -34,14 +34,17 @@ class ElementsController < InheritedResources::Base
     end
   end
   
+  def create
+    create! do |success,failure|
+      success.json { render :json => { :status => 200, :id => resource.id }, :layout => false }
+      failure.json { render :json => { :status => :unprocessible_entity, :errors => resource.errors }, :layout => false }
+    end
+  end
+  
   def update
     update! do |format|
       format.html { render "edit.html.erb", :layout => false, :content_type => Mime::HTML }
     end
-  end
-  
-  def set_attachable
-    @classname = "element_attachable_attributes"
   end
   
   def destroy
@@ -65,21 +68,27 @@ class ElementsController < InheritedResources::Base
     @tags ||= Element.tag_counts_on(:tags)
   end
   
-  def after_save
-    expire_cache
-  end
+  protected
   
-  def expire_cache
-    expire_action :action => :edit
-  end
+    def after_save
+      expire_cache
+    end
   
-  #def render(*args)
-  	#args.first[:layout] = false if request.xhr? and args.first[:layout].nil?
-	#  super
-  #end
-  
-  def new_element
-    @element = Element.new
-  end
-  
+    def expire_cache
+      expire_action :action => :edit
+    end
+    
+    #def render(*args)
+    #args.first[:layout] = false if request.xhr? and args.first[:layout].nil?
+    #  super
+    #end
+    
+    def new_element
+      @element = Element.new
+    end
+    
+    def set_attachable
+      @classname = "element_attachable_attributes"
+    end
+
 end
