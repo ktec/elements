@@ -50,21 +50,6 @@ class ElementsController < InheritedResources::Base
     end
   end
 
-  #def create
-  #  create! do |format|
-  #    unless @element.errors.empty?
-  #      flash[:notice] = 'Successfully created the #{resource}.'
-  #      format.json { render :json => { :status => "500", :errors => @element.errors.full_messages }, :template => false }
-  #      format.html { redirect_to(elements_url) }
-  #    else
-  #      flash[:error] = 'Error creating #{resource}.'
-  #      format.html { redirect_to(elements_url) }
-  #      #format.xml  { render :xml => @element.errors, :status => :unprocessable_entity }
-  #      format.json { render :json => { :unprocessable_entity => "200", :id => @element.id }, :template => false }
-  #    end
-  #  end
-  #end
-
   # GET /elements/new_element_attachable_from_params
   def new_element_attachable_from_params
     @element.build_attachable(params)
