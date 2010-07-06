@@ -58,8 +58,7 @@ Rails::Initializer.run do |config|
   # config.gem "acts_as_solr" # might be this websolr-acts_as_solr
 
   # AUTHORIZATION
-  # config.gem "declarative_authorization" # for authorization
-  # config.gem "declarative_authorization" # for authorization
+  config.gem "declarative_authorization" # for authorization
   
   # CACHING
   # implement memcache on index/show actions
