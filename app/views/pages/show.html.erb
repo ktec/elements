@@ -4,10 +4,13 @@ content_for :description, h(@page.description)
 content_for :keywords, h(@page.title)
 navigation_for(@domain)
 
-if user_signed_in?
+permitted_to? :update, @page do
   flash[:notice] ||= ("You should consider adding a title to this page.<br/>" if (@page.title == ""))
   flash[:notice] ||= ("You should consider adding a description to this page." if (@page.description == "")) 
   flash[:notice] ||= ("You should consider adding some keywords to this page.<br/>" if (@page.keywords == ""))
+  content_for :user_controls do
+    %><%= link_to ('Edit', edit_element_path(@page.element)) %><%
+  end
 end
 %>
 <h1 class="title"><%=h @page.title %></h1>
@@ -23,11 +26,4 @@ end
 <% end %>
 
 <% content_for :footer do %>
-  
-<% end %>
-
-<% permitted_to? :update, @elements do %>
-  <% content_for :user_controls do %>
-    <%= link_to 'Edit', edit_element_path(@page.element) %>
-  <% end %>
 <% end %>
