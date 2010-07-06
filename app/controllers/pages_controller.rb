@@ -1,5 +1,6 @@
 class PagesController < InheritedResources::Base
   filter_resource_access
+  
   actions :all, :except => [ :new, :destroy ]
   respond_to :html, :xml, :json, :js
   

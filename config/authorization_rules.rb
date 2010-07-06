@@ -24,6 +24,20 @@ authorization do
       ], :to => [:new, :create]
   end
   
+  role :guest do
+    has_permission_on [
+      :domains,
+      :elements,
+      :galleries,
+      :pages,
+      :paragraphs,
+      :pictures
+      ], :to => [:access]
+      has_permission_on :users, :to => :manage do
+        
+      end
+  end
+  
 end
 
 privileges do
