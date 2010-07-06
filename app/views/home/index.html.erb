@@ -10,7 +10,7 @@ unless @domain.blank?
 end
 %>
 
-User controls:
+<h2>User controls:</h2>
 <% unless user_signed_in? %>
 <%= link_to "sign in", new_user_session_url %>
 <%= link_to "sign up", new_user_registration_url %>
@@ -19,7 +19,9 @@ User controls:
 <%= link_to "sign out", destroy_user_session_url %>
 <% end %>
 
-Featured pages:
+<br />
+
+<h2>Featured pages:<h2>
 <% @featured_elements.each do |element| %>
   <%= render element.attachable unless element.attachable.is_a?(Page) %>
 <% end %>

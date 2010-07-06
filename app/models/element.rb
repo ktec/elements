@@ -1,4 +1,5 @@
 class Element < ActiveRecord::Base
+  using_access_control
   belongs_to :attachable, :polymorphic => true, :dependent => :destroy
   # Behaviours
   has_ancestry :cache_depth => true

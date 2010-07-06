@@ -16,7 +16,7 @@ end
   <%= render element.attachable unless element.attachable.is_a?(Page) %>
 <% end %>
 
-<% if user_signed_in? %>
+<% permitted_to? :update, @elements do %>
   <% content_for :admin do %>
   <div id="admin_page_links">
     <%= link_to 'Edit', edit_element_path(@page.element) %>

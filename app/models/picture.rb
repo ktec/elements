@@ -1,4 +1,5 @@
 class Picture < ActiveRecord::Base
+  using_access_control
   attr_accessible :title, :description, :image, :element_attributes
   has_one :element, :as => :attachable, :dependent => :destroy
   accepts_nested_attributes_for :element, :allow_destroy => true

@@ -4,4 +4,5 @@ class Domain < ActiveRecord::Base
   accepts_nested_attributes_for :element, :allow_destroy => true
   validates_presence_of :name
   acts_as_taggable_on :tags
+  using_access_control  
 end

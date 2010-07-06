@@ -3,6 +3,8 @@ class ElementsController < InheritedResources::Base
   respond_to :js #, :only => [:new_component, :edit]
   #respond_to :iphone, :except => [ :edit, :update ]
 
+  filter_resource_access
+
   # Require authentication for edit and delete.
   before_filter :tag_cloud, :only => [:index]
   before_filter :set_attachable, :only => [:new, :update, :new_component]
