@@ -1,12 +1,68 @@
-== Elements CMS
+= Elements CMS
 
 What started out as a small framework for creating pages that were 
 related, soon became much more. The result is a framework for 
 creating websites which is incredibly powerful whether you want 
 a simple 3 page site, or a full online shop with hundreds of 
-products Elements will suit. What it isn't is yet another 
-CMS with forum thrown in. If you want one of those, look elsewhere.
-Also, this system is designed for GEEKS. If you have trouble
-using it, its because you're not one! Get over it.
+products Elements CMS will suit.
+
+== Standing on the shoulders of giants
+
+Driven by pure passion for programming Elements prides itself on 
+pure elegant solutions, utilising some of the best open source
+software available. Add to this a little elements magic and you
+have a very flexible and dynamic framework. One that trys to
+stay out of your way, but make web site management as easy as
+drag and drop.
+
+== Getting Started
+
+Right now, Elements is Rails app, so just download run migrations,
+head to localhost and hack away to your hearts content.
+Plans for the future are to turn what you have now into a rails
+machine, so should you wish to pack this into your existing rails
+app you can. We'll see how much interest there is for this before
+we go down that road of course.
+
+== Whats it all about
+
+Ok so here's a list of the tricks Element CMS can do:
+
+Manage Domains (site)
+Manage Pages
+Manage Pictures
+Manage Text
+Manage Gallery (simple mode)
+
+
+== Roadmap to 1.0
+
+Well its a long road ahead, but we've cover some good ground already.
+Before we can really be sure we've hit the 1.0 landmark there's a few
+features missing:
+
+Permissions
+User Management
+Friendly Urls
+Sitemap.xml
+Blog + feeds
+Shop/products + feeds
+Ecomerce + payment handling
+Gallery - Slideshow mode
+Javascript Templates (mustashe.js) - iPhone/Mobile support
+Caching - properly
+Search
+Theme support
+Rails 3 upgrade
+Unit Tests
+In-place editing
+Versioning
+Semantic Forms - Formtastic
+Localisation
+Gmail integration (Send and Receive)
+Google Analytics Integration
+SSL (https)
+
+
 
 
