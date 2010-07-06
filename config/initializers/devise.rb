@@ -10,7 +10,7 @@ Devise.setup do |config|
   # ==> Configuration for :authenticatable
   # Invoke `rake secret` and use the printed value to setup a pepper to generate
   # the encrypted password. By default no pepper is used.
-  # config.pepper = "rake secret output"
+  config.pepper = "58a25d707ab7e1d391c17ba51c193c3041e4410d90ce2be43e9a89dae7fe881f5bf0d753ecbd497313b013c0fd5266ac73be4d1d341bb06a24cbf3eaad4cc197"
 
   # Configure how many times you want the password is reencrypted. Default is 10.
   # config.stretches = 10
