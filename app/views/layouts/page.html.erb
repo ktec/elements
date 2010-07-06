@@ -3,11 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
-<head>
-  <%= render :file => '/layouts/_meta.html.erb', :locals => local_assigns %>
-  <%= stylesheet_link_tag :theme, :fancybox, :textile_editor, :cache => true %>
-  <%= javascript_include_tag :defaults, :layout, :jstree, :fancybox, :textile_editor, :cache => true %>
-</head>
+<%= render :file => '/layouts/_head.html.erb', :locals => local_assigns %>
 
 <body id="page">
 
