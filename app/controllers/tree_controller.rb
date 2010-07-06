@@ -10,7 +10,7 @@ class TreeController < ApplicationController
       @elements = (Element.exists?(id)) ? Element.find(id).children : nil
     end
     respond_to do |format|
-      format.json { render "index.json.erb" }
+      format.json
     end
   end
     
