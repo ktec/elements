@@ -4,23 +4,7 @@ html, body {
 	padding: 0;	
 }
 
-body#plain {
-    background: #F2F2F2;
-}
-
-body#application {
-    background: #F2F2F2;
-}
-
-body#custom {
-    background: #F2F2F2;
-}
-
-body#page {
-    background: #F2F2F2;
-}
-
-/* Flashes */
+/* FLASHES */
 
 #flash_notice, #flash_error, #flash_alert {
   float:left;
@@ -54,14 +38,10 @@ body#page {
 /* Headings and Paragraphs */
 
 p {
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;*/
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
 }
 h1,h2,h3,h4,h5,h6 {
-  font-family: Helvetica, “Helvetica Neue”, Arial, sans-serif 
-}
-
-h1 {
-	font-family: "Museo 700", Arial;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
 }
 
 hr {
@@ -104,9 +84,8 @@ li.highlighted {}
   clear: both;
   padding: 25px;
   margin: 25px;
-  min-height: 800px;
+  min-height: 200px;
   height: auto !important;
-  height: 800px;
   border: 1px solid #D2D2D2;
 	-moz-box-shadow: 0 0 30px #CCC;
 	-webkit-box-shadow: 0 0 30px #CCC;
@@ -118,9 +97,13 @@ li.highlighted {}
 
 #page_share_links {
   float: right;
-  clear: right;
+  clear: both;
   width: 370px;
   margin: 0 37px 0 0;
+}
+
+.clear {
+  clear: both;
 }
 
 /* PARAGRAPH */
