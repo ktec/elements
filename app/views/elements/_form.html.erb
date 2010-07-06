@@ -43,7 +43,7 @@
     $('#element_attachable_type').change(function() {
       var type = $(this).val();
       $.post(
-        '<%= new_component_elements_url %>',
+        '<%= new_element_attachable_from_params_elements_url %>',
         {attachable_type:type},
         function (data){$("#component").html(data)}
       )

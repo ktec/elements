@@ -20,7 +20,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pages, :has_one => :element
   map.resources :pictures, :has_one => :element
   
-  map.resources :elements, :collection => { :new_component => [:post,:get] } do |elements|
+  map.resources :elements, :collection => { :new_element_attachable_from_params => [:post,:get] } do |elements|
+    elements.resource :gallery
     elements.resource :picture
     elements.resource :page
     elements.resource :domain

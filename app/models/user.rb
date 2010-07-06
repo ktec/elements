@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  #using_access_control
+  using_access_control
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :confirmable, :lockable, :timeoutable and :activatable
   devise :registerable, :database_authenticatable, :recoverable,

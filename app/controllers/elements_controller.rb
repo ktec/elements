@@ -3,11 +3,12 @@ class ElementsController < InheritedResources::Base
   respond_to :js #, :only => [:new_component, :edit]
   #respond_to :iphone, :except => [ :edit, :update ]
 
-  filter_resource_access
+  before_filter :new_element, :only => [:new, :create, :new_element_attachable_from_params]
+  #filter_resource_access
 
   # Require authentication for edit and delete.
   before_filter :tag_cloud, :only => [:index]
-  before_filter :set_attachable, :only => [:new, :update, :new_component]
+  before_filter :set_attachable, :only => [:new, :update, :new_element_attachable_from_params]
   
   # this way allows us to browse via the polymorphic controllers
   #belongs_to :page,:picture,:domain, :polymorphic => true, :optional => true, :singleton => true
@@ -49,19 +50,23 @@ class ElementsController < InheritedResources::Base
     end
   end
 
-  def create
-    create! do |format|
-      if @element.errors.empty?
-        format.json { render :json => { :status => "200", :id => @element.id }, :template => false }
-      else
-        format.json { render :json => { :status => "500", :errors => @element.errors.full_messages }, :template => false }
-      end
-    end
-  end
+  #def create
+  #  create! do |format|
+  #    unless @element.errors.empty?
+  #      flash[:notice] = 'Successfully created the #{resource}.'
+  #      format.json { render :json => { :status => "500", :errors => @element.errors.full_messages }, :template => false }
+  #      format.html { redirect_to(elements_url) }
+  #    else
+  #      flash[:error] = 'Error creating #{resource}.'
+  #      format.html { redirect_to(elements_url) }
+  #      #format.xml  { render :xml => @element.errors, :status => :unprocessable_entity }
+  #      format.json { render :json => { :unprocessable_entity => "200", :id => @element.id }, :template => false }
+  #    end
+  #  end
+  #end
 
-  # GET /elements/new_component
-  def new_component
-    @element = Element.new
+  # GET /elements/new_element_attachable_from_params
+  def new_element_attachable_from_params
     @element.build_attachable(params)
     respond_to do |format|
       format.html { render :layout => false }# new_component.html.erb
@@ -83,9 +88,13 @@ class ElementsController < InheritedResources::Base
     expire_action :action => :edit
   end
   
-  def render(*args)
+  #def render(*args)
   	#args.first[:layout] = false if request.xhr? and args.first[:layout].nil?
-	  super
+	#  super
+  #end
+  
+  def new_element
+    @element = Element.new
   end
   
 end

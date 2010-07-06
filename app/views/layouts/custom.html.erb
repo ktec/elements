@@ -11,7 +11,7 @@
 
 <%= liquidize(@page.custom_layout_content,
         'content' => yield, 
-        'admin' => yield(:admin), 
+        'user_controls' => yield(:user_controls), 
         'title' => yield(:title),
         'navigation' => yield(:navigation),
         'footer' => yield(:footer)

@@ -25,7 +25,7 @@ html, body {
   border: solid 1px #C66;
 }
 
-#admin {
+#user_controls {
   float:right;
   width:auto;margin: 20px; padding: 10px;
   font: 100% 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;

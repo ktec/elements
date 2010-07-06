@@ -10,15 +10,6 @@ unless @domain.blank?
 end
 %>
 
-<h2>User controls:</h2>
-<% unless user_signed_in? %>
-<%= link_to "sign in", new_user_session_url %>
-<%= link_to "sign up", new_user_registration_url %>
-<% else %>
-<%= link_to "edit user", edit_user_registration_url %>
-<%= link_to "sign out", destroy_user_session_url %>
-<% end %>
-
 <br />
 
 <h2>Featured pages:<h2>
