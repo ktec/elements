@@ -138,21 +138,26 @@ li.highlighted {}
 	background: url("/images/actions/delete.png") top left no-repeat;
 }
 
+/* PICTURE */
 
+a img {
+  border: 1px solid #DDD;
+  padding: .4em;
+}
 
 /* PHOTO GALLERY */
 /* thumbnails */
 .gallery { clear:both; }
 
 .gallery .thumbnail {
-    border: 1px solid #cdcdcd;
-    font-size: 12px !important;
-    background: none !important;
-    margin: 0 8px 15px 0 !important;
+  border: 1px solid #cdcdcd;
+  font-size: 12px !important;
+  background: none !important;
+  margin: 0 8px 15px 0 !important;
 }
     .gallery .thumbnail .thumbContents {
       padding: 5px !important;
-      background: #EDEDED !important;
+      /*background: #EDEDED !important;*/
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
       border: none !important;
