@@ -1,12 +1,11 @@
-[<% @elements.each_with_index do |element,i| %>
+[<%- @elements.each_with_index do |element,i| -%>
 {
-  "attr":
-    {
-      "id":"node_<%= element.id %>",
-      "rel":"<%= element.has_attachable? ? element.attachable_type : (element.is_root? ? "drive" : "element") %>"
-    },
-  "data":"<%=h element.name %>"
-  <%= ',"state":"closed"' if element.has_children? %>
-}<%= "," if i < @elements.count-1 %>
-<% end %>]
-
+  "attr":{
+    "id":"node_<%= element.id -%>",
+    "rel":"<%= element.attachable.class -%>",
+    "url":"<%= url_for(element.attachable) -%>"
+  },
+  "data":"<%=h element.name -%>"
+  <%= ',"state":"closed"' if element.has_children? -%>
+}<%= "," if i < @elements.count-1 -%>
+<%- end -%>]

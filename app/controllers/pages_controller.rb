@@ -11,10 +11,22 @@ class PagesController < InheritedResources::Base
   before_filter :expire_page, :only => [:update,:create]
   caches_page :index
   caches_action :show
+  
+  #def render(*args)
+  #  args.first[:layout] = false if request.xhr?
+  #  super
+  #end
       
   private
     def set_layout
-      (action_name == "show"  && @page && @page.layout_name) || 'page'
+      case true
+      when action_name == "edit" 
+        return false
+      when action_name == "show" && @page && @page.layout_name
+        return @page.layout_name
+      else
+        'page'
+      end
     end
   protected
     #def collection

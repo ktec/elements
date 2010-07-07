@@ -78,11 +78,6 @@ class ElementsController < InheritedResources::Base
       expire_action :action => :edit
     end
     
-    #def render(*args)
-    #args.first[:layout] = false if request.xhr? and args.first[:layout].nil?
-    #  super
-    #end
-    
     def new_element
       @element = Element.new
     end

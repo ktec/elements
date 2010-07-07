@@ -258,15 +258,13 @@ $(function () {
 		})
 		.bind("select_node.jstree", function (e, data) {
       var id = data.rslt.obj.attr("id").replace("node_","");
-      var url = "/elements/" + id + "/edit";
-      $.ajax({
-        type: 'GET',
-        dataType: 'script',
-        url: url,
-        success: function(data) {
-          $('#properties').html(data);
-        }
-      });
+      $.get(
+        data.rslt.obj.attr("url") + "/edit",
+        {},
+        function(data) {
+           $('#properties').html(data);
+         }
+      );
     })
 		.bind("move_node.jstree", function (e, data) {
 			$.post(
