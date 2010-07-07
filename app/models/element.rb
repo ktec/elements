@@ -37,24 +37,22 @@ class Element < ActiveRecord::Base
   end
   
   def add_child(element,position=nil)
-    temp = element.children
-    element.ancestry = self.child_ancestry
+    el_children = element.children
     element.position = position || siblings.to_i + 1
+    element.parent = self
     element.save!
-    #need to add errors to @element.errors and return something
-    errors.add_to_base if element.errors
-    return element.update_children(temp)
+    element.update_children(el_children) unless el_children.nil?
   end
 
   protected
 
-  def update_children(children)
-    children.each do |child|
-      temp = child.children
-      child.ancestry = self.child_ancestry
-      child.save!
-      return child.update_children(temp)
+    def update_children(children)
+      children.each do |child|
+        temp = child.children
+        child.parent = self
+        child.save!
+        child.update_children(temp) unless temp.nil?
+      end
     end
-  end
 
 end
