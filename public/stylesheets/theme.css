@@ -25,6 +25,8 @@ html, body {
   border: solid 1px #C66;
 }
 
+/* USER CONTROLS */
+
 #user_controls {
   float:right;
   width:auto;margin: 20px; padding: 10px;
@@ -48,51 +50,7 @@ html, body {
   padding:5px 12px 5px 12px;
 }
 
-
-/* Headings and Paragraphs */
-
-p {
-  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
-}
-h1,h2,h3,h4,h5,h6 {
-  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
-}
-
-hr {
-	border: none;
-	height: 1px; line-height: 1px;
-	background: #D8D8D8;
-	margin-bottom: 20px;
-	padding: 0;
-}
-
 /* NAVIGATION */
-/*
-#navigation{
-  float:left;
-  padding: 0px;
-  margin: 0px;
-  min-height: 40px;
-  height: auto !important;
-}
-
-#navigation li {
-  list-style: square;
-}
-
-li:hover {}
-li a:hover { color: blue; }
-li.highlighted a, li.highlighted li.highlighted a, li.highlighted li.highlighted li.highlighted a, li.highlighted li.highlighted li.highlighted li.highlighted a{
-  color: red;
-}
-li.highlighted li a, li.highlighted li.highlighted li a, li.highlighted li.highlighted li.highlighted li a, li.highlighted li.highlighted li.highlighted li.highlighted li a{
-  color: black;
-}
-li a {
-  text-decoration:none;
-}
-li.highlighted {}
-*/
 
 #navigation {
   float:left;
@@ -150,7 +108,26 @@ ul.potato-menu-group a { width: 160px;}
 .potato-menu-has-vertical > a:hover {	background: #666 url(/images/menu/arrow_down.gif) right no-repeat; }
 .potato-menu-has-holizontal > a:hover {	background: #666 url(/images/menu/arrow_right.gif) right no-repeat; }
 
+
+/* Headings and Paragraphs */
+
+p {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+
+hr {
+	border: none;
+	height: 1px; line-height: 1px;
+	background: #D8D8D8;
+	margin-bottom: 20px;
+	padding: 0;
+}
+
 /* CONTENT AREA */
+
 #content {
   clear: both;
   padding: 25px;
