@@ -3,6 +3,7 @@
 
 ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :jquery_ui => [
     'jquery-ui/themes/smoothness/jquery.ui.all.css',
+    'jquery-ui/themes/smoothness/jquery.ui.all.css'
   ], 
   :fancybox => [
   	"/javascripts/fancybox/jquery.fancybox-1.3.1.css"
@@ -14,10 +15,13 @@ ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :jquery_ui => 
 
 ## JAVASCRIPT BUNDLES
 
-ActionView::Helpers::AssetTagHelper.register_javascript_expansion :jquery => [
+ActionView::Helpers::AssetTagHelper.register_javascript_expansion :defaults => [
+  ],
+  :jquery => [
     'jquery.min',
     'jquery-ui.min',
     'jquery.layout.min',
+    'jquery.ui.potato.menu-min',
     'jquery.form',
     'rails'
   ],

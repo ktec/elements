@@ -9,14 +9,15 @@
 
 <%= render "shared/flashes" %>
 
+<div id="navigation">
+<%= yield :navigation %>
+</div>
+
 <div id="user_controls">
 <%= render "shared/user_controls" %>
 <%= yield :user_controls %>
 </div>
 
-<div id="navigation">
-<%= yield :navigation %>
-</div>
 
 <div id="content">
 <%= yield %>

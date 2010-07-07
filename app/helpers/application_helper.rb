@@ -26,24 +26,26 @@ module ApplicationHelper
     #@domain = Domain.find_by_name(domain)
     unless domain.blank?
       content_for :navigation do
-        convert_to_list(domain.element)
+        convert_to_list(domain.element, "menu")
       end
     end
   end
-  def convert_to_list(element)
-    result = "<ul>"
+  def convert_to_list(element, id = "")
+    result = '<ul id="' + id + '">'
     element.children.each do |element|
       if element.attachable.is_a?(Page)
         if defined?(@page)
           current = @page.element
           highlight = true if current.ancestors.include?(element) or current == element unless current.nil? or current.id.nil?
           #highlight = true if current == element unless current.nil? or current.id.nil?
-          result << "<li " + (highlight ? "class=\"highlighted\">" : ">")
+          result << '<li class="' + (highlight ? "highlighted " : "none") + '">'
         else
-          result << "<li>"
+          result << '<li>'
         end
-        result << link_to( h(element.name), send("#{element.attachable.type.to_s.downcase}_path", element.attachable))
-        result << convert_to_list(element) if element.has_children?
+        name = h(element.name)
+        url = send("#{element.attachable.type.to_s.downcase}_path", element.attachable )
+        result << link_to( name, url )
+        result << convert_to_list(element) if element.descendants.by_type("Page").count > 0
         result << "</li>"
       end
     end
