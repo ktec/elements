@@ -10,9 +10,9 @@ unless @domain.blank?
 end
 %>
 
-<br />
+<hr />
 
-<h2>Featured pages:<h2>
+<h2>Featured pages:</h2>
 <% @featured_elements.each do |element| %>
   <%= render element.attachable unless element.attachable.is_a?(Page) %>
 <% end %>
