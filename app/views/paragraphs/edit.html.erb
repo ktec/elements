@@ -1,6 +1,6 @@
 <h1>Editing paragraph</h1>
 
-<% form_for(@paragraph) do |f| %>
+<% form_for(@paragraph, :html => {'data-remote' => true}) do |f| %>
   <%= f.error_messages %>
 
   <%= render "form", :f => f %>

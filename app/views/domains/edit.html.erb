@@ -1,6 +1,6 @@
 <h1>Editing domain</h1>
 
-<% form_for(@domain) do |f| %>
+<% form_for(@domain, :html => {'data-remote' => true}) do |f| %>
   <%= f.error_messages %>
 
   <%= render "form", :f => f %>
