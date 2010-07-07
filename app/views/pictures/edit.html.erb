@@ -1,6 +1,6 @@
 <h1>Editing picture</h1>
 
-<% form_for(@picture, :html => {:multipart => true}) do |f| %>
+<% semantic_form_for(@picture, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
 
   <%= render "form", :f => f %>

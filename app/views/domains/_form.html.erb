@@ -1,15 +1,8 @@
-<fieldset id="<%= f.object.class.to_s.downcase %>">
-  <%= f.hidden_field :attachable_type, :value => f.object.class.to_s %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :keywords %>
-  </p>
-</fieldset>
+<% f.inputs do %>
+  <%= f.input :attachable_type, :as => :hidden, :value => f.object.class.to_s unless f.object.is_a?(Picture) %>
+  <%= f.input :name, :label => 'Name' %>
+  <%= f.input :title, :label => 'Title' %>
+  <%= f.input :description, :label => 'Description' %>
+  <%= f.input :keywords, :label => 'Keywords' %>
+<% end %>
+

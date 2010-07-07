@@ -1,20 +1,13 @@
 <fieldset id="<%= f.object.class.to_s.downcase %>">
-  <%= f.hidden_field :attachable_type, :value => f.object.class.to_s %>
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :image %><br />
-    <div id="<%= "picture-#{f.object.element.id}-preview" %>">
+<% f.inputs do %>
+  <%= f.input :attachable_type, :as => :hidden, :value => f.object.class.to_s unless f.object.is_a?(Picture) %>
+  <%= f.input :title, :label => 'Title' %>
+  <%= f.input :description, :label => 'Description' %>
+  <div id="<%= "picture-#{f.object.element.id}-preview" %>">
     <% if f.object.image.file? %>
-    <%= image_tag f.object.image.url(:thumb) %>
+    <%= image_tag f.object.image.url(:small_thumb) %>
     <% end %>
-    </div>
-    <%= f.file_field :image %>
-  </p>
+  </div>
+  <%= f.input :image, :as => :file, :label => 'Image' %>
+<% end %>
 </fieldset>

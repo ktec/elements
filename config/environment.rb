@@ -70,8 +70,10 @@ Rails::Initializer.run do |config|
   # VIEW HELPERS
   config.gem "liquid" # for page templates
   config.gem "RedCloth" # for content markup
-  # config.gem "formtastic" # for clean forms
+  config.gem "formtastic" # for clean forms
   # config.gem "jintastic" # for in place editing 
+  # validation_reflection # for validation http://github.com/redinger/validation_reflection
+  # jquery ui datepicker # http://blog.brzezinka.eu/tag/formtastic
   # http://github.com/hagenburger/lemonade for css spriting
   # config.gem "will_paginate" # for pagination
   # config.gem "geokit" for location based stuff, geocoding, distance, lat/lng AR lookup and IP based lookup 
