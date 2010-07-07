@@ -2,10 +2,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.elements_by_tag "elements/tag/:by_tag", :controller => :elements
   map.elements_by_type "elements/type/:by_type", :controller => :elements
-  
-  map.resources :galleries
-
-  map.resources :paragraphs
 
   map.devise_for :users, 
     :path_names => { 
@@ -16,6 +12,8 @@ ActionController::Routing::Routes.draw do |map|
       #:unlock => 'unblock'
     }
 
+  map.resources :galleries, :has_one => :element
+  map.resources :paragraphs, :has_one => :element
   map.resources :domains, :has_one => :element
   map.resources :pages, :has_one => :element
   map.resources :pictures, :has_one => :element
