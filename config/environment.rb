@@ -68,16 +68,21 @@ Rails::Initializer.run do |config|
   # config.gem "vestal_versions" # for element/page versioning
   
   # VIEW HELPERS
+  # config.gem "will_paginate" # for pagination
+  # config.gem "geokit" for location based stuff, geocoding, distance, lat/lng AR lookup and IP based lookup 
+
+  # FORMS
   config.gem "liquid" # for page templates
   config.gem "RedCloth" # for content markup
   config.gem "formtastic" # for clean forms
   # config.gem "jintastic" # for in place editing 
   # validation_reflection # for validation http://github.com/redinger/validation_reflection
   # jquery ui datepicker # http://blog.brzezinka.eu/tag/formtastic
+    # http://github.com/vigetlabs/acts_as_markup/ # to support more than just textile
+    # get fully marked up with http://markitup.jaysalvat.com/home/
+    # textile editor # http://gist.github.com/406968
+    # rails plugin for mark_it_up # http://github.com/cingel/mark_it_up
   # http://github.com/hagenburger/lemonade for css spriting
-  # config.gem "will_paginate" # for pagination
-  # config.gem "geokit" for location based stuff, geocoding, distance, lat/lng AR lookup and IP based lookup 
-  # http://github.com/vigetlabs/acts_as_markup/ # to support more than just textile
 
   # BLOG
   # http://github.com/bscofield/bloget # possible solution for blog component

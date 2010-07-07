@@ -27,6 +27,8 @@ class Element < ActiveRecord::Base
   named_scope :limit, proc {|limit| { :limit => limit.to_i } }
   named_scope :by_type, proc {|type| { :conditions => { :attachable_type => type } } }
   #named_scope :pictures, lambda { { :joins => :children, :having => { :attachable_type => "Picture" } } }
+  default_scope :order => 'ancestry ASC'
+
   
   liquid_methods :name, :position, :type, :tag_list
   

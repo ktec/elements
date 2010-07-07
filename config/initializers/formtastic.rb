@@ -52,3 +52,35 @@
 # You can add custom inputs or override parts of Formtastic by subclassing SemanticFormBuilder and
 # specifying that class here.  Defaults to SemanticFormBuilder.
 # Formtastic::SemanticFormHelper.builder = MyCustomBuilder
+
+module FormtasticExtensions
+  module Formtastic
+    module TextileEditor
+      
+      def self.included(base)
+        base.class_eval do
+          @javascript_included = false
+        end
+      end
+
+      protected
+
+      def textile_input(method, options = {})
+        output = ''
+        unless @javascript_included
+          @javascript_included = true
+          # need a more elegant sollution to this?
+          #output << '<link href="/stylesheets/textile-editor.css" media="screen" rel="stylesheet" type="text/css" />' # stylesheet_link_tag('textile-editor')
+          #output << '<script src="/javascripts/textile-editor.js" type="text/javascript"></script>'# javascript_include_tag('textile-editor')
+        end
+        output << text_input(method, options)
+        dom_id = "#{@object_name}_#{method}"
+        output << '<script type="text/javascript">$(document).ready(function() {TextileEditor.initialize(\''+dom_id.to_s+'\', \'extended\');});</script>' # textile_editor_tag 'description', :description, :skip_initialize => true
+      end
+    end
+  end
+end
+
+if Object.const_defined?("Formtastic")  
+  Formtastic::SemanticFormBuilder.send(:include, FormtasticExtensions::Formtastic::TextileEditor)
+end

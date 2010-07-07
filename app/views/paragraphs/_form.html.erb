@@ -1,8 +1,5 @@
-<fieldset id="<%= f.object.class.to_s.downcase %>">
-  <%= f.hidden_field :attachable_type, :value => f.object.class.to_s %>
-  <p>
-    <%= f.label :content %><br />
-    <%= f.textile_editor :content, :id => "element_attachable_attributes_content" %>
-  </p>
-</fieldset>
-<%= textile_editor_initialize(:framework => :jquery) %>
+<% f.inputs do %>
+  <%= f.input :attachable_type, :as => :hidden, :value => f.object.class.to_s unless f.object.is_a?(Paragraph) %>
+  <%= f.input :content, :as => :textile, :id => ("element_attachable_attributes_content"  unless f.object.is_a?(Paragraph)) %>
+<% end %>
+
