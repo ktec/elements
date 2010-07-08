@@ -6,7 +6,12 @@ class Gallery < ActiveRecord::Base
   validates_presence_of :title
   #has_many :pictures, :joins => :elements, :conditions => { :attachable_type => "Picture" }
   #liquid_methods :title, :description, :keywords
+  #has_many :child_elements, :through => :element, :conditions => { :attachable_type => "Picture" }
+  #has_many :pictures, :through => :child_elements
+
   def pictures
     element.children.by_type('Picture').map{|element|element.attachable}#.each { |e| n ||<< e.attachable }
   end
+  
+  # TODO: Get pictures as a has_many join so we can do nested forms
 end

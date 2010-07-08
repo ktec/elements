@@ -5,29 +5,21 @@
     <li><a href="#<%= @classname %>_tab2">Images</a></li>
   </ul>
   <div id="<%= @classname %>_tab1">
-    <fieldset id="<%= @classname %>">
-      <%= f.hidden_field :attachable_type, :value => f.object.class.to_s %>
-      <p>
-        <%= f.label :title %><br />
-        <%= f.text_field :title %>
-      </p>
-      <p>
-        <%= f.label :description %><br />
-        <%= f.text_field :description %>
-      </p>
-      <p>
-        <%= f.label :layout_name %><br />
-        <%= f.select :layout_name, [["Standard", 'standard'], ["Slideshow", 'slideshow'], ["Custom", 'custom']] %>
-      </p>
-      <p id="<%= @classname %>_custom_layout_content">
-        <%= f.label :custom_layout_content %><br />
-        <%= f.text_area :custom_layout_content, :rows => 12, :escape => false %>
-      </p>
-    </fieldset>
+<% f.inputs do %>
+  <%= f.input :attachable_type, :as => :hidden, :value => f.object.class.to_s unless f.object.is_a?(Gallery) %>
+  <%= f.input :title, :label => 'Title' %>
+  <%= f.input :description, :label => 'Description' %>
+  <%= f.input :layout_name, :as => :select, :collection => [["Standard", 'standard'], ["Slideshow", 'slideshow'], ["Custom", 'custom']] %>
+  <%= f.input :custom_layout_content, :input_html => { :rows => 12, :escape => false }, :wrapper_html => { :id => "#{@classname}_custom_layout_content" } %>
+<% end %>
+<!-- Add autogrow -->
   </div>
   <div id="<%= @classname %>_tab2">
     <fieldset id="<%= @classname %>">
-      # add pictures here
+    <%#= f.inputs :name => 'Picture #%i', :for => :pictures %>
+    <%= render f.object.pictures %>
+      # make these editable...
+      # sort out the has_many join and everything should fly
       So heres an idea, lets take the concept of this:
       http://stackoverflow.com/questions/1704142/unobtrusive-dynamic-form-fields-in-rails-with-jquery
       And marry it with this:
