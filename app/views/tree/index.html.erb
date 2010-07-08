@@ -217,6 +217,7 @@ $(function () {
 				function (r) {
 					if(r.status == "200") {
 						$(data.rslt.obj).attr("id", "node_" + r.id);
+						$(data.rslt.obj).attr("url", r.url);
 					}
 					else {
             alert("Eeek something went wrong: " + r.errors)

@@ -1,12 +1,8 @@
 <!--h1>Editing element</h1-->
 
-<% form_for(@element, :html => {:multipart => true}) do |f| %>
-  <%= f.error_messages %>
-
+<% semantic_form_for(@element, :html => {:multipart => true}) do |f| %>
   <%= render "form", :f => f %>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+  <%= f.buttons %>
 <% end %>
 
 <script type="text/javascript">

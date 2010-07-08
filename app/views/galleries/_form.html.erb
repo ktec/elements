@@ -17,7 +17,7 @@
   <div id="<%= @classname %>_tab2">
     <fieldset id="<%= @classname %>">
     <%#= f.inputs :name => 'Picture #%i', :for => :pictures %>
-    <%= render f.object.pictures %>
+    <%= render f.object.pictures unless f.object.new_record?  %>
       # make these editable...
       # sort out the has_many join and everything should fly
       So heres an idea, lets take the concept of this:

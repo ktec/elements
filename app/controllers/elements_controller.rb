@@ -36,7 +36,7 @@ class ElementsController < InheritedResources::Base
   
   def create
     create! do |success,failure|
-      success.json { render :json => { :status => 200, :id => resource.id }, :layout => false }
+      success.json { render :json => { :status => 200, :id => resource.id, :url => resource_path(resource) }, :layout => false }
       failure.json { render :json => { :status => :unprocessible_entity, :errors => resource.errors }, :layout => false }
     end
   end

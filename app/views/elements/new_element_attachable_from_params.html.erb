@@ -1,6 +1,7 @@
-<% f = ActionView::Helpers::FormBuilder.new(:element, @element, @template, {}, proc {}) %>
+<% f = Formtastic::SemanticFormBuilder.new(:element, @element, @template, {}, proc {}) %>
 <p>
-  <% f.fields_for :attachable, f.object.attachable do |builder| %>
+  <% f.semantic_fields_for :attachable, f.object.attachable do |builder| %>
+    
     <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder %>
   <% end %>
 </p>
