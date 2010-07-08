@@ -88,6 +88,11 @@ Rails::Initializer.run do |config|
   # http://github.com/bscofield/bloget # possible solution for blog component
   # http://github.com/norman/disqus.git for blog post comments
   
+  # SHOP
+  # merchant account provider
+  #    http://www.braintreepaymentsolutions.com/services/
+  config.gem "active_merchant" # for payment abstraction
+  
   
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
