@@ -1,23 +1,4 @@
-<p>
-  <b>Title:</b>
-  <%=h @gallery.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @gallery.description %>
-</p>
-
-<p>
-  <b>Layout Name:</b>
-  <%=h @gallery.layout_name %>
-</p>
-
-<% @gallery.element.children.each do |element| %>
-  <%= render element.attachable if element.attachable.is_a?(Picture) %>
-<% end %>
-
-
+<%= render @gallery.layout_name = "Standard" ? "gallery" : "gallery.#{@gallery.layout_name}" %>
 
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Back', galleries_path %>

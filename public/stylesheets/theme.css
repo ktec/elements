@@ -101,8 +101,10 @@ ul.potato-menu ul.potato-menu-group {
 li.potato-menu-item { font-size:12px;}
 ul.potato-menu-group { border-top: 1px solid #666;	background: #333;}
 ul.potato-menu-group a { width: 160px;}
-.potato-menu a { padding:5px 12px 5px 12px;	background: #333;	color: #fff;	padding-right:20px;}
+.potato-menu a { padding:5px 12px 5px 12px;	background: #333;	color: #B0ACA2;	padding-right:20px;}
 .potato-menu a:hover { background: #666;}
+.highlighted a { color: #fff;}
+.none a {color: #B0ACA2;}
 .potato-menu-has-vertical > a {	background: #333 url(/images/menu/arrow_down.gif) right no-repeat; }
 .potato-menu-has-holizontal > a {	background: #333 url(/images/menu/arrow_right.gif) right no-repeat; }
 .potato-menu-has-vertical > a:hover {	background: #666 url(/images/menu/arrow_down.gif) right no-repeat; }

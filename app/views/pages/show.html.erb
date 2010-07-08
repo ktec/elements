@@ -13,12 +13,19 @@ permitted_to? :update, @page do
   end
 end
 %>
+<div id="<%= dom_id(@page) %>">
 <h1 class="title"><%=h @page.title %></h1>
 
 <hr />
 
+
 <% @page.element.children.each do |element| %>
+<% if element.tag_list.include?("Background") and element.attachable.is_a?(Picture) %>
+  <% picture = element.attachable %>
+  <%= image_tag picture.image.url(:large), :alt => h(picture.description), :title => h(picture.title) %>  
+<% else %>
   <%= render element.attachable unless element.attachable.is_a?(Page) %>
+<% end %>
 <% end %>
 
 <% if @page.show_share_links? %>
@@ -27,5 +34,6 @@ end
 </div>
 <% end %>
 
+</div>
 <% content_for :footer do %>
 <% end %>

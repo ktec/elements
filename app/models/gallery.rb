@@ -10,7 +10,7 @@ class Gallery < ActiveRecord::Base
   #has_many :pictures, :through => :child_elements
 
   def pictures
-    element.children.by_type('Picture').map{|element|element.attachable}#.each { |e| n ||<< e.attachable }
+    element.children.by_type('Picture').map{|element|element.attachable} unless element.nil? or element.children.empty?
   end
   
   # TODO: Get pictures as a has_many join so we can do nested forms

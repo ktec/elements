@@ -1,3 +1,5 @@
-<div class="paragraph">
-<%= RedCloth.new(h(paragraph.content)).to_html %>
+<div id="<%= dom_id(paragraph) %>" class="paragraph">
+<% permitted_to? :update, paragraph do %>
+<%= RedCloth.new(h(paragraph.content)).to_html  %>
+<% end %>
 </div>
