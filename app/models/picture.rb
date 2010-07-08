@@ -8,7 +8,7 @@ class Picture < ActiveRecord::Base
         :tiny_thumb => "50x20>", 
         :small_thumb =>"100x100>", 
         :thumb => "200x200", 
-        :large => "640x480>",
+        :medium => "640x480>",
         :large => "1024x768",
         :x_large => "1280x1024",
         :xx_large => "1440x900"#,

@@ -1,4 +1,5 @@
-<%= render case gallery.layout_name.to_sym
+<% unless gallery.nil? %>
+<%= render "/galleries/" + case gallery.layout_name.to_sym
   when :slideshow
     "slideshow.gallery"
   when :fancybox
@@ -7,5 +8,6 @@
     "custom.gallery"
   when :default
     "default.gallery"
-  end
+  end, :gallery => gallery
 %>
+<% end %>
