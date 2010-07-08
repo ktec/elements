@@ -73,7 +73,7 @@ Rails::Initializer.run do |config|
 
   # FORMS
   config.gem "liquid" # for page templates
-  config.gem "RedCloth" # for content markup
+  config.gem "RedCloth", :lib => "redcloth" # for content markup
   config.gem "formtastic" # for clean forms
   # config.gem "jintastic" # for in place editing 
   # validation_reflection # for validation http://github.com/redinger/validation_reflection
