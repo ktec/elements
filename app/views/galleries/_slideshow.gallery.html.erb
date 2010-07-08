@@ -1,2 +1,36 @@
 <h2>SLIDESHOW GALLERY <%= @gallery.layout_name %></h2>
 
+<h1 class="title"><%=h @gallery.title %></h1>
+<h2 class="decsription"><%=h @gallery.description %></h2>
+
+<div id="slider">
+  <% @gallery.pictures.each do |picture| %>
+    <%= image_tag picture.image.url(:large), :alt => h(picture.description), :title => h(picture.title) %>  
+  <% end %>
+</div>
+
+<script type="text/javascript">
+$(window).load(function() {
+	$('#slider').nivoSlider({
+		effect:'random', //Specify sets like: 'fold,fade,sliceDown'
+		slices:15,
+		animSpeed:500,
+		pauseTime:3000,
+		startSlide:0, //Set starting Slide (0 index)
+		directionNav:true, //Next & Prev
+		directionNavHide:true, //Only show on hover
+		controlNav:true, //1,2,3...
+		controlNavThumbs:false, //Use thumbnails for Control Nav
+    controlNavThumbsFromRel:false, //Use image rel for thumbs
+		controlNavThumbsSearch: '.jpg', //Replace this with...
+		controlNavThumbsReplace: '_thumb.jpg', //...this in thumb Image src
+		keyboardNav:true, //Use left & right arrows
+		pauseOnHover:true, //Stop animation while hovering
+		manualAdvance:false, //Force manual transitions
+		captionOpacity:0.8, //Universal caption opacity
+		beforeChange: function(){},
+		afterChange: function(){},
+		slideshowEnd: function(){} //Triggers after all slides have been shown
+	});
+});
+</script>
