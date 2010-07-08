@@ -10,10 +10,10 @@ class Gallery < ActiveRecord::Base
   #has_many :pictures, :through => :child_elements
 
   LAYOUT_TYPES = [
-    ["Default", :default],
-    ["FancyBox", :fancybox],
-    ["Slideshow", :slideshow],
-    ["Custom", :custom]
+    ["Default", :default.to_s],
+    ["FancyBox", :fancybox.to_s],
+    ["Slideshow", :slideshow.to_s],
+    ["Custom", :custom.to_s]
   ]
   
   def pictures
