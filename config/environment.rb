@@ -84,6 +84,10 @@ Rails::Initializer.run do |config|
     # rails plugin for mark_it_up # http://github.com/cingel/mark_it_up
   # http://github.com/hagenburger/lemonade for css spriting
 
+  # GALLERY OPTIONS
+  # http://www.twospy.com/galleriffic/index.html
+  # thumbnail options http://www.1stwebdesigner.com/design/fresh-jquery-image-gallery-display-solutions/
+  
   # BLOG
   # http://github.com/bscofield/bloget # possible solution for blog component
   # http://github.com/norman/disqus.git for blog post comments
@@ -91,7 +95,10 @@ Rails::Initializer.run do |config|
   # SHOP
   # merchant account provider
   #    http://www.braintreepaymentsolutions.com/services/
-  config.gem "active_merchant" # for payment abstraction
+  
+  # PAYMENT PROCESSING
+  # http://github.com/endax/minimal-cart
+  # config.gem "active_merchant" # for payment abstraction
   
   
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
