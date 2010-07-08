@@ -5,60 +5,42 @@
     <li><a href="#<%= @classname %>_tab2">Advanced</a></li>
   </ul>
   <div id="<%= @classname %>_tab1">
-    <fieldset id="<%= @classname %>">
-      <%= f.hidden_field :attachable_type, :value => f.object.class.to_s unless f.object.is_a?(Page)  %>
-      <p>
-        <%= f.label :title %><br />
-        <%= f.text_field :title %>
-      </p>
-      <p>
-        <%= f.label :description %><br />
-        <%= f.text_field :description %>
-      </p>
-    </fieldset>
+<% f.inputs do %>
+  <%= f.input :attachable_type, :as => :hidden, :value => f.object.class.to_s unless f.object.is_a?(Page) %>
+  <%= f.input :title, :label => 'Title' %>
+  <%= f.input :description, :label => 'Description' %>
+<% end %>
   </div>
   <div id="<%= @classname %>_tab2">
-    <fieldset id="<%= @classname %>_advanced">
-      <p>
-        <%= f.label :keywords %><br />
-        <%= f.text_field :keywords %>
-      </p>
-      <p>
-        <%= f.label :show_share_links %><br />
-        <%= f.check_box :show_share_links %>
-      </p>
-      <p>
-        <%= f.label :layout_name %><br />
-        <%= f.select :layout_name, [["Standard", 'application'], ["Plain", 'plain'], ["Custom", 'custom']] %>
-      </p>
-      <p id="<%= @classname %>_custom_layout_content">
-        <%= f.label :custom_layout_content %><br />
-        <%= f.text_area :custom_layout_content, :rows => 12, :escape => false %>
-      </p>
-      <script type="text/javascript">
-      $(document).ready(function() {
-        var ln = $('#<%= @classname %>_layout_name');
-        var clc = $('#<%= @classname %>_custom_layout_content');
-        $("#<%= @classname %>_form_tabs").tabs({
-          cookie: {
-            // store cookie for a day, without, it would be a session cookie
-            expires: 1
-          }
-        });
-        if (ln.val() != "custom") {
-          clc.hide();
-        }
-        ln.change(function() {
-          switch($(this).val()) {
-            case 'custom':
-              clc.fadeIn();
-            break;
-            default:
-              clc.fadeOut();
-          }
-        });
-      });
-      </script>
-    </fieldset>
+<% f.inputs do %>
+  <%= f.input :keywords, :label => 'Keywords' %>
+  <%= f.input :show_share_links, :as => :boolean, :label => 'Show Share Links?' %>
+  <%= f.input :layout_name, :as => :select, :collection => [["Standard", 'application'], ["Plain", 'plain'], ["Custom", 'custom']] %>
+  <%= f.input :custom_layout_content, :input_html => { :rows => 12, :escape => false }, :wrapper_html => { :id => "#{@classname}_custom_layout_content" } %>
+<% end %>
   </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+  var ln = $('#<%= @classname %>_layout_name');
+  var clc = $('#<%= @classname %>_custom_layout_content');
+  $("#<%= @classname %>_form_tabs").tabs({
+    cookie: {
+      // store cookie for a day, without, it would be a session cookie
+      expires: 1
+    }
+  });
+  if (ln.val() != "custom") {
+    clc.hide();
+  }
+  ln.change(function() {
+    switch($(this).val()) {
+      case 'custom':
+        clc.fadeIn();
+      break;
+      default:
+        clc.fadeOut();
+      }
+    });
+  });
+</script>

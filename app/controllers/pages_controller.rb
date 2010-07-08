@@ -1,12 +1,11 @@
 class PagesController < InheritedResources::Base
   filter_resource_access
   
-  actions :all, :except => [ :new, :destroy ]
+  actions :all
   respond_to :html, :xml, :json, :js
   
   before_filter :set_etag, :only => [ :show ]
   before_filter :authenticate_user!, :only => [ :edit, :update, :destroy ]
-  layout :set_layout
   
   before_filter :expire_page, :only => [:update,:create]
   caches_page :index
@@ -17,17 +16,20 @@ class PagesController < InheritedResources::Base
   #  super
   #end
       
-  private
-    def set_layout
-      case true
-      when action_name == "edit" 
-        return false
-      when action_name == "show" && @page && @page.layout_name
-        return @page.layout_name
-      else
-        'page'
-      end
+  def show
+    show! do |format|
+      format.html { render :layout => (@page.layout_name||"page") }
     end
+  end
+  
+  def edit
+    edit! do |format|
+      format.html { render :layout => "page" }
+      format.js { render :layout => false }
+    end
+  end
+  
+  private
   protected
     #def collection
     #    @pages ||= end_of_association_chain.paginate(:page => params[:page])
