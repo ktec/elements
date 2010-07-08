@@ -23,6 +23,7 @@ ActionView::Helpers::AssetTagHelper.register_javascript_expansion :defaults => [
     'jquery.layout.min',
     'jquery.ui.potato.menu-min',
     'jquery.form',
+    'jintastic',
     'rails'
   ],
   :fancybox => [

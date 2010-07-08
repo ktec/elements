@@ -27,10 +27,16 @@
 <% end %>
 </table>
   
-<br />
+<hr />
 
 <%= link_to 'New element', new_element_path %>
 
-<br />
+<hr />
 
 <%= render :partial => "tag_cloud" %>
+
+<hr />
+
+<ul>
+  <%= render @elements %>
+</ul>

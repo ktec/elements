@@ -1,3 +1,5 @@
 // user feedback
 $("#flash").replaceWith('<%= escape_javascript(render "shared/flashes") %>');
 $("#demo").jstree("refresh");
+// for jintastic
+$('#<%= dom_id @element %>').replaceWith('<%= escape_javascript render @element %>')
