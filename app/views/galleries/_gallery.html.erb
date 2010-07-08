@@ -1,15 +1,11 @@
-<div class="gallery">
-  <h1 class="title"><%=h gallery.title %></h1>
-  <h2 class="decsription"><%=h gallery.description %></h2>
-  <%= render :partial => "pictures/picture", :collection => gallery.pictures, :locals => {:gallery_id => "gallery#{gallery.id}"} %>
-</div>
-<script>
-  $("a[rel='<%= "gallery#{gallery.id}" %>']").fancybox({
-    'transitionIn'		: 'none',
-    'transitionOut'		: 'none',
-    'titlePosition' 	: 'over',
-    'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
-      return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
-    }
-  });
-</script>
+<%= render case gallery.layout_name.to_sym
+  when :slideshow
+    "slideshow.gallery"
+  when :fancybox
+    "fancybox.gallery"
+  when :custom
+    "custom.gallery"
+  when :default
+    "default.gallery"
+  end
+%>

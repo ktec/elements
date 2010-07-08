@@ -115,6 +115,10 @@ ul.potato-menu-group a { width: 160px;}
 
 p {
   font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+  font-size:12px;
+  line-height:1.6em;
+  color:#202020;
+  text-shadow:0px 1px 0px #eee;
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;

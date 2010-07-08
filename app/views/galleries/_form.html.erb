@@ -9,7 +9,7 @@
   <%= f.input :attachable_type, :as => :hidden, :value => f.object.class.to_s unless f.object.is_a?(Gallery) %>
   <%= f.input :title, :label => 'Title' %>
   <%= f.input :description, :label => 'Description' %>
-  <%= f.input :layout_name, :as => :select, :collection => [["Standard", 'standard'], ["Slideshow", 'slideshow'], ["Custom", 'custom']] %>
+  <%= f.input :layout_name, :as => :select, :collection => Gallery::LAYOUT_TYPES, :prompt => "Please select:", :include_blank => false  %>
   <%= f.input :custom_layout_content, :input_html => { :rows => 12, :escape => false }, :wrapper_html => { :id => "#{@classname}_custom_layout_content" } %>
 <% end %>
 <!-- Add autogrow -->

@@ -1,4 +1,7 @@
-<%= render @gallery.layout_name = "Standard" ? "gallery" : "gallery.#{@gallery.layout_name}" %>
+Show.html.erb
+<%= @gallery.layout_name %>
+
+<%= render @gallery %>
 
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Back', galleries_path %>

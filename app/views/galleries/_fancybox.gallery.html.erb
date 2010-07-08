@@ -1,10 +1,12 @@
+<h2>FANCYBOX <%= @gallery.layout_name %></h2>
+
 <div class="gallery">
-  <h1 class="title"><%=h gallery.title %></h1>
-  <h2 class="decsription"><%=h gallery.description %></h2>
-  <%= render :partial => "pictures/picture", :collection => gallery.pictures, :locals => {:gallery_id => "gallery#{gallery.id}"} %>
+  <h1 class="title"><%=h @gallery.title %></h1>
+  <h2 class="decsription"><%=h @gallery.description %></h2>
+  <%= render :partial => "pictures/picture", :collection => @gallery.pictures, :locals => {:gallery_id => "gallery#{@gallery.id}"} %>
 </div>
 <script>
-  $("a[rel='<%= "gallery#{gallery.id}" %>']").fancybox({
+  $("a[rel='<%= "gallery#{@gallery.id}" %>']").fancybox({
     'transitionIn'		: 'none',
     'transitionOut'		: 'none',
     'titlePosition' 	: 'over',
