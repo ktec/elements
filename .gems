@@ -9,6 +9,6 @@ warden
 devise
 declarative_authorization
 liquid
-RedCloth
+RedCloth --version '=4.2.3'
 formtastic
 
