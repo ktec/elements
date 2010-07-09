@@ -1,5 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.sitemap 'robots.txt', :controller => 'sitemap', :action => 'robots'
+  map.sitemap 'sitemap.xml', :controller => 'sitemap', :action => 'sitemap'
+  
   map.elements_by_tag "elements/tag/:by_tag", :controller => :elements
   map.elements_by_type "elements/type/:by_type", :controller => :elements
 

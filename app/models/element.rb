@@ -28,6 +28,7 @@ class Element < ActiveRecord::Base
   named_scope :by_type, proc {|type| { :conditions => { :attachable_type => type } } }
   #named_scope :pictures, lambda { { :joins => :children, :having => { :attachable_type => "Picture" } } }
   default_scope :order => 'ancestry ASC'
+  named_scope :sorted_by_date, {:order => 'updated_at DESC'}
 
   
   liquid_methods :name, :position, :type, :tag_list
@@ -55,6 +56,10 @@ class Element < ActiveRecord::Base
         child.save!
         child.update_children(temp) unless temp.nil?
       end
+    end
+
+    def self.find_for_sitemap
+      Element.by_type("Page").sorted_by_date
     end
 
 end
