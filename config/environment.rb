@@ -99,6 +99,7 @@ Rails::Initializer.run do |config|
   # PAYMENT PROCESSING
   # http://github.com/endax/minimal-cart
   # config.gem "active_merchant" # for payment abstraction
+  # options http://github.com/search?langOverride=Ruby&q=payment&repo=&start_value=1&type=Repositories
   
   
   # ANALYTICS

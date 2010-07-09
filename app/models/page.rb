@@ -8,7 +8,13 @@ class Page < ActiveRecord::Base
   
   after_save :expire_cache_by_name
   after_save :expire_cache_by_id
-  
+
+  LAYOUT_TYPES = [
+    ["Default", :application.to_s],
+    ["Plain", :plain.to_s],
+    ["Custom", :custom.to_s]
+  ]
+    
   def expire_cache_by_name
     #Rails.cache.expire("page:name:#{self.element.name}")
     return true

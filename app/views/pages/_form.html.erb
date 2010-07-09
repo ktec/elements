@@ -15,7 +15,7 @@
 <% f.inputs do %>
   <%= f.input :keywords, :label => 'Keywords' %>
   <%= f.input :show_share_links, :as => :boolean, :label => 'Show Share Links?' %>
-  <%= f.input :layout_name, :as => :select, :collection => [["Standard", 'application'], ["Plain", 'plain'], ["Custom", 'custom']] %>
+  <%= f.input :layout_name, :as => :select, :collection => Page::LAYOUT_TYPES, :prompt => "Please select:", :include_blank => false %>
   <%= f.input :custom_layout_content, :input_html => { :rows => 12, :escape => false }, :wrapper_html => { :id => "#{@classname}_custom_layout_content" } %>
 <% end %>
   </div>
