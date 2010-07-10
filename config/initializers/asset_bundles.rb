@@ -12,8 +12,8 @@ ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :jquery_ui => 
   ]
 
 ActionView::Helpers::AssetTagHelper.register_javascript_expansion :jquery => [
-    'jquery.min',
-    'jquery-ui.min',
+    (Rails.env.production? ? 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' : 'jquery.min'),
+    (Rails.env.production? ? 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js' : 'jquery-ui.min'),
     'jquery.layout.min',
     'jquery.ui.potato.menu-min',
     'jquery.form',
