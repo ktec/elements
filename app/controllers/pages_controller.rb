@@ -10,7 +10,7 @@ class PagesController < InheritedResources::Base
   before_filter :expire_page, :only => [:update,:create]
   caches_page :index
   caches_action :show
-  
+    
   #def render(*args)
   #  args.first[:layout] = false if request.xhr?
   #  super
@@ -24,7 +24,7 @@ class PagesController < InheritedResources::Base
   
   def edit
     edit! do |format|
-      format.html { render :layout => "page" }
+      format.html { render :layout => "edit" }
       format.js { render :layout => false }
     end
   end

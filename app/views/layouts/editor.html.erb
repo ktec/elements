@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<%
+  
+-%>
+
+<%= render :file => '/layouts/_head.html.erb', :locals => local_assigns -%>
+
+<body id="application">
+
+<%= render "shared/flashes" -%>
+
+<div id="navigation">
+<%= yield :navigation -%>
+</div><!-- /navigation -->
+
+<div id="user_controls">
+<%= render "shared/user_controls" -%>
+<%= yield :user_controls %>
+</div><!-- /user_controls -->
+
+<div id="content">
+<%= yield -%>
+<div class="clear"></div>
+</div><!-- /content -->
+
+<div id="footer">
+<%= yield :footer -%>
+</div><!-- /footer -->
+
+<small>Editor</small>
+
+</body>
+</html>
+

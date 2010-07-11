@@ -91,14 +91,22 @@ module ApplicationHelper
   end
   
   def add_stylesheet_include(string_or_symbol, cache=true)
-    content_for :stylesheet_includes do
-      stylesheet_link_tag string_or_symbol, :cache => cache
+    @stylesheet_includes ||= []
+    unless @stylesheet_includes.include?(string_or_symbol)
+      content_for :stylesheet_includes do
+        stylesheet_link_tag string_or_symbol, :cache => cache
+      end
+      @stylesheet_includes << string_or_symbol
     end
   end
   
   def add_javascript_include(string_or_symbol, cache=true)
-    content_for :javascript__includes do
-      javascript_include_tag string_or_symbol, :cache => cache
+    @javascript_includes ||= []
+    unless @javascript_includes.include?(string_or_symbol)
+      content_for :javascript__includes do
+        javascript_include_tag string_or_symbol, :cache => cache
+      end
+      @javascript_includes << string_or_symbol
     end
   end
     
