@@ -1,26 +1,16 @@
 <%
 # add the whole lot for now
 # public stuff
+# admin stuff
 add_javascript_include :jquery
+add_javascript_include :jquery_form
+add_javascript_include :jintastic
+add_stylesheet_include :formtastic
+#
 add_stylesheet_include :jquery_ui
 add_javascript_include :jquery_ui
-add_stylesheet_include :jquery_potato_menu
-add_javascript_include :jquery_potato_menu
-add_stylesheet_include :fancybox
-add_javascript_include :fancybox
-add_stylesheet_include :nivo_slider
-add_javascript_include :nivo_slider
-# admin stuff
-add_javascript_include :jquery_layout
-add_javascript_include :jquery_form
-add_javascript_include :jstree
-add_stylesheet_include :formtastic
-add_javascript_include :jintastic
+
 add_stylesheet_include "layout.#{layout_name}.css"
-#add_stylesheet_include :textile_editor
-#add_javascript_include :textile_editor
-#add_stylesheet_include :markitup_editor
-#add_javascript_include :markitup_editor
 
 -%>
 
@@ -34,7 +24,9 @@ add_stylesheet_include "layout.#{layout_name}.css"
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="csrf-token" content="<%= form_authenticity_token %>" />
     <meta name="csrf-param" content="authenticity_token" />
+    <!-- Stylesheets -->
     <%= yield :stylesheet_includes %>
-    <%#= javascript_include_tag :jquery, :cache => true #%>
+    <!-- Javascripts -->
+    <%#= javascript_include_tag :jquery, :cache => true %>
     <%= yield :javascript__includes %>
   </head>

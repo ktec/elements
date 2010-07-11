@@ -33,6 +33,7 @@ module ApplicationHelper
   def convert_to_list(element, id=nil)
     result = "<ul#{(' id="' + id.to_s + '"' if id)}>"
     unless id.nil?
+      add_javascript_include :jquery
       add_stylesheet_include :jquery_potato_menu
       add_javascript_include :jquery_potato_menu
       result += "<script type=\"text/javascript\">$(document).ready(function(){$('##{id}').ptMenu();});</script>"
