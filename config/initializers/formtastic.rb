@@ -84,3 +84,29 @@ end
 if Object.const_defined?("Formtastic")  
   Formtastic::SemanticFormBuilder.send(:include, FormtasticExtensions::Formtastic::TextileEditor)
 end
+
+module FormtasticExtensions
+  module Formtastic
+    module MarkItUpEditor
+      include MarkItUp::ViewHelpers
+
+      def self.included(base)
+        base.class_eval do
+          @mark_it_up_dependencies_included = false
+        end
+      end
+
+      protected
+
+      def mark_it_up_input(method, options = {})
+        dom_id = "#{@object_name}_#{method}"
+        output = text_input(method, options)
+        output << ::Formtastic::Util.html_safe(mark_it_up(dom_id, options[:mark_it_up], @mark_it_up_dependencies_included))  
+      end
+    end
+  end
+end
+
+if Object.const_defined?("Formtastic")  
+  Formtastic::SemanticFormBuilder.send(:include, FormtasticExtensions::Formtastic::MarkItUpEditor)
+end

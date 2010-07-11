@@ -1,10 +1,10 @@
-<% content_for :user_controls do %>
-<% unless user_signed_in? %>
-<%= link_to "sign in", new_user_session_url %> | 
-<%= link_to "sign up", new_user_registration_url %>
-<% else %>
-<%= link_to image_tag("elements/sitemap.png"), tree_url %> | 
-<%= link_to current_user.email, edit_user_registration_url, :title => current_user.roles.map(&:title) %> | 
-<%= link_to "sign out", destroy_user_session_url %>
-<% end %>
+<% content_for :user_controls do -%>
+<% unless user_signed_in? -%>
+<%= link_to "sign in", new_user_session_url -%> | 
+<%= link_to "sign up", new_user_registration_url -%>
+<% else -%>
+<%= link_to image_tag("elements/sitemap.png"), tree_url -%> | 
+<%= link_to current_user.email, edit_user_registration_url, :title => current_user.roles.map(&:title) -%> | 
+<%= link_to "sign out", destroy_user_session_url -%>
+<% end -%>
 <% end %>

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.mark_it_up_preview "mark_it_up/preview", :controller => "mark_it_up", :action => "preview"
+    
 
   map.sitemap 'robots.txt', :controller => 'sitemap', :action => 'robots'
   map.sitemap 'sitemap.xml', :controller => 'sitemap', :action => 'sitemap'

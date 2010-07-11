@@ -1,13 +1,13 @@
 <%
 page_title h(@page.title)
 content_for :description, h(@page.description)
-content_for :keywords, h(@page.title)
+content_for :keywords, h(@page.keywords)
 navigation_for(@domain)
 
 permitted_to? :update, @page do
-  flash[:notice] ||= ("You should consider adding a title to this page.<br/>" if (@page.title == ""))
+  flash[:notice] ||= ("You should consider adding a title to this page." if (@page.title == ""))
   flash[:notice] ||= ("You should consider adding a description to this page." if (@page.description == "")) 
-  flash[:notice] ||= ("You should consider adding some keywords to this page.<br/>" if (@page.keywords == ""))
+  flash[:notice] ||= ("You should consider adding some keywords to this page." if (@page.keywords == ""))
   content_for :user_controls do
     %><%= link_to ('Edit', edit_element_path(@page.element)) %><%
   end

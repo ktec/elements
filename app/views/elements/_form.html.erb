@@ -4,7 +4,7 @@
     <li><a href="#element_tab2"><%= f.object.new_record? ? "Type" : f.object.attachable.class %></a></li>
   </ul>
   <div id="element_tab1">
-<% f.inputs do %>
+<% f.inputs do -%>
   <%= f.input :name, :label => 'Name' %>
   <%#= f.input :parent_id,  :as => :select, :collection => options_for_select(Element, @element) {|i| "#{'-' * i.ancestry_depth.to_i} #{i.name} #{"(#{i.attachable.class})" if i.has_attachable?}" } %>
   <%= f.input :tag_list, :label => 'Tag List' %>
@@ -14,14 +14,14 @@
 <% f.inputs do %>
   <%= f.input :attachable_type,  :as => :select, :collection => Element::COMPONENTS, :prompt => "Select one:" %>
   <div id="component">
-  <% if !f.object.nil? and f.object.has_attachable? %>
-    <% f.semantic_fields_for :attachable, f.object.attachable do |builder|  %>
-      <%= builder.hidden_field :attachable_type, :value => builder.object.class.to_s %>
-      <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder %>
-    <% end %>
-  <% end %>
+  <% if !f.object.nil? and f.object.has_attachable? -%>
+    <% f.semantic_fields_for :attachable, f.object.attachable do |builder|  -%>
+      <%= builder.hidden_field :attachable_type, :value => builder.object.class.to_s -%>
+      <%= render "#{f.object.attachable.class.to_s.tableize}/form", :f => builder -%>
+    <% end -%>
+  <% end -%>
   </div>
-<% end %>
+<% end -%>
   </div>
 </div>
 <script type="text/javascript">

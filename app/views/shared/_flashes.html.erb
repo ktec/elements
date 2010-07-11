@@ -1,14 +1,16 @@
 <div id="flash">
-<% flash.each do |name, msg| %>
-  <% unless msg.nil? %>
+<% flash.each do |name, msg| -%>
+  <% unless msg.nil? -%>
   <div id="<%= "flash_#{name}" %>" class="msg">
     <p><%= msg %></p>
   </div>
-  <% end %>
-<% end %>
+  <% end -%>
+<% end -%>
+<% unless flash.empty? -%>
 <script type="text/javascript">
 $("#flash div").each(function(i,e){
   $(e).hide().slideDown().delay(2600).slideUp()
 })
 </script>
+<% end -%>
 </div>

@@ -30,15 +30,20 @@ module ApplicationHelper
       end
     end
   end
-  def convert_to_list(element, id = "")
-    result = '<ul id="' + id + '">'
+  def convert_to_list(element, id=nil)
+    result = "<ul#{(' id="' + id.to_s + '"' if id)}>"
+    unless id.nil?
+      add_stylesheet_include :jquery_potato_menu
+      add_javascript_include :jquery_potato_menu
+      result += "<script type=\"text/javascript\">$(document).ready(function(){$('##{id}').ptMenu();});</script>"
+    end
+    #result = '<ul id="' + id + '">'
     element.children.each do |element|
       if element.attachable.is_a?(Page)
         if defined?(@page)
           current = @page.element
           highlight = true if current.ancestors.include?(element) or current == element unless current.nil? or current.id.nil?
-          #highlight = true if current == element unless current.nil? or current.id.nil?
-          result << '<li class="' + (highlight ? "highlighted " : "none") + '">'
+          result << "<li#{(' class="highlighted"' if highlight)}>"
         else
           result << '<li>'
         end
@@ -84,4 +89,17 @@ module ApplicationHelper
   def layout_name
     controller.active_layout.name
   end
+  
+  def add_stylesheet_include(string_or_symbol, cache=true)
+    content_for :stylesheet_includes do
+      stylesheet_link_tag string_or_symbol, :cache => cache
+    end
+  end
+  
+  def add_javascript_include(string_or_symbol, cache=true)
+    content_for :javascript__includes do
+      javascript_include_tag string_or_symbol, :cache => cache
+    end
+  end
+    
 end

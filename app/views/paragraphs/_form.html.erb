@@ -1,5 +1,19 @@
+<% 
+#add_stylesheet_include :markitup_editor
+#add_stylesheet_include :formtastic
+#add_javascript_include :markitup_editor 
+#add_javascript_include :jintastic
+-%>
+
 <% f.inputs do %>
   <%= f.input :attachable_type, :as => :hidden, :value => f.object.class.to_s unless f.object.is_a?(Paragraph) %>
   <%= f.input :content, :as => :textile, :id => ("element_attachable_attributes_content"  unless f.object.is_a?(Paragraph)) %>
 <% end %>
+
+<script language="javascript">
+$(document).ready(function()	{    
+    //$("textarea").markItUp(myTextileSettings);
+    //$("textarea").markItUp(myMarkdownSettings);
+  });
+</script>
 
