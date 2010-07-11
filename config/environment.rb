@@ -79,10 +79,11 @@ Rails::Initializer.run do |config|
   config.gem "jintastic" # for in place editing 
   # validation_reflection # for validation http://github.com/redinger/validation_reflection
   # jquery ui datepicker # http://blog.brzezinka.eu/tag/formtastic
-    # http://github.com/vigetlabs/acts_as_markup/ # to support more than just textile
-    # get fully marked up with http://markitup.jaysalvat.com/home/
-    # textile editor # http://gist.github.com/406968
-    # rails plugin for mark_it_up # http://github.com/cingel/mark_it_up
+  # http://github.com/vigetlabs/acts_as_markup/ # to support more than just textile
+  # get fully marked up with http://markitup.jaysalvat.com/home/
+  # textile editor # http://gist.github.com/406968
+  # rails plugin for mark_it_up # http://github.com/cingel/mark_it_up
+  # Maruku for MarkDown support
   # http://github.com/hagenburger/lemonade for css spriting
 
   # GALLERY OPTIONS
@@ -92,6 +93,8 @@ Rails::Initializer.run do |config|
   # BLOG
   # http://github.com/bscofield/bloget # possible solution for blog component
   # http://github.com/norman/disqus.git for blog post comments
+  # http://github.com/adamwiggins/scanty
+  # Just build the blog straight in, and add disqus comments
   
   # SHOP
   # merchant account provider
