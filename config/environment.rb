@@ -57,6 +57,7 @@ Rails::Initializer.run do |config|
   # acts_as_indexed 
   # :git => http://github.com/technoweenie/can_search.git
   # config.gem "acts_as_solr" # might be this websolr-acts_as_solr
+  # google search?
 
   # AUTHORIZATION
   config.gem "declarative_authorization" # for authorization
@@ -109,6 +110,7 @@ Rails::Initializer.run do |config|
   # ANALYTICS
   # Google
   # http://getclicky.com/207602
+  # http://mixpanel.com/pricing/ # instant analytics
   
   
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
