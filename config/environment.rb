@@ -102,7 +102,8 @@ Rails::Initializer.run do |config|
   #    http://www.braintreepaymentsolutions.com/services/
   
   # PAYMENT PROCESSING
-  # http://github.com/endax/minimal-cart
+  # http://github.com/endax/minimal-cart  
+  # - useful for research only
   # config.gem "active_merchant" # for payment abstraction
   # options http://github.com/search?langOverride=Ruby&q=payment&repo=&start_value=1&type=Repositories
   

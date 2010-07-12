@@ -7,6 +7,8 @@ authorization do
       :pages,
       :paragraphs,
       :pictures,
+      :shops,
+      :products,
       :users
       ], :to => :administer
     has_permission_on :authorization_rules, :to => :read

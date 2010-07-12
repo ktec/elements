@@ -1,0 +1,9 @@
+@import "scaffold.css";
+@import "theme.css";
+
+/* LAYOUTS */
+
+body#application {
+    background: #F2F2F2;
+}
+

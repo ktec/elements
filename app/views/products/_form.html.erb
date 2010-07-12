@@ -1,0 +1,21 @@
+<% semantic_form_for(@product) do |f| %>
+  <% f.inputs do %>
+    <%= f.input :title %>
+    <%= f.input :name %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :expiration_date %>
+    <%= f.input :image_link %>
+    <%= f.input :link %>
+    
+    <%= f.inputs :street, :city, :state, :postal_code, :country, :for => :location %>
+    
+    <%= f.input :payment_accepted %>
+    <%= f.input :payment_notes %>
+    <%= f.input :pickup %>
+    <%= f.input :price %>
+    <%= f.input :price_type %>
+    <%= f.input :quantity %>
+  <% end %>
+  <%= f.buttons %>
+<% end %>

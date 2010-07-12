@@ -1,0 +1,28 @@
+<p>
+  <b>Street:</b>
+  <%=h @location.street %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @location.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @location.state %>
+</p>
+
+<p>
+  <b>Postal code:</b>
+  <%=h @location.postal_code %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%=h @location.country %>
+</p>
+
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

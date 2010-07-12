@@ -1,0 +1,32 @@
+<h1>Editing location</h1>
+
+<% form_for(@location) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code %>
+  </p>
+  <p>
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @location %> |
+<%= link_to 'Back', locations_path %>

@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :locations
+
+  map.resources :products
+
+  map.resources :shops
+
   map.mark_it_up_preview "mark_it_up/preview", :controller => "mark_it_up", :action => "preview"
     
 

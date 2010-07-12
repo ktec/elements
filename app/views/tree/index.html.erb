@@ -154,7 +154,7 @@ $(function () {
 					},
           // composed elements
 					"Domain" : {
-						"valid_children" : ["Page"],
+						"valid_children" : ["Page","Shop"],
             "icon" : { "image" : "/images/elements/domain.png"}
 					},
 					"Page" : {
@@ -164,6 +164,10 @@ $(function () {
 					"Article" : {
 						"valid_children" : ["Picture","Paragraph"],
                         "icon" : { "image" : "/images/elements/article.png"}
+					},
+					"Shop" : {
+						"valid_children" : ["none"],
+                        "icon" : { "image" : "/images/elements/cart.png"}
 					},
 					// The `folder` type
 					"folder" : {
@@ -324,6 +328,8 @@ $(function () {
 			case "add_HtmlElement":
 			case "add_Page":
 			case "add_Article":
+			case "add_Shop":
+			//case "add_Product": manage this from inside the shop
                 // need to add the other element types here
 				$("#demo").jstree("create", null, "last", { "attr" : { "rel" : this.id.toString().replace("add_", "") } });
 				break;
@@ -361,6 +367,7 @@ $(function () {
       <input type="button" id="add_Paragraph" value="add text" style="display:block; float:left;"/>
       <input type="button" id="add_Picture" value="add picture" style="display:block; float:left;"/>
       <input type="button" id="add_Gallery" value="add gallery" style="display:block; float:left;"/>
+      <input type="button" id="add_Shop" value="add shop" style="display:block; float:left;"/>
       <!--
       <input type="button" id="add_Link" value="add link" style="display:block; float:left;"/>
       <input type="button" id="add_Stylesheet" value="add stylesheet" style="display:block; float:left;"/>
