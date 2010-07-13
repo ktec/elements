@@ -104,7 +104,7 @@ module ApplicationHelper
   def add_javascript_include(string_or_symbol, cache=true)
     @javascript_includes ||= []
     unless @javascript_includes.include?(string_or_symbol)
-      content_for :javascript__includes do
+      content_for :javascript_includes do
         javascript_include_tag string_or_symbol, :cache => cache
       end
       @javascript_includes << string_or_symbol
