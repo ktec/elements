@@ -4,9 +4,11 @@ class Gallery < ActiveRecord::Base
   has_one :element, :as => :attachable, :dependent => :destroy
   accepts_nested_attributes_for :element, :allow_destroy => true
   validates_presence_of :title
-  #has_many :pictures, :joins => :elements, :conditions => { :attachable_type => "Picture" }
+  #has_many :has_children, :through => :element, :conditions => { :attachable_id => id,:attachable_type => "Gallery" }
+  #named_scope :with_pictures, proc {|type| { :conditions => { :attachable_type => type } } }
   #liquid_methods :title, :description, :keywords
-  #has_many :child_elements, :through => :element, :conditions => { :attachable_type => "Picture" } 
+  
+  #has_many :children, :through => :element
   #has_many :pictures, :through => :child_elements
 
   LAYOUT_TYPES = [
@@ -17,7 +19,14 @@ class Gallery < ActiveRecord::Base
   ]
   
   def pictures
-    element.children.by_type('Picture').map{|element|element.attachable} unless element.nil? or element.children.empty?
+    #element.children.by_type('Picture').map{|element|element.attachable} unless element.nil? or element.children.empty?
+    #SELECT * FROM "elements" WHERE ("elements".attachable_id = 4 AND "elements".attachable_type = 'Gallery') ORDER BY ancestry ASC LIMIT 1
+    Element.descendants_of(element).by_type("Picture").map{|element|element.attachable} unless element.nil?
+    # SELECT * FROM "elements" WHERE ("elements".attachable_id = 4 AND "elements".attachable_type = 'Gallery') ORDER BY ancestry ASC LIMIT 1
+    # Gets children
+    # SELECT * FROM "elements" WHERE ("elements"."ancestry" = '118') ORDER BY ancestry ASC
+    # Gets pictures
+    # SELECT * FROM pictures INNER JOIN elements ON elements.attachable_id = pictures.id and elements.attachable_type = 'Picture' and elements.ancestry = '118'
   end
   
   # TODO: Get pictures as a has_many join so we can do nested forms

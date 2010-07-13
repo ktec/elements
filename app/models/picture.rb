@@ -20,4 +20,10 @@ class Picture < ActiveRecord::Base
   #validates_attachment_size :image, :less_than => 5.megabytes
   #validates_attachment_content_type :image, :content_type => [ 'image/gif', 'image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/jpg' ]
   liquid_methods :title, :description, :image
+  #named_scope :has_element_with, lambda {|conditions| { :joins => :element, :conditions => conditions } }
+      # Gets pictures
+    # SELECT * FROM pictures INNER JOIN elements ON elements.attachable_id = pictures.id and elements.attachable_type = 'Picture' and elements.ancestry = '118'
+  #named_scope :in_gallery, :joins => 
+  #named_scope :ancestors_of, lambda { |object| {:conditions => to_node(object).ancestor_conditions} }
+
 end
