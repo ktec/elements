@@ -3,6 +3,7 @@ add_javascript_include :jquery
 add_javascript_include :fancybox
 add_stylesheet_include :fancybox
 -%>
+<div id="gallery.fancybox.<%=h gallery.id %>" class="gallery.fancybox">
 <h2>FANCYBOX <%= gallery.layout_name %></h2>
 
 <div class="gallery">
@@ -20,3 +21,5 @@ add_stylesheet_include :fancybox
     }
   });
 </script>
+<div class="clear"></div>
+</div>

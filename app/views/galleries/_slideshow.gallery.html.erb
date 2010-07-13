@@ -4,6 +4,7 @@ add_javascript_include :nivo_slider
 add_stylesheet_include :nivo_slider
 -%>
 
+<div id="gallery.slideshow.<%=h gallery.id %>" class="slideshow.gallery">
 <h2>SLIDESHOW GALLERY <%= gallery.layout_name %></h2>
 
 <h1 class="title"><%=h gallery.title %></h1>
@@ -101,3 +102,4 @@ a.nivo-prevNav {
 }
 
 </style>
+</div>
