@@ -90,6 +90,7 @@ Rails::Initializer.run do |config|
   # GALLERY OPTIONS
   # http://www.twospy.com/galleriffic/index.html
   # thumbnail options http://www.1stwebdesigner.com/design/fresh-jquery-image-gallery-display-solutions/
+  # http://www.electricprism.com/aeron/slideshow/example4.html
   
   # BLOG
   # http://github.com/bscofield/bloget # possible solution for blog component
