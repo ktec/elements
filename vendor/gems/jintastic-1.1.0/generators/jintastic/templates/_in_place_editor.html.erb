@@ -1,0 +1,16 @@
+<div class="in_place_editor_wrapper">
+  <%= content_tag container_tag, h(html_text), content_tag_options %>
+  <% semantic_form_for path_spec_or_object, form_tag_options do |f| %>
+    <% f.inputs do %>
+      <% if input_attributes %>
+        <% input_attributes.each do |attr| %>
+          <%= f.input attr %>
+        <% end %>
+      <% else %>
+        <%= render :partial=>form_partial, :locals=>{:f=>f} %>
+      <% end %>
+    <% end %>
+    <%= f.commit_button :button_html => {:class => 'in_place_save', :style=>"float:left"} %>
+    <input type='button' value='<%= I18n.t('formtastic.actions.cancel', :default=>'Cancel') %>' class='in_place_cancel' />
+  <% end %>
+</div>
