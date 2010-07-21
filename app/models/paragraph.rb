@@ -1,7 +1,6 @@
 class Paragraph < ActiveRecord::Base
+	include Elements::Element
   using_access_control
-  attr_accessible :content, :element_attributes
-  has_one :element, :as => :attachable, :dependent => :destroy
-  accepts_nested_attributes_for :element, :allow_destroy => true
+  attr_accessible :content
   validates_presence_of :content
 end

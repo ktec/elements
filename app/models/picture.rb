@@ -1,8 +1,7 @@
 class Picture < ActiveRecord::Base
+	include Elements::Element
   using_access_control
-  attr_accessible :title, :description, :image, :element_attributes
-  has_one :element, :as => :attachable, :dependent => :destroy
-  accepts_nested_attributes_for :element, :allow_destroy => true
+  attr_accessible :title, :description, :image
   has_attached_file :image,
     :styles => { 
         :tiny_thumb => "50x20>", 

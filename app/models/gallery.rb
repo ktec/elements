@@ -1,8 +1,7 @@
 class Gallery < ActiveRecord::Base
+	include Elements::Element
   using_access_control
-  attr_accessible :title, :description, :layout_name, :custom_layout_content, :element_attributes
-  has_one :element, :as => :attachable, :dependent => :destroy
-  accepts_nested_attributes_for :element, :allow_destroy => true
+  attr_accessible :title, :description, :layout_name, :custom_layout_content
   validates_presence_of :title
   #has_many :has_children, :through => :element, :conditions => { :attachable_id => id,:attachable_type => "Gallery" }
   #named_scope :with_pictures, proc {|type| { :conditions => { :attachable_type => type } } }
