@@ -11,24 +11,6 @@
 
 ActiveRecord::Schema.define(:version => 20100712014619) do
 
-  create_table "country_groups", :force => true do |t|
-    t.string  "country"
-    t.integer "group_id"
-  end
-
-  create_table "customers", :force => true do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "phone"
-    t.string "street_address"
-    t.string "zip_code"
-    t.string "state"
-    t.string "country"
-    t.string "city"
-    t.string "shipping_method"
-  end
-
   create_table "domains", :force => true do |t|
     t.string   "name"
     t.string   "title"
@@ -70,18 +52,12 @@ ActiveRecord::Schema.define(:version => 20100712014619) do
     t.datetime "updated_at"
   end
 
-  create_table "orders", :force => true do |t|
-    t.integer "transaction_id"
-    t.integer "product_id"
-    t.integer "quantity"
-  end
-
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "description"
     t.string   "keywords"
     t.boolean  "show_share_links",      :default => true
-    t.string   "layout_name"
+    t.string   "layout_name",           :default => "application"
     t.text     "custom_layout_content"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -129,27 +105,13 @@ ActiveRecord::Schema.define(:version => 20100712014619) do
     t.datetime "updated_at"
   end
 
-  create_table "shipping_rates", :force => true do |t|
-    t.float   "from_weight"
-    t.float   "to_weight"
-    t.string  "method"
-    t.float   "rate"
-    t.integer "country_group"
-  end
-
-  create_table "shopping_transaction_statuses", :force => true do |t|
-    t.string "status"
-    t.string "description"
-  end
-
-  create_table "shopping_transactions", :force => true do |t|
-    t.datetime "date"
-    t.integer  "status_transaction_id"
-    t.integer  "total"
-    t.integer  "customer_id"
-  end
-
   create_table "shops", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "keywords"
+    t.boolean  "show_share_links",      :default => true
+    t.string   "layout_name",           :default => "default"
+    t.text     "custom_layout_content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -169,12 +131,6 @@ ActiveRecord::Schema.define(:version => 20100712014619) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
-  end
-
-  create_table "tax_rates", :force => true do |t|
-    t.float  "rate"
-    t.string "state"
-    t.string "country"
   end
 
   create_table "users", :force => true do |t|

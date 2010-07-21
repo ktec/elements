@@ -5,7 +5,7 @@ class CreatePages < ActiveRecord::Migration
       t.string :description
       t.string :keywords
       t.boolean :show_share_links, :default => 1
-      t.string :layout_name
+      t.string :layout_name, :default => "application"
       t.text :custom_layout_content
 
       t.timestamps

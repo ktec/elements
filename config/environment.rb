@@ -78,7 +78,7 @@ Rails::Initializer.run do |config|
   config.gem "RedCloth", :lib => "redcloth", :version => ">=4.2.3" # for content markup
   config.gem "formtastic" # for clean forms
   config.gem "jintastic" # for in place editing 
-  # validation_reflection # for validation http://github.com/redinger/validation_reflection
+  config.gem "validation_reflection" # for validation http://github.com/redinger/validation_reflection
   # jquery ui datepicker # http://blog.brzezinka.eu/tag/formtastic
   # http://github.com/vigetlabs/acts_as_markup/ # to support more than just textile
   # get fully marked up with http://markitup.jaysalvat.com/home/

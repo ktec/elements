@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Name</th>
     <th>Position</th>
     <th>Tags</th>
@@ -13,7 +14,8 @@
 
 <% @elements.each do |element| %>
   <tr id="element-<%=h element.id %>">
-    <td><%=h element.name %></td>
+    <td><%= image_tag "/images/elements/" + element.attachable.class.to_s.downcase + ".png" -%></td>
+    <td><%= in_place_editor_for element, :name => :form %></td>
     <td><%=h element.position %></td>
     <td><%=h element.tag_list %></td>
     <td><%=h element.ancestry %></td>
@@ -34,9 +36,3 @@
 <hr />
 
 <%= render :partial => "tag_cloud" %>
-
-<hr />
-
-<ul>
-  <%= render @elements %>
-</ul>

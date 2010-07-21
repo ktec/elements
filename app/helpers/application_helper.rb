@@ -13,15 +13,6 @@ module ApplicationHelper
     end
     result
   end
-  def link_to_add_fields(name, f, association, new_object = nil)
-    if new_object.nil?
-      new_object = f.object.class.reflect_on_association(association).klass.new
-    end
-    fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-      render(association.to_s.singularize + "_fields", :f => builder)
-    end
-    #link_to_function(name, h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
-  end
   def navigation_for(domain)
     #@domain = Domain.find_by_name(domain)
     unless domain.blank?
@@ -40,7 +31,7 @@ module ApplicationHelper
     end
     #result = '<ul id="' + id + '">'
     element.children.each do |element|
-      if element.attachable.is_a?(Page)
+      if element.attachable.is_a?(Shop) or element.attachable.is_a?(Page)
         if defined?(@page)
           current = @page.element
           highlight = true if current.ancestors.include?(element) or current == element unless current.nil? or current.id.nil?
@@ -50,7 +41,7 @@ module ApplicationHelper
         end
         name = h(element.name)
         url = send("#{element.attachable.type.to_s.downcase}_path", element.attachable )
-        result << link_to( name, url )
+        result << link_to( name, url, { :title => h(name) } )
         result << convert_to_list(element) if element.descendants.by_type("Page").count > 0
         result << "</li>"
       end
@@ -67,24 +58,38 @@ module ApplicationHelper
   def liquidize(content, arguments)
     RedCloth.new(Liquid::Template.parse(h(content)).render(arguments, :filters => [LiquidFilters])).to_html
   end
+
+  #  def link_to_add_fields(name, f, association, new_object = nil)
+  #  if new_object.nil?
+  #    new_object = f.object.class.reflect_on_association(association).klass.new
+  #  end
+  #  fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
+  #    #render(association.to_s.singularize + "_fields", :f => builder)
+  #    render("/#{association.to_s}/form", :f => builder)
+  #  end
+  #  #link_to_function(name, h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
+  #  end
+
   def new_child_fields_template(form_builder, association, options = {})
     options[:object] ||= form_builder.object.class.reflect_on_association(association).klass.new
     options[:partial] ||= association.to_s.singularize
     options[:form_builder_local] ||= :f
     
-    content_tag(:div, :id => "#{association}_fields_template", :style => "display: none") do
-      form_builder.fields_for(association, options[:object], :child_index => "new_#{association}") do |f|
-        render(:partial => options[:partial], :locals => { options[:form_builder_local] => f })
+    content_for :jstemplates do
+      content_tag(:div, :id => "#{association}_fields_template", :style => "display: none") do
+        form_builder.fields_for(association, options[:object], :child_index => "new_#{association}") do |f|        
+          render(:partial => options[:partial], :locals => { options[:form_builder_local] => f })        
+        end
       end
     end
-  end
+  end  
   
   def add_child_link(name, association)
     link_to(name, "javascript:void(0)", :class => "add_child", :"data-association" => association)
   end
   
   def remove_child_link(name, f)
-    f.hidden_field(:_delete) + link_to(name, "javascript:void(0)", :class => "remove_child")
+    f.hidden_field(:_destroy) + link_to(name, "javascript:void(0)", :class => "remove_child")
   end
   
   def layout_name

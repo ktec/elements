@@ -1,6 +1,9 @@
 <h1>Editing product</h1>
 
-<%= render "form" %>
+<% semantic_form_for(@product) do |f| %>
+  <%= render "form", :f => f %>
+  <%= f.buttons %>
+<% end %>
 
 <%= link_to 'Show', @product %> |
 <%= link_to 'Back', products_path %>

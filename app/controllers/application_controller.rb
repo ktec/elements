@@ -25,5 +25,20 @@ class ApplicationController < ActionController::Base
   def get_domain
     @domain ||= Domain.find_by_name(request.host)
   end
+
+  # There are multiple ways of handling authorization failures.  
+  # One is to implement a permission denied method as shown below.  
+  # If none is defined, either a simple string is displayed
+  # to the user ("You are not allowed...", default) or the authorization
+  # exception is raised.  TODO state configuration option
+  # 
+  def permission_denied
+    respond_to do |format|
+      flash[:error] = 'Sorry, you are not allowed to view the requested page.'
+      format.html { redirect_to(:back) rescue redirect_to('/') }
+      format.xml  { head :unauthorized }
+      format.js   { head :unauthorized }
+    end
+  end
   
 end

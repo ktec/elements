@@ -1,12 +1,15 @@
 class ElementsController < InheritedResources::Base
-  respond_to :html, :xml, :json
-  respond_to :js #, :only => [:new_component, :edit]
+
+  actions :all
+  respond_to :html, :xml, :json, :js
+  # Require authentication for edit and delete.
+  before_filter :authenticate_user!, :except => [:index,:show,:tag_cloud]
+  #filter_resource_access
+  
   #respond_to :iphone, :except => [ :edit, :update ]
 
   before_filter :new_element, :only => [:new, :new_element_attachable_from_params]
-  #filter_resource_access
 
-  # Require authentication for edit and delete.
   before_filter :tag_cloud, :only => [:index]
   before_filter :set_attachable, :only => [:new, :update, :new_element_attachable_from_params]
   
@@ -14,7 +17,6 @@ class ElementsController < InheritedResources::Base
   #belongs_to :page,:picture,:domain, :polymorphic => true, :optional => true, :singleton => true
   # this way allows us to browse via the elements controller, but not nested polymorphic models
   #belongs_to :page, :picture, :domain, :polymorphic => true, :optional => true
-
   #belongs_to :domain, :singleton => true, :optional => true
 
   has_scope :featured, :type => :boolean

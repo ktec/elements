@@ -2,13 +2,19 @@
 
 <table>
   <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Keywords</th>
   </tr>
 
 <% @shops.each do |shop| %>
   <tr>
-    <td><%= link_to 'Show', shop %></td>
-    <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-    <td><%= link_to 'Destroy', shop, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h shop.title %></td>
+    <td><%=h shop.description %></td>
+    <td><%=h shop.keywords %></td>
+    <td class="show"><%= link_to content_tag("span",'Show'), shop %></td>
+    <td class="edit"><%= link_to content_tag("span",'Edit'), edit_shop_path(shop) %></td>
+    <td class="destroy"><%= link_to content_tag("span",'Destroy'), shop, :confirm => 'Are you sure?', "data-remote" => true, "data-method" => :delete %></td>
   </tr>
 <% end %>
 </table>

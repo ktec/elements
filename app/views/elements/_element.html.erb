@@ -1,4 +1,4 @@
-<li id="<%= dom_id(element) -%>" style="display:inline">
-  <span><%= image_tag "/images/elements/" + element.attachable.class.to_s.downcase + ".png" -%></span>
-  <span><%= in_place_editor_for element, :name => :form %></span>
+<li id="<%= dom_id(element) -%>">
+  <%= image_tag "/images/elements/" + element.attachable.class.to_s.downcase + ".png" -%>
+  <%= in_place_editor_for element, :name => :form %>
 </li>

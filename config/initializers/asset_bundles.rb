@@ -3,12 +3,14 @@
 
 # Reset the default to clear out prototype
 ActionView::Helpers::AssetTagHelper::reset_javascript_include_default
-ActionView::Helpers::AssetTagHelper.register_javascript_expansion :defaults => []
+ActionView::Helpers::AssetTagHelper.register_javascript_expansion :defaults => [
+  #'application'
+]
 
 ## JQUERY 
 
 ActionView::Helpers::AssetTagHelper.register_javascript_expansion :jquery => [
-    (Rails.env.production? ? 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' : 'jquery.min'),
+    (Rails.env.production? ? 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' : 'jquery'),
     'rails',
     'jquery.cookie', 
     'jquery.hotkeys'
@@ -20,7 +22,7 @@ ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :jquery_ui => 
   ]
 
 ActionView::Helpers::AssetTagHelper.register_javascript_expansion :jquery_ui => [
-    (Rails.env.production? ? 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js' : 'jquery-ui.min')
+    (Rails.env.production? ? 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js' : 'jquery-ui')
   ]  
 
 ## jquery_layout

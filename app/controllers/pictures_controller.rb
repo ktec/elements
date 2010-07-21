@@ -1,6 +1,8 @@
 class PicturesController < InheritedResources::Base
+  actions :all
+  respond_to :html, :xml, :json, :js
+  before_filter :authenticate_user!, :except => [:index,:show]
   filter_resource_access
-  actions :all, :except => [ :new, :destroy ]
   def edit
     edit! do |format|
       format.js { render :layout => false  }

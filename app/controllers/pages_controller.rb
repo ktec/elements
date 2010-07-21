@@ -1,8 +1,8 @@
 class PagesController < InheritedResources::Base
-  filter_resource_access
-  
   actions :all
   respond_to :html, :xml, :json, :js
+  before_filter :authenticate_user!, :except => [:index,:show]
+  filter_resource_access
   
   before_filter :set_etag, :only => [ :show ]
   before_filter :authenticate_user!, :only => [ :edit, :update, :destroy ]

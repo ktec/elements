@@ -1,3 +1,58 @@
-<% semantic_form_for(@shop) do |f| %>
-  <%= f.buttons %>
+<% @classname ||= f.object.class.to_s.downcase %>
+<div id="<%= @classname %>_form_tabs">
+  <ul>
+    <li><a href="#<%= @classname %>_tab1">Basic</a></li>
+    <li><a href="#<%= @classname %>_tab2">Advanced</a></li>
+    <li><a href="#<%= @classname %>_tab3">Products</a></li>
+  </ul>
+  <div id="<%= @classname %>_tab1">
+<% f.inputs do %>
+  <%= f.input :attachable_type, :as => :hidden, :value => f.object.class.to_s unless f.object.is_a?(Shop) %>
+  <%= f.input :title, :label => 'Title' %>
+  <%= f.input :description, :label => 'Description' %>
 <% end %>
+  </div>
+  <div id="<%= @classname %>_tab2">
+<% f.inputs do %>
+  <%= f.input :keywords, :label => 'Keywords' %>
+  <%= f.input :show_share_links, :as => :boolean, :label => 'Show Share Links?' %>
+  <%= f.input :layout_name, :as => :select, :collection => Shop::LAYOUT_TYPES, :prompt => "Please select:", :include_blank => false %>
+  <%= f.input :custom_layout_content, :input_html => { :rows => 12, :escape => false }, :wrapper_html => { :id => "#{@classname}_custom_layout_content" } %>
+<% end %>
+  </div>
+  <div id="<%= @classname %>_tab3">
+  <% f.object.products.each do |product| %>
+    <% f.inputs do %>
+      <% f.semantic_fields_for :products, product do |builder|  -%>
+        <%= render "products/form", :f => builder -%>
+      <% end -%>
+    <% end -%>
+  <% end -%>
+  <li><%= add_child_link "[+] Add a new product", :products %></li>
+  <%= new_child_fields_template f, :products, {:partial => 'products/form'} %>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+  var ln = $('#<%= @classname %>_layout_name');
+  var clc = $('#<%= @classname %>_custom_layout_content');
+  $("#<%= @classname %>_form_tabs").tabs({
+    cookie: {
+      // store cookie for a day, without, it would be a session cookie
+      expires: 1
+    }
+  });
+  if (ln.val() != "custom") {
+    clc.hide();
+  }
+  ln.change(function() {
+    switch($(this).val()) {
+      case 'custom':
+        clc.fadeIn();
+      break;
+      default:
+        clc.fadeOut();
+      }
+    });
+  });
+</script>

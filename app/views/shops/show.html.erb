@@ -1,5 +1,38 @@
+<%
+page_title h(@shop.title)
+content_for :description, h(@shop.description)
+content_for :keywords, h(@shop.keywords)
+navigation_for(@domain)
 
-<% render @shop.products %>
+permitted_to? :update, @page do
+  flash[:notice] ||= ("You should consider adding a title to this shop." if (@shop.title == ""))
+  flash[:notice] ||= ("You should consider adding a description to this shop." if (@shop.description == "")) 
+  flash[:notice] ||= ("You should consider adding some keywords to this shop." if (@shop.keywords == ""))
+  content_for :user_controls do
+    %><%= link_to ('Edit', edit_element_path(@shop.element)) %><%
+  end
+end
+%>
+<div id="<%= dom_id(@shop) %>">
+<h1 class="title"><%=h @shop.title %></h1>
 
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>
+<hr />
+
+
+<%= render @shop.products %>
+
+<hr />
+
+<%= render @shop.element.children %>
+
+<hr />
+
+<% if @shop.show_share_links? %>
+<div id="page_share_links">
+  <%= render "shared/add_this_button.html" %>
+</div>
+<% end %>
+
+</div>
+<% content_for :footer do %>
+<% end %>

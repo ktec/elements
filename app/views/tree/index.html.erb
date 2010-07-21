@@ -1,9 +1,11 @@
 <%
+
 add_javascript_include :jquery
 add_stylesheet_include :jquery_ui
 add_javascript_include :jquery_ui
 add_javascript_include :jstree
 add_javascript_include :jquery_layout
+
 # need these because we can do this through ajax....or can we ;-)
 add_stylesheet_include :formtastic
 add_stylesheet_include :textile_editor
@@ -125,65 +127,140 @@ $(function () {
 					// The default type
 					"default" : {
 						"valid_children" : ["none", "domain"],
-            "icon" : { "image" : "/images/elements/file.png"}
+            "icon" : { "image" : "/images/elements/file.png" },
+            "new_object" : function (obj) {
+              return {
+                "attachable_type" : "Unknown",
+                "title" : obj.name
+              }
+            }
 					},
           // basic building blocks
 					"Paragraph" : {
 						"valid_children" : ["none"],
-            "icon" : { "image" : "/images/elements/paragraph.png"}
+            "icon" : { "image" : "/images/elements/paragraph.png"},
+            "new_object" : function (obj) {
+              return {
+                "attachable_type" : "Paragraph",
+                "content" : "Something here..."
+              }
+            }
 					},
 					"Picture" : {
 						"valid_children" : ["none"],
-            "icon" : { "image" : "/images/elements/picture.png"}
+            "icon" : { "image" : "/images/elements/picture.png" },
+            "new_object" : function (obj) {
+              return {
+                "attachable_type" : "Picture",
+                "title" : obj.name
+              }
+            }
 					},
 					"Link" : {
 						"valid_children" : ["none"],
-            "icon" : { "image" : "/images/elements/link.png"}
+            "icon" : { "image" : "/images/elements/link.png" },
+            "new_object" : function (obj) {
+              return {
+                "attachable_type" : "Gallery",
+                "title" : obj.name
+              }
+            }
 					},
 					"Gallery" : {
 						"valid_children" : ["Picture"],
-            "icon" : { "image" : "/images/elements/gallery.png"}
+            "icon" : { "image" : "/images/elements/gallery.png" },
+            "new_object" : function (obj) {
+              return {
+                "attachable_type" : "Gallery",
+                "title" : obj.name
+              }
+            }
 					},
 					"Stylesheet" : {
 						"valid_children" : ["none"],
-            "icon" : { "image" : "/images/elements/stylesheet.png"}
+            "icon" : { "image" : "/images/elements/stylesheet.png" },
+            "new_object" : function (obj) {
+              return {
+                "attachable_type" : "Stylesheet",
+                "title" : obj.name
+              }
+            }
 					},
 					"HtmlElement" : {
 						"valid_children" : ["Image","Paragraph","Article","Gallery","Form"],
-            "icon" : { "image" : "/images/elements/html_element.jpg"}
+            "icon" : { "image" : "/images/elements/html_element.jpg" },
+            "new_object" : function (obj) {
+              return {
+                "attachable_type" : "HTMLElement",
+                "title" : obj.name
+              }
+            }
 					},
           // composed elements
 					"Domain" : {
 						"valid_children" : ["Page","Shop"],
-            "icon" : { "image" : "/images/elements/domain.png"}
+            "icon" : { "image" : "/images/elements/domain.png" },
+            "new_object" : function (obj) {
+              return {
+                "attachable_type" : "Domain",
+                "title" : obj.name
+              }
+            }
 					},
 					"Page" : {
 						"valid_children" : ["Article","HtmlElement", "Page", "Gallery", "Picture", "Paragraph"],
-            "icon" : { "image" : "/images/elements/page.png"}
+            "icon" : { "image" : "/images/elements/page.png"},
+            "new_object" : function (obj) {
+              return {
+                "attachable_type" : "Page",
+                "title" : obj.name,
+                "description" : "",
+                "keywords" : "",
+                "show_share_links" : 1
+              }
+            }
 					},
 					"Article" : {
 						"valid_children" : ["Picture","Paragraph"],
-                        "icon" : { "image" : "/images/elements/article.png"}
+            "icon" : { "image" : "/images/elements/article.png" },
+            "new_object" : function (obj) {
+              return {
+                "attachable_type" : "Article",
+                "title" : obj.name
+              }
+            }
 					},
 					"Shop" : {
+						"valid_children" : ["Product"],
+            "icon" : { "image" : "/images/elements/shop.png" },
+            "new_object" : function (obj) {
+              return {
+                "attachable_type" : "Shop",
+                "title" : obj.name
+              }
+            }
+					},
+					"Product" : {
 						"valid_children" : ["none"],
-                        "icon" : { "image" : "/images/elements/cart.png"}
+            "icon" : { "image" : "/images/elements/product.png" },
+            "new_object" : function (obj) {
+              return {
+                "attachable_type" : "Product",
+                "title" : obj.name
+              }
+            }
 					},
 					// The `folder` type
 					"folder" : {
 						// can have files and other folders inside of it, but NOT `drive` nodes
 						"valid_children" : [ "default", "folder" ],
-						"icon" : {
-							"image" : "/images/folder.png"
-						}
+            "icon" : { "image" : "/images/folder.png" }
 					},
 					// The `drive` nodes
 					"drive" : {
 						// can have files and folders inside, but NOT other `drive` nodes
 						"valid_children" : [ "default", "folder" ],
-						"icon" : {
-							"image" : "/images/elements/root.png"
-						},
+            "icon" : { "image" : "/images/elements/root.png" },
 						// those options prevent the functions with the same name to be used on the `drive` type nodes
 						// internally the `before` event is used
 						"start_drag" : false,
@@ -218,17 +295,8 @@ $(function () {
             "parent_id" : data.rslt.parent.attr("id").replace("node_",""),
             "position" : data.rslt.position,
             "tag_list" : type,
-            "attachable_type" : type,
-          // here we need to set up some json templates for
-          // each new attachable - eg. Paragraph content can't be blank
-            "attachable_attributes": {
-              "attachable_type" : type,
-              "title" : data.rslt.name,
-              "description" : "",
-              "keywords" : "",
-              "content" : "Something here...",
-              "show_share_links" : 1
-            }
+            //"attachable_type" : type,
+            "attachable_attributes": data.inst._get_settings().types.types[type]["new_object"](data.rslt)
           }
 				},
 				function (r) {
@@ -329,6 +397,7 @@ $(function () {
 			case "add_Page":
 			case "add_Article":
 			case "add_Shop":
+      case "add_Product":
 			//case "add_Product": manage this from inside the shop
                 // need to add the other element types here
 				$("#demo").jstree("create", null, "last", { "attr" : { "rel" : this.id.toString().replace("add_", "") } });
@@ -368,6 +437,7 @@ $(function () {
       <input type="button" id="add_Picture" value="add picture" style="display:block; float:left;"/>
       <input type="button" id="add_Gallery" value="add gallery" style="display:block; float:left;"/>
       <input type="button" id="add_Shop" value="add shop" style="display:block; float:left;"/>
+      <input type="button" id="add_Product" value="add product" style="display:block; float:left;"/>
       <!--
       <input type="button" id="add_Link" value="add link" style="display:block; float:left;"/>
       <input type="button" id="add_Stylesheet" value="add stylesheet" style="display:block; float:left;"/>

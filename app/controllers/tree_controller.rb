@@ -1,5 +1,7 @@
 class TreeController < ApplicationController
   
+  before_filter :authenticate_user!
+  
   # GET /tree/children
   # POST /tree/children
   def children
