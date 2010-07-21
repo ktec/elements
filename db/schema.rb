@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20100712014619) do
     t.string   "description"
     t.string   "keywords"
     t.boolean  "show_share_links",      :default => true
-    t.string   "layout_name",           :default => "application"
+    t.string   "layout_name",           :default => "default"
     t.text     "custom_layout_content"
     t.datetime "created_at"
     t.datetime "updated_at"
