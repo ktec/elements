@@ -4,7 +4,7 @@ class CreateShops < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.string :keywords
-      t.boolean :show_share_links, :default => 1
+      t.boolean :show_share_links, :default => true
       t.string :layout_name, :default => "default"
       t.text :custom_layout_content
 
